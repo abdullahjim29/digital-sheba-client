@@ -1,7 +1,38 @@
 import { Link } from "react-router-dom";
 import loginLottie from "../assets/lottieFiles/loginLottie.json";
 import Lottie from "lottie-react";
+import UseAuth from "../hooks/useAuth";
 const Register = () => {
+  const {createNewUser, loginWithGoogle} = UseAuth();
+
+  // create a new user with email and password
+  const handleCreateUser = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    createNewUser(email, password)
+    .then(res => {
+      console.log(res.user);
+    })
+    .catch(err => {
+      console.log(err.message);
+    })
+  }
+
+  // derect login with google
+  const handleGoogleLogin = () => {
+    loginWithGoogle()
+    .then(res => {
+      console.log(res.user);
+    })
+    .catch(err => {
+      console.log(err.message);
+    })
+  }
     return (
         <div className="my-10">
         <div className="flex flex-col lg:flex-row items-center gap-10">
@@ -23,8 +54,8 @@ const Register = () => {
             </p>
             <div className="my-6 space-y-4">
               <button
+              onClick={handleGoogleLogin}
                 aria-label="Login with Google"
-                type="button"
                 className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600 cursor-pointer"
               >
                 <svg
@@ -42,10 +73,10 @@ const Register = () => {
               <p className="px-3 dark:text-gray-600">OR</p>
               <hr className="w-full dark:text-gray-600" />
             </div>
-            <form noValidate="" action="" className="space-y-8">
+            <form onSubmit={handleCreateUser} className="space-y-8">
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <label htmlFor="email" className="block text-sm">
+                  <label className="block text-sm">
                     Name
                   </label>
                   <input
@@ -57,7 +88,7 @@ const Register = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="email" className="block text-sm">
+                  <label className="block text-sm">
                     Email
                   </label>
                   <input
@@ -70,7 +101,7 @@ const Register = () => {
                 </div>
                 <div className="space-y-2">
                   <div className="flex justify-between">
-                    <label htmlFor="password" className="text-sm">
+                    <label className="text-sm">
                       Password
                     </label>
                   </div>
@@ -84,7 +115,6 @@ const Register = () => {
                 </div>
               </div>
               <button
-                type="button"
                 className="w-full px-8 py-3 font-semibold rounded-md dark:bg-blue-400 dark:text-gray-50 cursor-pointer"
               >
                 Register

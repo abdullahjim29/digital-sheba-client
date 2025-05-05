@@ -5,15 +5,33 @@ import UseAuth from "../hooks/useAuth";
 
 
 const Login = () => {
-  const {signInWithGoogle} = UseAuth();
+  const {loginWithGoogle, loginUser} = UseAuth();
 
+  // login with google
   const handleGoogleLogin = () => {
-    signInWithGoogle()
+    loginWithGoogle()
     .then(res => {
       console.log(res.user);
     })
     .catch(err => {
       console.log(err);
+    })
+  }
+
+  // login with email and password
+  const handleLogin = e => {
+    e.preventDefault();
+
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    loginUser(email, password)
+    .then(res => {
+      console.log(res.user);
+    })
+    .catch(err => {
+      console.log(err.message);
     })
   }
 
@@ -58,10 +76,12 @@ return (
           <p className="px-3 dark:text-gray-600">OR</p>
           <hr className="w-full dark:text-gray-600" />
         </div>
-        <form noValidate="" action="" className="space-y-8">
+        <form onSubmit={handleLogin} className="space-y-8">
           <div className="space-y-4">
+
+            {/* email */}
             <div className="space-y-2">
-              <label htmlFor="email" className="block text-sm">
+              <label className="block text-sm">
                 Email address
               </label>
               <input
@@ -73,8 +93,10 @@ return (
               />
             </div>
             <div className="space-y-2">
+
+              {/* password */}
               <div className="flex justify-between">
-                <label htmlFor="password" className="text-sm">
+                <label  className="text-sm">
                   Password
                 </label>
                 <Link className="text-xs hover:underline dark:text-gray-600">
@@ -91,7 +113,6 @@ return (
             </div>
           </div>
           <button
-            type="button"
             className="w-full px-8 py-3 font-semibold rounded-md dark:bg-blue-400 dark:text-gray-50 cursor-pointer"
           >
             Login
