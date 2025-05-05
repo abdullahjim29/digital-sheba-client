@@ -12,7 +12,8 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100">
+    <div className="shadow-sm bg-base-100">
+      <div className="navbar max-w-7xl mx-auto">
       <div className="navbar-start">
         {/* menu for small devices */}
         <div className="dropdown">
@@ -50,8 +51,9 @@ const Navbar = () => {
           {navLinks}
         </ul>
       </div>
-        <Link className="btn">Login</Link>
+        <Link to={'/login'} className="btn text-[1rem]">Log-in</Link>
       </div>
+    </div>
     </div>
   );
 };
