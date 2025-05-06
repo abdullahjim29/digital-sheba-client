@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import AuthContext from "./AuthContext";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
+import { Toaster } from "react-hot-toast";
 
 const provider = new GoogleAuthProvider();
 
@@ -28,6 +29,18 @@ const AuthProvider = ({ children }) => {
       return signInWithEmailAndPassword(auth, email, password);
     }
 
+    // logout user
+    const logOutUser = () => {
+      setLoading(true);
+      return signOut(auth);
+    }
+
+    // update user profile
+    const updateUser = (User, updateInfo) => {
+      setLoading(true);
+      return updateProfile(User, updateInfo);
+    }
+
     // set observer to user
     useEffect(() => {
       const unSubscribe = onAuthStateChanged(auth, currentUser => {
@@ -47,11 +60,19 @@ const AuthProvider = ({ children }) => {
     loginWithGoogle,
     createNewUser,
     loginUser,
+    logOutUser,
+    updateUser,
     user,
     loading,
   };
   return (
-    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>
+      {children}
+      <Toaster
+      position="top-right"
+      reverseOrder={false}
+      />
+    </AuthContext.Provider>
   );
 };
 
