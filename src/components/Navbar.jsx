@@ -28,7 +28,7 @@ const Navbar = () => {
   const navlinks2 = (
     <>
       <li>
-        <NavLink to={"/add-to-service"}>Add Service</NavLink>
+        <NavLink to={"/add-service"}>Add Service</NavLink>
       </li>
       <li>
         <NavLink to={"/manage-service"}>Manage Service</NavLink>
