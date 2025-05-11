@@ -1,10 +1,9 @@
 import toast from "react-hot-toast";
 import UseAuth from "../hooks/useAuth";
-import axios from 'axios';
+import axiosInstance from "../hooks/AxiosInstance";
 
 const AddService = () => {
-
-  const {user} = UseAuth();
+  const { user } = UseAuth();
 
   // add service form
   const handleAddService = (e) => {
@@ -17,8 +16,6 @@ const AddService = () => {
     const area = form.serviceArea.value;
     const description = form.description.value;
 
-    console.table({ image, service, price, area, description });
-
     const newService = {
       image,
       service,
@@ -28,15 +25,14 @@ const AddService = () => {
       provider_img: user?.photoURL,
       provider_name: user?.displayName,
       provider_email: user?.email,
-    }
+    };
 
     // post service
-    axios.post(`http://localhost:5000/add-service`, newService)
-    .then(res => {
-      if(res.data.acknowledged){
-        toast.success('Service added succsessfully!')
+    axiosInstance.post(`/add-service`, newService).then((res) => {
+      if (res.data.acknowledged) {
+        toast.success("Service added succsessfully!");
       }
-    })
+    });
   };
 
   return (
@@ -111,12 +107,12 @@ const AddService = () => {
               id=""
               cols="30"
               rows="5"
-              className="border rounded-md w-full dark:border-gray-300"
+              className="border rounded-md w-full dark:border-gray-300 p-2"
             ></textarea>
           </div>
           <div>
             <button className="btn bg-[#FF6B6B] text-white hover:bg-[#E63946] cursor-pointer w-full text-lg">
-              Add
+              Add Service
             </button>
           </div>
         </form>

@@ -1,7 +1,12 @@
+import ServiceCards from "../components/ServiceCards";
+
 const Home = () => {
   return (
-    <div>
-      
+    <div className="">
+      {/* banner */}
+
+      {/* service cards */}
+      <ServiceCards/>
     </div>
   );
 };

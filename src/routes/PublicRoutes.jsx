@@ -4,6 +4,8 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Home from "../pages/Home";
 import AddService from "../pages/AddService";
+import axiosInstance from "../hooks/AxiosInstance";
+import Services from "../pages/Services";
 
 const router = createBrowserRouter([
     {
@@ -13,7 +15,8 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home/>
+                element: <Home/>,
+                loader: () => axiosInstance('/services'),
             },
             {
                 path: '/login',
@@ -26,6 +29,11 @@ const router = createBrowserRouter([
             {
                 path: '/add-service',
                 element: <AddService/>
+            },
+            {
+                path: '/services',
+                element: <Services/>,
+                loader: () => axiosInstance('/services'),
             }
         ]
     }
