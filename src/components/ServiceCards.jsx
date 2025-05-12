@@ -3,14 +3,13 @@ import ServiceCard from "./ServiceCard";
 
 const ServiceCards = () => {
   const servicesData = useLoaderData();
-  const limitedServices = servicesData.data.slice(0, 6);
 
   return (
     <div className="my-20 w-11/12 mx-auto">
-      <h2 className="text-4xl font-bold text-center mb-10">Popular Services</h2>
+      <h2 className="text-4xl font-bold text-center mb-10">POPULAR SERVICES</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-y-10 gap-x-6">
-        {limitedServices.map((service) => (
+        {servicesData.data.map((service) => (
           <ServiceCard key={service._id} service={service} />
         ))}
       </div>

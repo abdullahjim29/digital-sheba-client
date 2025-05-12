@@ -16,7 +16,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home/>,
-                loader: () => axiosInstance('/services'),
+                loader: () => axiosInstance('/services?limit=6'),
             },
             {
                 path: '/login',

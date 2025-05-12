@@ -1,7 +1,18 @@
 import { Link } from "react-router-dom";
+import { IoLocationSharp } from "react-icons/io5";
 
-const ServiceCard = ({service}) => {
-    const {service: serviceName, image, price, area, description, provider_img, provider_name, provider_email} = service || {};
+
+const AllServicesCard = ({ service }) => {
+  const {
+    service: serviceName,
+    image,
+    price,
+    area,
+    description,
+    provider_img,
+    provider_name,
+    provider_email,
+  } = service || {};
   return (
     <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-[#FFF0EC] dark:text-gray-800">
       <div className="flex items-center space-x-4">
@@ -27,6 +38,7 @@ const ServiceCard = ({service}) => {
         <h2 className="mb-1 text-xl font-semibold">
           {serviceName}
         </h2>
+        <p className="flex gap-1 items-center mb-2 text-sm"><IoLocationSharp /> {area}</p>
         <p className="text-sm dark:text-gray-600">
           {`${description.slice(0,100)}...`}
         </p>
@@ -43,4 +55,4 @@ const ServiceCard = ({service}) => {
   );
 };
 
-export default ServiceCard;
+export default AllServicesCard;
