@@ -11,8 +11,10 @@ const AllServicesCard = ({ service }) => {
     description,
     provider_img,
     provider_name,
-    provider_email,
+    _id,
   } = service || {};
+
+  
   return (
     <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-[#FFF0EC] dark:text-gray-800">
       <div className="flex items-center space-x-4">
@@ -45,7 +47,7 @@ const AllServicesCard = ({ service }) => {
       </div>
       <div className="flex flex-wrap justify-between">
         <div className="space-x-2">
-         <button className="btn bg-[#e29494] text-white hover:bg-[#E63946] cursor-pointer"><Link to={''}>View Detail</Link></button>
+         <Link to={`/services/${_id}`}><button className="btn bg-[#e29494] text-white hover:bg-[#E63946] cursor-pointer">View Detail</button></Link>
         </div>
         <div className="flex space-x-2 text-sm dark:text-gray-600">
           <p className="text-xl font-bold">$ {price}</p>

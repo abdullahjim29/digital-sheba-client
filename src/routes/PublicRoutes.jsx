@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 import AddService from "../pages/AddService";
 import axiosInstance from "../hooks/AxiosInstance";
 import Services from "../pages/Services";
+import ServiceDetails from "../pages/ServiceDetails";
 
 const router = createBrowserRouter([
     {
@@ -34,7 +35,12 @@ const router = createBrowserRouter([
                 path: '/services',
                 element: <Services/>,
                 loader: () => axiosInstance('/services'),
-            }
+            },
+            {
+                path: '/services/:id',
+                element: <ServiceDetails/>,
+                loader: ({params}) => axiosInstance(`/services/${params.id}`)
+            },
         ]
     }
 ])
