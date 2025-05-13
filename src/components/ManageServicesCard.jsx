@@ -1,5 +1,6 @@
-const ManageServicesCard = ({ service }) => {
-  const { image, service: serviceName, description, price } = service || {};
+const ManageServicesCard = ({ service, handleDelete }) => {
+  const { image, service: serviceName, description, price, _id } = service || {};
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 w-full">
       {/* Service Card */}
@@ -18,19 +19,18 @@ const ManageServicesCard = ({ service }) => {
 
         {/* Action Buttons */}
         <div className="flex justify-end gap-3">
+
+          {/* edit button */}
           <button
-            className="px-4 py-1 bg-blue-500 text-white text-sm rounded hover:bg-blue-600"
-            onClick={() => {
-              // Handle edit action (open modal or navigate)
-            }}
+            className="px-4 py-1 bg-blue-500 text-white text-sm rounded hover:bg-blue-600 cursor-pointer"
           >
             Edit
           </button>
+
+          {/* delete button */}
           <button
-            className="px-4 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600"
-            onClick={() => {
-              // Handle delete confirmation
-            }}
+          onClick={() => handleDelete(_id)}
+            className="px-4 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 cursor-pointer"
           >
             Delete
           </button>
