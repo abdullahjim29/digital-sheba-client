@@ -1,6 +1,8 @@
 import { useLoaderData } from "react-router-dom";
 import { ImCross } from "react-icons/im";
 import UseAuth from "../hooks/useAuth";
+import axiosInstance from "../hooks/AxiosInstance";
+import toast from "react-hot-toast";
 
 const ServiceDetails = () => {
   const serviceData = useLoaderData();
@@ -48,6 +50,21 @@ const ServiceDetails = () => {
       serviceStatus: 'pending',
     };
 
+    if(providerEmail === userEmail){
+      return toast("You can't book your own service!", {
+        icon: '😄',
+      })
+    }
+
+    axiosInstance.post('/services/booking', bookingInfo)
+    .then(res => {
+      if (res.data.acknowledged) {
+        toast.success("Booking succsessfully!");
+      }
+    })
+    .catch(err => {
+      toast.error(err.message)
+    })
     
   };
 
@@ -108,7 +125,7 @@ const ServiceDetails = () => {
           </div>
 
           {/* booking form */}
-          <div className="p-6 bg-white rounded-lg shadow-md w-full max-w-4xl mx-auto">
+          <div className="bg-white rounded-lg w-full max-w-4xl mx-auto">
             <h2 className="text-2xl text-center font-semibold mb-8">
               Service Booking Form
             </h2>
@@ -195,6 +212,7 @@ const ServiceDetails = () => {
                 <input
                   type="date"
                   name="date"
+                  required
                   className="w-full border border-gray-300 rounded px-3 py-2"
                 />
               </div>
@@ -248,6 +266,7 @@ const ServiceDetails = () => {
                   className="w-full border border-gray-300 rounded px-3 py-2"
                   rows="3"
                   name="instruction"
+                  required
                   placeholder="Address, area, service notes..."
                 ></textarea>
               </div>

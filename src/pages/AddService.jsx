@@ -32,7 +32,10 @@ const AddService = () => {
       if (res.data.acknowledged) {
         toast.success("Service added succsessfully!");
       }
-    });
+    })
+    .catch(err => toast.error(err.message))
+    ;
+    
   };
 
   return (
