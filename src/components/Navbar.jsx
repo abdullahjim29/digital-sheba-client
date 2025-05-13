@@ -6,13 +6,9 @@ const Navbar = () => {
 
   const handleLogOutUser = () => {
     logOutUser()
-    .then(() => {
-      
-    })
-    .catch(() => {
-      
-    })
-  }
+      .then(() => {})
+      .catch(() => {});
+  };
 
   const navLinks = (
     <>
@@ -20,7 +16,7 @@ const Navbar = () => {
         <NavLink to={"/"}>Home</NavLink>
       </li>
       <li>
-        <NavLink to={'/services'}>Services</NavLink>
+        <NavLink to={"/services"}>Services</NavLink>
       </li>
     </>
   );
@@ -68,19 +64,21 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-[#ffedeb] rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-              {user && <div
-                tabIndex={0}
-                role="button"
-                className={`btn btn-ghost btn-circle avatar block md:hidden`}
-              >
-                <div className="w-10 rounded-full">
-                  <img
-                    alt=""
-                    src={user.photoURL}
-                    referrerPolicy='no-referrer'
-                  />
+              {user && (
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className={`btn btn-ghost btn-circle avatar block md:hidden`}
+                >
+                  <div className="w-10 rounded-full">
+                    <img
+                      alt=""
+                      src={user.photoURL}
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
                 </div>
-              </div>}
+              )}
               {navLinks}
               {user && (
                 <ul className="menu menu-horizontal px-1">
@@ -131,14 +129,22 @@ const Navbar = () => {
                   <img
                     alt=""
                     src={user.photoURL}
-                    referrerPolicy='no-referrer'
+                    referrerPolicy="no-referrer"
                   />
                 </div>
               </div>
-              <button onClick={handleLogOutUser} className="btn text-[1rem] bg-[#FF6B6B] text-white hover:bg-[#E63946]"><Link to={'/login'}>Log-out</Link></button>
+              <button
+                onClick={handleLogOutUser}
+                className="btn text-[1rem] bg-[#FF6B6B] text-white hover:bg-[#E63946]"
+              >
+                <Link to={"/login"}>Log-out</Link>
+              </button>
             </>
           ) : (
-            <Link to={"/login"} className="btn text-[1rem] bg-[#FF6B6B] text-white hover:bg-[#E63946]">
+            <Link
+              to={"/login"}
+              className="btn text-[1rem] bg-[#FF6B6B] text-white hover:bg-[#E63946]"
+            >
               Log-in
             </Link>
           )}

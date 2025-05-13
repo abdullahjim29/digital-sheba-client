@@ -13,7 +13,9 @@ const ServiceCards = () => {
           <ServiceCard key={service._id} service={service} />
         ))}
       </div>
-      <button className="btn bg-[#FF6B6B] text-white hover:bg-[#E63946] cursor-pointer mt-8"><Link to={'/services'}>Show All</Link></button>
+      <button className="btn bg-[#FF6B6B] text-white hover:bg-[#E63946] cursor-pointer mt-8">
+        <Link to={"/services"}>Show All</Link>
+      </button>
     </div>
   );
 };

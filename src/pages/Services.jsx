@@ -13,7 +13,9 @@ const Services = () => {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-y-10 my-10">
-        {services.map(service => <AllServicesCard key={service._id} service={service}/>)}
+        {services.map((service) => (
+          <AllServicesCard key={service._id} service={service} />
+        ))}
       </div>
     </div>
   );

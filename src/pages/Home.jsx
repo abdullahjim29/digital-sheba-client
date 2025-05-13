@@ -6,7 +6,7 @@ const Home = () => {
       {/* banner */}
 
       {/* service cards */}
-      <ServiceCards/>
+      <ServiceCards />
     </div>
   );
 };

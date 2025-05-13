@@ -47,25 +47,25 @@ const ServiceDetails = () => {
       providerName,
       providerEmail,
       instruction,
-      serviceStatus: 'pending',
+      serviceStatus: "pending",
     };
 
-    if(providerEmail === userEmail){
+    if (providerEmail === userEmail) {
       return toast("You can't book your own service!", {
-        icon: '😄',
-      })
+        icon: "😄",
+      });
     }
 
-    axiosInstance.post('/services/booking', bookingInfo)
-    .then(res => {
-      if (res.data.acknowledged) {
-        toast.success("Booking succsessfully!");
-      }
-    })
-    .catch(err => {
-      toast.error(err.message)
-    })
-    
+    axiosInstance
+      .post("/services/booking", bookingInfo)
+      .then((res) => {
+        if (res.data.acknowledged) {
+          toast.success("Booking succsessfully!");
+        }
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
   };
 
   return (
@@ -114,7 +114,7 @@ const ServiceDetails = () => {
 
       {/* modal */}
       <dialog id="my_modal_1" className="modal">
-        <div className="modal-box w-[1500px] relative">
+        <div className="modal-box w-full max-w-4xl relative">
           {/* action */}
           <div className="modal-action absolute right-6 -top-5">
             <form method="dialog">
@@ -275,7 +275,7 @@ const ServiceDetails = () => {
               <div className="md:col-span-2 text-left">
                 <button
                   type="submit"
-                  className="bg-rose-500 hover:bg-rose-600 text-white px-6 py-2 rounded shadow"
+                  className="bg-rose-500 hover:bg-rose-600 text-white px-6 py-2 rounded shadow cursor-pointer"
                 >
                   Purchase
                 </button>

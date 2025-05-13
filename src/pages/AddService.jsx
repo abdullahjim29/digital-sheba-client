@@ -28,14 +28,14 @@ const AddService = () => {
     };
 
     // post service
-    axiosInstance.post(`/add-service`, newService).then((res) => {
-      if (res.data.acknowledged) {
-        toast.success("Service added succsessfully!");
-      }
-    })
-    .catch(err => toast.error(err.message))
-    ;
-    
+    axiosInstance
+      .post(`/add-service`, newService)
+      .then((res) => {
+        if (res.data.acknowledged) {
+          toast.success("Service added succsessfully!");
+        }
+      })
+      .catch((err) => toast.error(err.message));
   };
 
   return (
@@ -64,7 +64,7 @@ const AddService = () => {
             <input
               type="url"
               name="imageUrl"
-              id=""
+              required
               placeholder="Image URL"
               className="border w-full p-2 rounded-md dark:border-gray-300"
             />
@@ -75,7 +75,7 @@ const AddService = () => {
             <input
               type="text"
               name="serviceName"
-              id=""
+              required
               placeholder="Service Name"
               className="border w-full p-2 rounded-md dark:border-gray-300"
             />
@@ -86,7 +86,7 @@ const AddService = () => {
             <input
               type="text"
               name="price"
-              id=""
+              required
               placeholder="Price"
               className="border w-full p-2 rounded-md dark:border-gray-300"
             />
@@ -97,7 +97,7 @@ const AddService = () => {
             <input
               type="text"
               name="serviceArea"
-              id=""
+              required
               placeholder="Service Area"
               className="border w-full p-2 rounded-md dark:border-gray-300"
             />

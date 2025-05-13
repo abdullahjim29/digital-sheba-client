@@ -22,7 +22,6 @@ const Register = () => {
       return toast.error("Password should be more than 6 characters or longer");
     }
 
-
     const updateInfo = {
       displayName: name,
       photoURL: photo,

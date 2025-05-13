@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginLottie from "../assets/lottieFiles/loginLottie.json";
 import Lottie from "lottie-react";
 import UseAuth from "../hooks/useAuth";
@@ -6,15 +6,17 @@ import toast from "react-hot-toast";
 
 const Login = () => {
   const { loginWithGoogle, loginUser } = UseAuth();
+  const navigate = useNavigate();
 
   // login with google
   const handleGoogleLogin = () => {
     loginWithGoogle()
       .then((res) => {
-        toast.success('Login Succsessfull!')
+        toast.success("Login Succsessfull!");
+        navigate('/');
       })
       .catch((err) => {
-        toast.error(err.message)
+        toast.error(err.message);
       });
   };
 
@@ -28,7 +30,8 @@ const Login = () => {
 
     loginUser(email, password)
       .then((res) => {
-        toast.success('Login Succsessfull!')
+        toast.success("Login Succsessfull!");
+        navigate('/')
       })
       .catch((err) => {
         toast.error(err.message);
@@ -46,7 +49,7 @@ const Login = () => {
             Login to your account
           </h2>
           <p className="text-sm text-center text-[#757575]">
-            Dont have account?  
+            Dont have account?
             <Link
               to={"/register"}
               className="focus:underline hover:underline text-[#3A86FF]"
