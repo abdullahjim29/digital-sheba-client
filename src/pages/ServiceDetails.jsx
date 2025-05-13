@@ -1,6 +1,10 @@
 import { useLoaderData } from "react-router-dom";
+import { ImCross } from "react-icons/im";
+import UseAuth from "../hooks/useAuth";
+
 const ServiceDetails = () => {
   const serviceData = useLoaderData();
+  const { user } = UseAuth();
 
   const {
     service: serviceName,
@@ -10,7 +14,42 @@ const ServiceDetails = () => {
     description,
     provider_img,
     provider_name,
+    provider_email,
+    _id,
   } = serviceData.data || {};
+
+  // handle Purchasing
+  const handlePurchase = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const serviceId = _id;
+    const service_Name = serviceName;
+    const serviceImage = image;
+    const userName = user?.displayName;
+    const userEmail = user?.email;
+    const date = form.date.value;
+    const servicePrice = price;
+    const providerName = provider_name;
+    const providerEmail = provider_email;
+    const instruction = form.instruction.value;
+
+    const bookingInfo = {
+      serviceId,
+      service_Name,
+      serviceImage,
+      userName,
+      userEmail,
+      date,
+      servicePrice,
+      providerName,
+      providerEmail,
+      instruction,
+      serviceStatus: 'pending',
+    };
+
+    
+  };
 
   return (
     <div>
@@ -34,7 +73,10 @@ const ServiceDetails = () => {
           </div>
           <div class="text-xl font-semibold">Price: ${price}</div>
           <div class="mt-6">
-            <button class="bg-rose-400 hover:bg-rose-500 text-white px-6 py-2 rounded shadow">
+            <button
+              onClick={() => document.getElementById("my_modal_1").showModal()}
+              class="bg-rose-400 hover:bg-rose-500 text-white px-6 py-2 rounded shadow cursor-pointer"
+            >
               Book Now
             </button>
           </div>
@@ -46,10 +88,183 @@ const ServiceDetails = () => {
           <img src={provider_img} class="w-24 h-24 rounded-full mx-auto" />
           <div class="text-center">
             <p class="font-bold">{provider_name}</p>
-            <p class="text-sm text-gray-600"><span className="font-bold">Location:</span> {area}</p>
+            <p class="text-sm text-gray-600">
+              <span className="font-bold">Area:</span> {area}
+            </p>
           </div>
         </div>
       </div>
+
+      {/* modal */}
+      <dialog id="my_modal_1" className="modal">
+        <div className="modal-box w-[1500px] relative">
+          {/* action */}
+          <div className="modal-action absolute right-6 -top-5">
+            <form method="dialog">
+              <button className="rounded-full text-red-500 border p-2 cursor-pointer hover:text-red-700">
+                <ImCross />
+              </button>
+            </form>
+          </div>
+
+          {/* booking form */}
+          <div className="p-6 bg-white rounded-lg shadow-md w-full max-w-4xl mx-auto">
+            <h2 className="text-2xl text-center font-semibold mb-8">
+              Service Booking Form
+            </h2>
+
+            <form
+              onSubmit={handlePurchase}
+              className="grid grid-cols-1 md:grid-cols-2 gap-4"
+            >
+              {/* Column 1 */}
+
+              {/* service id */}
+              <div>
+                <label className="block mb-1 font-medium">Service ID</label>
+                <input
+                  type="text"
+                  name="service_id"
+                  defaultValue={_id}
+                  disabled={true}
+                  className="w-full bg-gray-100 border border-gray-300 rounded px-3 py-2"
+                />
+              </div>
+
+              {/* service name */}
+              <div>
+                <label className="block mb-1 font-medium">Service Name</label>
+                <input
+                  type="text"
+                  defaultValue={serviceName}
+                  name="serviceName"
+                  disabled={true}
+                  className="w-full bg-gray-100 border border-gray-300 rounded px-3 py-2"
+                />
+              </div>
+
+              {/* Column 2 */}
+
+              {/* service image */}
+              <div className="md:col-span-2">
+                <label className="block mb-1 font-medium">
+                  Service Image URL
+                </label>
+                <input
+                  type="url"
+                  defaultValue={image}
+                  name="serviceImage"
+                  disabled={true}
+                  className="w-full bg-gray-100 border border-gray-300 rounded px-3 py-2"
+                />
+              </div>
+
+              {/* Column 3 */}
+
+              {/* user name */}
+              <div>
+                <label className="block mb-1 font-medium">User Name</label>
+                <input
+                  type="text"
+                  defaultValue={user?.displayName}
+                  name="userName"
+                  disabled={true}
+                  className="w-full bg-gray-100 border border-gray-300 rounded px-3 py-2"
+                />
+              </div>
+
+              {/* user email */}
+              <div>
+                <label className="block mb-1 font-medium">User Email</label>
+                <input
+                  type="email"
+                  defaultValue={user?.email}
+                  name="userEmail"
+                  disabled={true}
+                  className="w-full bg-gray-100 border border-gray-300 rounded px-3 py-2"
+                />
+              </div>
+
+              {/* Column 4 */}
+
+              {/* date */}
+              <div>
+                <label className="block mb-1 font-medium">
+                  Service Taking Date
+                </label>
+                <input
+                  type="date"
+                  name="date"
+                  className="w-full border border-gray-300 rounded px-3 py-2"
+                />
+              </div>
+
+              {/* price */}
+              <div>
+                <label className="block mb-1 font-medium">Price</label>
+                <input
+                  type="text"
+                  defaultValue={price}
+                  name="servicePrice"
+                  disabled={true}
+                  className="w-full bg-gray-100 border border-gray-300 rounded px-3 py-2"
+                />
+              </div>
+
+              {/* Column 5 */}
+
+              {/* provider name */}
+              <div>
+                <label className="block mb-1 font-medium">Provider Name</label>
+                <input
+                  type="text"
+                  defaultValue={provider_name}
+                  name="providerName"
+                  disabled={true}
+                  className="w-full bg-gray-100 border border-gray-300 rounded px-3 py-2"
+                />
+              </div>
+
+              {/* provider email */}
+              <div>
+                <label className="block mb-1 font-medium">Provider Email</label>
+                <input
+                  type="email"
+                  defaultValue={provider_email}
+                  name="providerEmail"
+                  disabled={true}
+                  className="w-full bg-gray-100 border border-gray-300 rounded px-3 py-2"
+                />
+              </div>
+
+              {/* Column 6 */}
+
+              {/* special instruction */}
+              <div className="md:col-span-2">
+                <label className="block mb-1 font-medium">
+                  Special Instructions
+                </label>
+                <textarea
+                  className="w-full border border-gray-300 rounded px-3 py-2"
+                  rows="3"
+                  name="instruction"
+                  placeholder="Address, area, service notes..."
+                ></textarea>
+              </div>
+
+              {/* Button */}
+              <div className="md:col-span-2 text-left">
+                <button
+                  type="submit"
+                  className="bg-rose-500 hover:bg-rose-600 text-white px-6 py-2 rounded shadow"
+                >
+                  Purchase
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </dialog>
     </div>
   );
 };

@@ -21,6 +21,7 @@ const AllServicesCard = ({ service }) => {
         <img
           alt=""
           src={provider_img}
+          referrerPolicy="no-referrer"
           className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500"
         />
         <div className="flex flex-col space-y-1">

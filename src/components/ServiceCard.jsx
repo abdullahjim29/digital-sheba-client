@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 
 const ServiceCard = ({service}) => {
-    const {service: serviceName, image, price, area, description, provider_img, provider_name, _id} = service || {};
+    const {service: serviceName, image, price, description, provider_img, provider_name, _id} = service || {};
   return (
     <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-[#FFF0EC] dark:text-gray-800">
       <div className="flex items-center space-x-4">
         <img
           alt=""
           src={provider_img}
+          referrerPolicy="no-referrer"
           className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500"
         />
         <div className="flex flex-col space-y-1">
