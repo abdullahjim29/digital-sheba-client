@@ -8,6 +8,7 @@ import axiosInstance from "../hooks/AxiosInstance";
 import Services from "../pages/Services";
 import ServiceDetails from "../pages/ServiceDetails";
 import ManageServices from "../pages/ManageServices";
+import BookedService from "../pages/BookedService";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
         path: "/manage-services",
         element: <ManageServices />,
       },
+      {
+        path: '/booked/services',
+        element: <BookedService/>
+      }
     ],
   },
 ]);

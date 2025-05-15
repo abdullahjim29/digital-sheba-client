@@ -47,7 +47,7 @@ const ManageServices = () => {
         if (result.isConfirmed) {
           axiosInstance.delete(`/services/${id}`).then(() => {
             toast.success("Service deleted!");
-            setServices((prev) => prev.filter((s) => s._id !== id));
+            setServices((prev) => prev.filter((service) => service._id !== id));
           });
         }
       })
@@ -69,7 +69,7 @@ const ManageServices = () => {
       .then(() => {
         toast.success("Service updated!");
         setServices((prev) =>
-          prev.map((s) => (s._id === id ? { ...s, ...updatedService } : s))
+          prev.map((service) => (service._id === id ? { ...service, ...updatedService } : s))
         );
         closeModal();
       })

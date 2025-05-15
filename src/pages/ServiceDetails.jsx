@@ -53,6 +53,7 @@ const ServiceDetails = () => {
     if (providerEmail === userEmail) {
       return toast("You can't book your own service!", {
         icon: "😄",
+        position: 'left top',
       });
     }
 
