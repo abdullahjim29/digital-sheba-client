@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginLottie from "../assets/lottieFiles/loginLottie.json";
 import Lottie from "lottie-react";
 import UseAuth from "../hooks/useAuth";
@@ -8,13 +8,14 @@ import { Helmet } from "react-helmet-async";
 const Login = () => {
   const { loginWithGoogle, loginUser } = UseAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   // login with google
   const handleGoogleLogin = () => {
     loginWithGoogle()
       .then((res) => {
         toast.success("Login Succsessfull!");
-        navigate('/');
+        navigate(`${location.state || '/'}`)
       })
       .catch((err) => {
         toast.error(err.message);
@@ -32,7 +33,7 @@ const Login = () => {
     loginUser(email, password)
       .then((res) => {
         toast.success("Login Succsessfull!");
-        navigate('/')
+        navigate(`${location.state || '/'}`)
       })
       .catch((err) => {
         toast.error(err.message);

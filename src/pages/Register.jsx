@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginLottie from "../assets/lottieFiles/loginLottie.json";
 import Lottie from "lottie-react";
 import UseAuth from "../hooks/useAuth";
@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
 const Register = () => {
   const { createNewUser, loginWithGoogle, updateUser } = UseAuth();
+  const navigate = useNavigate();
 
   // create a new user with email and password
   const handleCreateUser = (e) => {
@@ -32,6 +33,7 @@ const Register = () => {
       .then((res) => {
         updateUser(res.user, updateInfo);
         toast.success("Register succsessfull!");
+        navigate('/');
       })
       .catch((err) => {
         toast.error(err.message);
@@ -42,10 +44,11 @@ const Register = () => {
   const handleGoogleLogin = () => {
     loginWithGoogle()
       .then((res) => {
-        console.log(res.user);
+        toast.success('Login succsessfull!');
+        navigate('/');
       })
       .catch((err) => {
-        console.log(err.message);
+        toast.error(err.message);
       });
   };
   return (
