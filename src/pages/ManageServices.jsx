@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import noDataLottie from "../assets/lottieFiles/noDataLottie.json";
 import Lottie from "lottie-react";
 import { ImCross } from "react-icons/im";
+import { Helmet } from "react-helmet-async";
 
 const ManageServices = () => {
   const { user } = UseAuth();
@@ -78,6 +79,9 @@ const ManageServices = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Manage-Service</title>
+      </Helmet>
       <h1 className="text-2xl md:text-3xl font-bold mb-2 text-center mt-10">
         Manage Your Services
       </h1>

@@ -3,6 +3,7 @@ import loginLottie from "../assets/lottieFiles/loginLottie.json";
 import Lottie from "lottie-react";
 import UseAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 const Register = () => {
   const { createNewUser, loginWithGoogle, updateUser } = UseAuth();
 
@@ -49,6 +50,9 @@ const Register = () => {
   };
   return (
     <div className="my-10">
+      <Helmet>
+        <title>Register</title>
+      </Helmet>
       <div className="flex flex-col lg:flex-row items-center gap-10">
         <div className="w-full md:w-1/2 flex flex-col items-center md:items-end">
           <Lottie animationData={loginLottie} className="w-5/6"></Lottie>

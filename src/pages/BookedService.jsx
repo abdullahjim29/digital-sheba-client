@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import UseAuth from "../hooks/useAuth";
 import axiosInstance from "../hooks/AxiosInstance";
+import noDataLottie from "../assets/lottieFiles/noDataLottie.json";
+import Lottie from "lottie-react";
+import { Helmet } from "react-helmet-async";
 
 const BookedService = () => {
   const { user } = UseAuth();
@@ -16,12 +19,14 @@ const BookedService = () => {
     })
   }, [user?.email]);
 
-  console.log(bookedServices);
 
   const hasBookings = bookedServices.length > 0;
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
+      <Helmet>
+        <title>Booked-Service</title>
+      </Helmet>
       <h2 className="text-3xl font-bold text-center mb-8">Booked Services</h2>
 
       {hasBookings ? (
@@ -39,7 +44,7 @@ const BookedService = () => {
                   <span className="font-medium">Provider:</span>{" "}
                   {service.providerName}
                 </p>
-                <p className="text-gray-700 mt-2">{service.instruction}</p>
+                <p className="text-gray-700 mt-2">{service.instruction.slice(0, 30)}</p>
                 <p className="text-sm text-gray-500">
                   <span className="font-medium">Booked on:</span>{" "}
                   {service.date}
@@ -55,8 +60,11 @@ const BookedService = () => {
           ))}
         </div>
       ) : (
-        <div className="text-center text-gray-500 text-lg mt-12">
+        <div className="text-center text-gray-500 text-lg">
           No services booked yet. Book one to see it here!
+          <div className="my-10 flex flex-col items-center">
+          <Lottie className="w-2/4" animationData={noDataLottie}></Lottie>
+        </div>
         </div>
       )}
     </div>

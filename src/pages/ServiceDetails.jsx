@@ -3,6 +3,7 @@ import { ImCross } from "react-icons/im";
 import UseAuth from "../hooks/useAuth";
 import axiosInstance from "../hooks/AxiosInstance";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const ServiceDetails = () => {
   const serviceData = useLoaderData();
@@ -71,6 +72,9 @@ const ServiceDetails = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Details-of {serviceName}</title>
+      </Helmet>
       <div class="max-w-5xl mx-auto p-6 grid md:grid-cols-3 gap-6 my-10">
         {/* <!-- Left Side: Service Details --> */}
         <div class="md:col-span-2 space-y-4 bg-white p-8 rounded-lg shadow-md shadow-orange-100">

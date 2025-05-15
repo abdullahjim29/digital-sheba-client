@@ -1,6 +1,7 @@
 import toast from "react-hot-toast";
 import UseAuth from "../hooks/useAuth";
 import axiosInstance from "../hooks/AxiosInstance";
+import { Helmet } from "react-helmet-async";
 
 const AddService = () => {
   const { user } = UseAuth();
@@ -40,6 +41,9 @@ const AddService = () => {
 
   return (
     <div className="flex flex-col md:flex-row my-10 w-11/12 mx-auto">
+      <Helmet>
+        <title>Add-Service</title>
+      </Helmet>
       <div className="bg-[#FFEDEB] w-full lg:w-1/2 p-10 space-y-4">
         <h2 className="text-center text-2xl lg:text-5xl font-bold">
           Add Your Service to DigitalSheba

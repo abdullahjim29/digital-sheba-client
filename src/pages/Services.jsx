@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import AllServicesCard from "../components/AllServicesCard";
+import { Helmet } from "react-helmet-async";
 
 const Services = () => {
   const servicesData = useLoaderData();
@@ -8,6 +9,9 @@ const Services = () => {
 
   return (
     <div className="my-10 w-10/12 mx-auto">
+      <Helmet>
+        <title>Services</title>
+      </Helmet>
       <h2 className="text-3xl font-bold text-center my-5">
         EXPLORE ALL SERVICES
       </h2>
