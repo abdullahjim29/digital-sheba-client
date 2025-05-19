@@ -10,6 +10,7 @@ import ServiceDetails from "../pages/ServiceDetails";
 import ManageServices from "../pages/ManageServices";
 import BookedService from "../pages/BookedService";
 import ProtectedRoute from "./ProtectedRoute";
+import ServiceToDo from "../pages/ServiceToDo";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-service",
-        element: <ProtectedRoute><AddService /></ProtectedRoute>,
+        element: (
+          <ProtectedRoute>
+            <AddService />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/services",
@@ -41,16 +46,36 @@ const router = createBrowserRouter([
       },
       {
         path: "/services/:id",
-        element: <ProtectedRoute><ServiceDetails /></ProtectedRoute>,
+        element: (
+          <ProtectedRoute>
+            <ServiceDetails />
+          </ProtectedRoute>
+        ),
         loader: ({ params }) => axiosInstance(`/services/${params.id}`),
       },
       {
         path: "/manage-services",
-        element: <ProtectedRoute><ManageServices /></ProtectedRoute>,
+        element: (
+          <ProtectedRoute>
+            <ManageServices />
+          </ProtectedRoute>
+        ),
       },
       {
-        path: '/booked/services',
-        element: <ProtectedRoute><BookedService/></ProtectedRoute>,
+        path: "/booked/services",
+        element: (
+          <ProtectedRoute>
+            <BookedService />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/service-to-do",
+        element: (
+          <ProtectedRoute>
+            <ServiceToDo />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

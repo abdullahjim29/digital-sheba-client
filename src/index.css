@@ -6,3 +6,9 @@ body{
     background-color: #FFF8F1;
     font-family: 'Poppins', sans-serif;
 }
+
+
+li .active{
+    background-color: #E63946;
+    color: white;
+}
