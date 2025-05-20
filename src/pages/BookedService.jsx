@@ -52,7 +52,7 @@ const BookedService = () => {
               </div>
               <div className="mt-4 md:mt-0 md:text-right">
               <p className="text-sm text-gray-600 mt-1">
-                  <button className={`px-3 py-1 rounded-full text-sm font-medium ${service.serviceStatus === 'pending' && 'bg-yellow-100 text-yellow-700'} ${service.serviceStatus === 'working' && 'bg-blue-100	text-blue-700'} ${service.serviceStatus === 'completed' && 'bg-green-100	text-green-700'}`}>{service.serviceStatus}</button>
+                  <button className={`px-3 py-1 rounded-full text-sm font-medium ${service.serviceStatus === 'pending' && 'bg-yellow-100 text-yellow-700'} ${service.serviceStatus === 'working' && 'bg-blue-100 text-blue-700'} ${service.serviceStatus === 'completed' && 'bg-green-100	text-green-700'}`}>{service.serviceStatus}</button>
                 </p>
                 {/*  */}
               </div>

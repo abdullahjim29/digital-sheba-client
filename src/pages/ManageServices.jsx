@@ -70,7 +70,7 @@ const ManageServices = () => {
       .then(() => {
         toast.success("Service updated!");
         setServices((prev) =>
-          prev.map((service) => (service._id === id ? { ...service, ...updatedService } : s))
+          prev.map((service) => (service._id === id ? { ...service, ...updatedService } : service))
         );
         closeModal();
       })
