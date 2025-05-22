@@ -6,7 +6,7 @@ const ServiceCards = () => {
 
   return (
     <div className="my-20 w-11/12 mx-auto">
-      <h2 className="text-4xl font-bold text-center mb-10">POPULAR SERVICES</h2>
+      <h2 className="text-4xl font-medium text-center mb-10 font-p">POPULAR SERVICES</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-y-10 gap-x-6">
         {servicesData.data.map((service) => (

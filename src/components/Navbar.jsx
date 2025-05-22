@@ -10,6 +10,13 @@ const Navbar = () => {
       .catch(() => {});
   };
 
+  const dropNav = () => {
+    document.querySelector("#dropDown").className = "block";
+  };
+  const hiddenDropDown = () => {
+    document.querySelector("#dropDown").className = "hidden";
+  };
+
   const navLinks = (
     <>
       <li>
@@ -38,7 +45,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="shadow-sm bg-[#FFEDEB]">
+    <div className="shadow-sm bg-[#FFFFFF] font-o font-medium">
       <div className="navbar max-w-7xl mx-auto">
         <div className="navbar-start">
           {/* menu for small devices */}
@@ -81,11 +88,11 @@ const Navbar = () => {
               )}
               {navLinks}
               {user && (
-                <ul className="menu menu-horizontal px-1">
-                  <li>
+                <ul className="menu menu-horizontal px-1 text-[1.1rem]">
+                  <li className="">
                     <details>
                       <summary>Dashboard</summary>
-                      <ul className="bg-[#ffedeb] rounded-t-none p-2 w-48">
+                      <ul className="bg-[#ffedeb] rounded-t-none p-2 w-48 text-[1.1rem]">
                         {navlinks2}
                       </ul>
                     </details>
@@ -101,22 +108,36 @@ const Navbar = () => {
 
         {/* menu for large devices */}
         <div className="navbar-end space-x-4">
-          <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1 text-[1rem]">
+          {/* <div className="navbar-center hidden lg:flex">
+            <ul className="menu menu-horizontal px-1 text-[16px]">
               {navLinks}
             </ul>
             {user && (
-              <ul className="menu menu-horizontal px-1">
+              <ul onMouseEnter={dropNav} className="menu menu-horizontal px-1">
                 <li>
                   <details>
                     <summary>Dashboard</summary>
-                    <ul className="bg-[#ffedeb] rounded-t-none p-2 w-40">
+                    <ul id="dropDown" className="bg-[#ffedeb] rounded-t-none p-2 w-40">
                       {navlinks2}
                     </ul>
                   </details>
                 </li>
               </ul>
             )}
+          </div> */}
+
+          <div>
+            <ul className="flex gap-5">
+              {navLinks}
+              {user && (
+                <li onMouseEnter={dropNav} onMouseLeave={hiddenDropDown}>
+                  Dashboard
+                  <ul id="dropDown" className="hidden">
+                    {navlinks2}
+                  </ul>
+                </li>
+              )}
+            </ul>
           </div>
           {user ? (
             <>
@@ -133,19 +154,27 @@ const Navbar = () => {
                   />
                 </div>
               </div>
-              <button
-                onClick={handleLogOutUser}
-                className="btn text-[1rem] bg-[#FF6B6B] text-white hover:bg-[#E63946]"
-              >
-                <Link to={"/login"}>Log-out</Link>
-              </button>
+              <Link onClick={handleLogOutUser} to={"/login"}>
+                <button className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-[#F2D701] px-8 font-medium text-black cursor-pointer">
+                  <div className="translate-y-0 transition duration-700 group-hover:-translate-y-[150%]">
+                    Log Out
+                  </div>
+                  <div className="absolute translate-y-[150%] transition duration-700  group-hover:translate-y-0">
+                    Log Out
+                  </div>
+                </button>
+              </Link>
             </>
           ) : (
-            <Link
-              to={"/login"}
-              className="btn text-[1rem] bg-[#FF6B6B] text-white hover:bg-[#E63946]"
-            >
-              Log-in
+            <Link to={"/login"}>
+              <button className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-[#F2D701] px-8 font-medium text-black cursor-pointer">
+                <div className="translate-y-0 transition duration-700 group-hover:-translate-y-[150%]">
+                  Log In
+                </div>
+                <div className="absolute translate-y-[150%] transition duration-700  group-hover:translate-y-0">
+                  Log In
+                </div>
+              </button>
             </Link>
           )}
         </div>

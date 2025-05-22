@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import UseAuth from '../hooks/useAuth';
 import axiosInstance from '../hooks/AxiosInstance';
 import { Helmet } from 'react-helmet-async';
+import toast from 'react-hot-toast';
 
 const ServiceToDo = () => {
     const {user} = UseAuth();
@@ -20,14 +21,15 @@ const ServiceToDo = () => {
     console.log(bookedServices);
 
     const handleStatusChange = (e, id) => {
-      const serviceStatus = e.target.value;
+      const serviceStatus = e.target.value; 
       
       axiosInstance.patch(`/booked-service/update-status/${id}`, {serviceStatus})
       .then(res => {
-        console.log(res.data);
-        // setBookedServices()
+        if(res.data. modifiedCount > 0){
+          toast.success('Status Updated!')
+        }
       })
-      .catch(err => console.log(err.message))
+      .catch(err => toast.error(err.message))
     }
 
   return (
@@ -47,8 +49,7 @@ const ServiceToDo = () => {
                 <th className="px-4 py-3 border-b">Service Name</th>
                 <th className="px-4 py-3 border-b">Client Email</th>
                 <th className="px-4 py-3 border-b">Date Booked</th>
-                <th className="px-4 py-3 border-b">Current Status</th>
-                <th className="px-4 py-3 border-b">Status</th>
+                <th className="px-4 py-3 border-b">Update Status</th>
               </tr>
             </thead>
             <tbody className="text-sm text-gray-700">
@@ -57,7 +58,6 @@ const ServiceToDo = () => {
                   <td className="px-4 py-3 border-b">{service.service_Name}</td>
                   <td className="px-4 py-3 border-b">{service.userEmail}</td>
                   <td className="px-4 py-3 border-b">{service.date}</td>
-                  <td className="px-4 py-3 border-b">{service.serviceStatus}</td>
                   <td className="px-4 py-3 border-b">
                     <select
                     defaultValue={service.serviceStatus}
