@@ -1,8 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
 import UseAuth from "../hooks/useAuth";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { useRef, useState } from "react";
 
 const Navbar = () => {
   const { user, logOutUser } = UseAuth();
+  const [showDropDown, setShowDropDown] = useState(false);
+  const timeOutRef = useRef(null);
 
   const handleLogOutUser = () => {
     logOutUser()
@@ -11,10 +15,13 @@ const Navbar = () => {
   };
 
   const dropNav = () => {
-    document.querySelector("#dropDown").className = "block";
+    clearTimeout(timeOutRef.current);
+    setShowDropDown(true);
   };
   const hiddenDropDown = () => {
-    document.querySelector("#dropDown").className = "hidden";
+    timeOutRef.current = setTimeout(() => {
+      setShowDropDown(false);
+    }, 1000);
   };
 
   const navLinks = (
@@ -30,16 +37,16 @@ const Navbar = () => {
 
   const navlinks2 = (
     <>
-      <li>
+      <li className="drop">
         <NavLink to={"/add-service"}>Add Service</NavLink>
       </li>
-      <li>
+      <li className="drop">
         <NavLink to={"/manage-services"}>Manage Service</NavLink>
       </li>
-      <li>
+      <li className="drop">
         <NavLink to={"/booked/services"}>Booked-Services</NavLink>
       </li>
-      <li>
+      <li className="drop">
         <NavLink to={"/service-to-do"}>Service-To-Do</NavLink>
       </li>
     </>
@@ -69,7 +76,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-[#ffedeb] rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-[#F4F6F0] rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               {user && (
                 <div
@@ -88,17 +95,19 @@ const Navbar = () => {
               )}
               {navLinks}
               {user && (
+                
                 <ul className="menu menu-horizontal px-1 text-[1.1rem]">
-                  <li className="">
+                  <li>
                     <details>
                       <summary>Dashboard</summary>
-                      <ul className="bg-[#ffedeb] rounded-t-none p-2 w-48 text-[1.1rem]">
+                      <ul className="bg-[#f1fae1] rounded-t-none p-2 w-48">
                         {navlinks2}
                       </ul>
                     </details>
                   </li>
-                </ul>
+                </ul>               
               )}
+              
             </ul>
           </div>
           <Link to={"/"} className="text-3xl font-semibold">
@@ -108,31 +117,24 @@ const Navbar = () => {
 
         {/* menu for large devices */}
         <div className="navbar-end space-x-4">
-          {/* <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1 text-[16px]">
-              {navLinks}
-            </ul>
-            {user && (
-              <ul onMouseEnter={dropNav} className="menu menu-horizontal px-1">
-                <li>
-                  <details>
-                    <summary>Dashboard</summary>
-                    <ul id="dropDown" className="bg-[#ffedeb] rounded-t-none p-2 w-40">
-                      {navlinks2}
-                    </ul>
-                  </details>
-                </li>
-              </ul>
-            )}
-          </div> */}
-
-          <div>
+          <div className="hidden lg:block">
             <ul className="flex gap-5">
               {navLinks}
               {user && (
-                <li onMouseEnter={dropNav} onMouseLeave={hiddenDropDown}>
-                  Dashboard
-                  <ul id="dropDown" className="hidden">
+                <li
+                  className="flex items-center cursor-pointer space-x-4"
+                  onMouseEnter={dropNav}
+                  onMouseLeave={hiddenDropDown}
+                >
+                  Dashboard {showDropDown ? <IoIosArrowUp/>  : <IoIosArrowDown />}
+                  <ul
+                    className={`absolute right-60 z-50 w-48 border border-[#3CA200] bg-[#F4F6F0] rounded-2xl px-5 py-10 space-y-2 transition-all duration-500 ease-in-out
+              ${
+                showDropDown
+                  ? "top-14 opacity-100 pointer-events-auto"
+                  : "-top-20 opacity-0 pointer-events-none"
+              }`}
+                  >
                     {navlinks2}
                   </ul>
                 </li>

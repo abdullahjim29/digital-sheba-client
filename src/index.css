@@ -18,3 +18,7 @@ li .active{
     color: #3CA200;
     font-weight: 700;
 }
+
+.drop:hover{
+    color: #3CA200;
+}
