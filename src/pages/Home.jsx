@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import ServiceCards from "../components/ServiceCards";
 import Banner from "../components/Banner";
+import HowItWork from "../components/HowItWork";
 
 const Home = () => {
   return (
@@ -12,6 +13,9 @@ const Home = () => {
 
       {/* banner */}
       <Banner/>
+
+      {/* How it work */}
+      <HowItWork/>
 
       {/* service cards */}
       <ServiceCards />
