@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom";
 import bannerBg from "../assets/images/serviceBg.jpg";
 import { FaCircleCheck } from "react-icons/fa6";
+import { useEffect } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Banner = () => {
+
+  useEffect(() => {
+    AOS.init();
+  }, [])
   return (
     <div>
       <div
@@ -19,8 +26,8 @@ const Banner = () => {
           }}
           className="hero-content text-center bg-[#F4F6F0] text-black font-p mr-[600px]"
         >
-          <div className="max-w-xl px-8 lg:px-14 py-4 space-x-5 space-y-2 text-left">
-            <h1 className="mb-5 text-2xl lg:text-5xl font-normal lg:leading-14">
+          <div className="max-w-xl px-8 lg:px-14 py-4 space-x-5 text-left">
+            <h1 data-aos="fade-up" data-aos-duration="1000" className="mb-5 text-2xl lg:text-5xl font-normal lg:leading-14">
               Smart Connect - Digital Services Made Simple
             </h1>
             <p className="mb-5 text-gray-600">
@@ -30,6 +37,7 @@ const Banner = () => {
             </p>
 
             {/* book a service */}
+            <div data-aos="fade-down" data-aos-duration="1000" className="space-x-4 space-y-4">
             <button className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-full bg-[#F2D701] px-4 lg:px-6 font-medium text-black cursor-pointer">
               <div className="translate-y-0 transition duration-700 group-hover:-translate-y-[150%]">
                 Book a Service
@@ -50,6 +58,7 @@ const Banner = () => {
                 </div>
               </button>
             </Link>
+            </div>
 
             <div className="flex gap-5 my-5 font-o">
               <div className="flex gap-2 items-center my-5">
