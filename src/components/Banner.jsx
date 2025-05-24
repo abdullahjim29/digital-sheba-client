@@ -30,7 +30,7 @@ const Banner = () => {
             <h1 data-aos="fade-up" data-aos-duration="1000" className="mb-5 text-2xl lg:text-5xl font-normal lg:leading-14">
               Smart Connect - Digital Services Made Simple
             </h1>
-            <p className="mb-5 text-gray-600">
+            <p className="mb-5 text-gray-900 font-[200] font-o">
               Let professionals handle the tasks you don’t have time for. From
               design to tech help, we connect you with trusted service providers
               in seconds.
