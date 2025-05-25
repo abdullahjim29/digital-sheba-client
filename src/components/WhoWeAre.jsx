@@ -3,7 +3,7 @@ import { FaCircleCheck } from "react-icons/fa6";
 
 const WhoWeAre = () => {
   return (
-    <div className="max-w-11/12 mx-auto my-40 bg-[#F4F6F0] rounded-3xl flex justify-between flex-col lg:flex-row p-10">
+    <div className="max-w-11/12 mx-auto mt-40 bg-[#F4F6F0] rounded-3xl flex justify-between flex-col lg:flex-row p-10">
       {/* left side */}
       <div className="w-full lg:w-3/6 font-p space-y-6">
         <h4 className="font-light">WHO WE ARE</h4>
@@ -50,7 +50,7 @@ const WhoWeAre = () => {
       </div>
 
       {/* right side */}
-      <div data-aos="zoom-out" data-aos-duration="2500" className="w-full lg:w-1/2">
+      <div data-aos="zoom-out" data-aos-duration="2000" className="w-full lg:w-1/2">
         <img
           className="rounded-4xl max-w-full h-[95%]"
           src={workingPeople3}

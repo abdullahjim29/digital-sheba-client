@@ -7,26 +7,36 @@ import WhyChooseUs from "../components/WhyChooseUs";
 
 const Home = () => {
   return (
-    <div className="">
+    <div className="relative">
 
       <Helmet>
         <title>Home</title>
       </Helmet>
 
-      {/* banner */}
+      <div>
+        {/* banner */}
       <Banner/>
+      </div>
 
-      {/* How it work */}
+      <div>
+        {/* How it work */}
       <HowItWork/>
+      </div>
 
-      {/* who we are */}
+      <div className="">
+        {/* who we are */}
       <WhoWeAre/>
+      </div>
 
-      {/* why choose us */}
+      <div className="">
+        {/* why choose us */}
       <WhyChooseUs/>
+      </div>
 
       {/* service cards */}
+      <div className="">
       <ServiceCards />
+      </div>
     </div>
   );
 };

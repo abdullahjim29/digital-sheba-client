@@ -5,15 +5,24 @@ import expertIcon from "../assets/images/expert.png";
 
 const WhyChooseUs = () => {
   return (
-    <div className="w-11/12 mx-auto bg-[#3CA200] mb-40 px-10 py-20 rounded-4xl">
-      <div className="text-center font-p space-y-5 mb-10">
+    <div className="w-[95%] mx-auto bg-[#3CA200] my-40 px-10 py-20 rounded-4xl">
+      <div className="text-center font-p space-y-5 mb-14">
         <h4 className="font-thin text-white">WHY CHOOSE US</h4>
-        <h2 className="text-xl md:text-4xl w-full lg:w-6/12 mx-auto text-white font-medium">
+        <h2
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          className="text-xl md:text-4xl w-full lg:w-6/12 mx-auto text-white font-medium"
+        >
           We Are Skilled & Committed to Quality Service
         </h2>
       </div>
 
-      <div className="cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 items-center">
+      <div
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        data-aos-delay="500"
+        className="cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-center"
+      >
         <div
           className="bg-[#E8F5D3] px-5 py-12 space-y-3"
           style={{
@@ -24,7 +33,7 @@ const WhyChooseUs = () => {
           <div className="bg-white p-4 rounded-3xl w-[25%]">
             <img className="max-w-full" src={consultationIcon} alt="" />
           </div>
-          <h3 className="text-xl md:text-2xl">
+          <h3 className="text-xl md:text-2xl font-medium">
             Free Consultation & Transparent Pricing
           </h3>
           <p className="text-gray-900 font-[200] font-o">
@@ -43,7 +52,9 @@ const WhyChooseUs = () => {
           <div className="bg-white p-4 rounded-3xl w-[25%]">
             <img className="max-w-full" src={toolIcon} alt="" />
           </div>
-          <h3 className="text-xl md:text-2xl">Tools & Tech Provided</h3>
+          <h3 className="text-xl md:text-2xl font-medium">
+            Tools & Tech Provided
+          </h3>
           <p className="text-gray-900 font-[200] font-o">
             We bring the right tools, software, and expertise to handle your
             digital needs.
@@ -60,7 +71,9 @@ const WhyChooseUs = () => {
           <div className="bg-white p-4 rounded-3xl w-[25%]">
             <img className="max-w-full" src={checkmarkIcon} alt="" />
           </div>
-          <h3 className="text-xl md:text-2xl">100% Client Satisfaction</h3>
+          <h3 className="text-xl md:text-2xl font-medium">
+            100% Client Satisfaction
+          </h3>
           <p className="text-gray-900 font-[200] font-o">
             Not satisfied? We’ll revise or improve until you’re happy –
             guaranteed.
@@ -77,7 +90,10 @@ const WhyChooseUs = () => {
           <div className="bg-white p-4 rounded-3xl w-[25%]">
             <img className="max-w-full" src={expertIcon} alt="" />
           </div>
-          <h3 className="text-xl md:text-2xl"> Vetted & Verified Experts</h3>
+          <h3 className="text-xl md:text-2xl font-medium">
+            {" "}
+            Vetted & Verified Experts
+          </h3>
           <p className="text-gray-900 font-[200] font-o">
             We carefully verify each provider to ensure you receive safe,
             quality service.
@@ -86,36 +102,53 @@ const WhyChooseUs = () => {
       </div>
 
       {/* statistics */}
-      <div className="statistics text-white grid grid-cols-1 md:grid-cols-4 gap-5 items-center mt-16 space-y-5 md:space-y-0">
+      <div
+        data-aos="fade-zoom-in"
+        data-aos-duration="1000"
+        data-aos-easing="ease-in-back"
+        data-aos-delay="300"
+        data-aos-offset="0"
+        className="statistics text-white grid grid-cols-1 md:grid-cols-4 gap-5 items-center mt-16 space-y-5 md:space-y-0"
+      >
         <div className="flex gap-4">
-          <div classNae="border-[1px] border-[#63B533]"></div>
+          <div className="border border-[#63B533]"></div>
           <div>
-          <h3 className="font-p text-5xl relative">5<san className="text-xl absolute -top-1 left-8">+</san></h3>
-          <p className="font-o font-light">years delivering digital solutions</p>
+            <h3 className="font-p text-5xl relative">
+              5<san className="text-xl absolute -top-1 left-8">+</san>
+            </h3>
+            <p className="font-o font-light">
+              years delivering digital solutions
+            </p>
           </div>
         </div>
 
         <div className="flex gap-4">
-        <div className="border-[1px] border-[#63B533]"></div>
+          <div className="border border-[#63B533]"></div>
           <div>
-          <h3 className="font-p text-5xl relative">200<span className="text-xl absolute -top-2 left-22">+</span></h3>
-          <p className="font-o font-light">successful projects completed</p>
+            <h3 className="font-p text-5xl relative">
+              200<span className="text-xl absolute -top-2 left-22">+</span>
+            </h3>
+            <p className="font-o font-light">successful projects completed</p>
           </div>
         </div>
 
         <div className="flex gap-4">
-        <div className="border-[1px] border-[#63B533]"></div>
+          <div className="border border-[#63B533]"></div>
           <div>
-          <h3 className="font-p text-5xl relative">1000<span className="text-xl absolute -top-2 left-28">+</span></h3>
-          <p className="font-o font-light">hours saved for businesses</p>
+            <h3 className="font-p text-5xl relative">
+              1000<span className="text-xl absolute -top-2 left-28">+</span>
+            </h3>
+            <p className="font-o font-light">hours saved for businesses</p>
           </div>
         </div>
 
         <div className="flex gap-4">
-        <div className="border-[1px] border-[#63B533]"></div>
+          <div className="border border-[#63B533]"></div>
           <div>
-          <h3 className="font-p text-5xl relative">98<span className="text-xl absolute -top-2 left-16">+</span></h3>
-          <p className="font-o font-light">of our clients hire us again</p>
+            <h3 className="font-p text-5xl relative">
+              98<span className="text-xl absolute -top-2 left-16">+</span>
+            </h3>
+            <p className="font-o font-light">of our clients hire us again</p>
           </div>
         </div>
       </div>

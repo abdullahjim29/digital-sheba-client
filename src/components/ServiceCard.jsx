@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { IoIosArrowForward } from "react-icons/io";
 
 const ServiceCard = ({ service }) => {
   const {
@@ -11,7 +12,7 @@ const ServiceCard = ({ service }) => {
     _id,
   } = service || {};
   return (
-    <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-[#FFF0EC] dark:text-gray-800">
+    <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-[#F4F6F0] dark:text-gray-800">
       <div className="flex items-center space-x-4">
         <img
           alt=""
@@ -33,17 +34,31 @@ const ServiceCard = ({ service }) => {
         <p className="text-sm dark:text-gray-600">
           {`${description.slice(0, 100)}...`}
         </p>
-      </div>
-      <div className="flex flex-wrap justify-between mt-auto">
-        <div className="space-x-2">
-          <Link to={`/services/${_id}`}>
-            <button className="btn bg-[#e29494] text-white hover:bg-[#E63946] cursor-pointer">
-              View Detail
-            </button>
-          </Link>
-        </div>
         <div className="flex space-x-2 text-sm dark:text-gray-600">
           <p className="text-xl font-bold">$ {price}</p>
+        </div>
+      </div>
+      <div className=" mt-auto">
+        <div className="space-x-2">
+          <Link to={`/services/${_id}`}>
+            {/* <div  className="btn bg-[#FFFFFF] text-black cursor-pointer w-full rounded-full text-left p-6 flex justify-between">
+            <div className="bg-[#E8F5D3] p-2 rounded-full">
+              <IoIosArrowForward/>
+            </div>
+            </div> */}
+
+            <button className="group relative inline-flex h-12 items-center justify-between overflow-hidden rounded-full px-4 lg:px-6 font-medium text-black cursor-pointer bg-[#FFFFFF] w-full">
+              <div className="translate-y-0 transition duration-700 group-hover:-translate-y-[150%]">
+                View Detail
+              </div>
+              <div className="absolute translate-y-[150%] transition duration-700 group-hover:translate-y-0">
+                View Detail
+              </div>
+              <div className="bg-[#E8F5D3] p-2 rounded-full">
+              <IoIosArrowForward/>
+            </div>
+            </button>
+          </Link>
         </div>
       </div>
     </div>
