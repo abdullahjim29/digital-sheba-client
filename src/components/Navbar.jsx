@@ -110,13 +110,15 @@ const Navbar = () => {
               
             </ul>
           </div>
-          <Link to={"/"} className="text-3xl font-semibold">
+          <Link data-aos="zoom-in"
+          data-aos-duration="1000" to={"/"} className="text-3xl font-semibold">
             DigitalSheba
           </Link>
         </div>
 
         {/* menu for large devices */}
-        <div className="navbar-end space-x-4">
+        <div data-aos="zoom-in"
+          data-aos-duration="1000" className="navbar-end space-x-4">
           <div className="hidden lg:block">
             <ul className="flex gap-5">
               {navLinks}

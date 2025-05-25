@@ -3,6 +3,7 @@ import ServiceCards from "../components/ServiceCards";
 import Banner from "../components/Banner";
 import HowItWork from "../components/HowItWork";
 import WhoWeAre from "../components/WhoWeAre";
+import WhyChooseUs from "../components/WhyChooseUs";
 
 const Home = () => {
   return (
@@ -20,6 +21,9 @@ const Home = () => {
 
       {/* who we are */}
       <WhoWeAre/>
+
+      {/* why choose us */}
+      <WhyChooseUs/>
 
       {/* service cards */}
       <ServiceCards />

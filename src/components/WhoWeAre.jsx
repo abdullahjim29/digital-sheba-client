@@ -52,7 +52,7 @@ const WhoWeAre = () => {
       {/* right side */}
       <div data-aos="zoom-out" data-aos-duration="2500" className="w-full lg:w-1/2">
         <img
-          className="rounded-4xl w-full h-[95%]"
+          className="rounded-4xl max-w-full h-[95%]"
           src={workingPeople3}
           alt=""
         />

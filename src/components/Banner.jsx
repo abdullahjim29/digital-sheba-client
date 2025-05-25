@@ -8,7 +8,10 @@ import 'aos/dist/aos.css';
 const Banner = () => {
 
   useEffect(() => {
-    AOS.init();
+    AOS.init({
+      // once: true,
+      // offset: 100,
+    });
   }, [])
   return (
     <div>
@@ -18,7 +21,7 @@ const Banner = () => {
           backgroundImage: `url(${bannerBg})`,
         }}
       >
-        <div className="hero-overlay hidden sm:block sm:w-[52.50%] lg:w-full"></div>
+        <div className="hero-overlay hidden sm:block sm:w-[53.50%] lg:w-full"></div>
         <div
           style={{
             clipPath:
