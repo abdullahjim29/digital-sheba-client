@@ -114,7 +114,7 @@ const WhyChooseUs = () => {
           <div className="border border-[#63B533]"></div>
           <div>
             <h3 className="font-p text-5xl relative">
-              5<san className="text-xl absolute -top-1 left-8">+</san>
+              5<span className="text-xl absolute -top-1 left-8">+</span>
             </h3>
             <p className="font-o font-light">
               years delivering digital solutions

@@ -1,0 +1,63 @@
+[
+    {
+      "name": "Zahidul Islam",
+      "role": "Customer",
+      "photo": "zahidul.jpg",
+      "feedback": "Digital Sheba truly exceeded my expectations. Their quick response and high-quality work are worth every penny."
+    },
+    {
+      "name": "Anika Rahman",
+      "role": "Customer",
+      "photo": "anika.jpg",
+      "feedback": "Fantastic service! The team was punctual, professional, and my home looked amazing after they were done. Highly recommended!"
+    },
+    {
+      "name": "Mehjabin Chowdhury",
+      "role": "Customer",
+      "photo": "mehjabin.jpg",
+      "feedback": "Very efficient and friendly staff. They handled everything with care and precision. Will definitely use the service again!"
+    },
+    {
+      "name": "Arif Hasan",
+      "role": "Customer",
+      "photo": "arif.jpg",
+      "feedback": "They cleaned our office better than we expected. Easy booking process and affordable pricing. Thank you, Digital Sheba!"
+    },
+    {
+      "name": "Tania Akter",
+      "role": "Customer",
+      "photo": "tania.jpg",
+      "feedback": "Impressed with their professionalism and attention to detail. My apartment felt brand new. 10/10!"
+    },
+    {
+      "name": "Md. Rashed",
+      "role": "Customer",
+      "photo": "rashed.jpg",
+      "feedback": "On time, very professional, and efficient. The service was smooth from start to finish. Highly appreciate the effort."
+    },
+    {
+      "name": "Sadia Mim",
+      "role": "Customer",
+      "photo": "sadia.jpg",
+      "feedback": "The service quality is top-notch. Friendly support team and reliable professionals. I’ll definitely recommend them to friends."
+    },
+    {
+      "name": "Nayeem Rahman",
+      "role": "Customer",
+      "photo": "nayeem.jpg",
+      "feedback": "Excellent work! Everything was done with precision. I could not be more satisfied with the outcome. Great job!"
+    },
+    {
+      "name": "Fariha Noor",
+      "role": "Customer",
+      "photo": "fariha.jpg",
+      "feedback": "From booking to completion, everything was seamless. The team was courteous and efficient. Loved the experience!"
+    },
+    {
+      "name": "Tanvir Alam",
+      "role": "Customer",
+      "photo": "tanvir.jpg",
+      "feedback": "They turned my messy flat into a shining space. Very professional and trustworthy team. Will hire again!"
+    }
+  ]
+  

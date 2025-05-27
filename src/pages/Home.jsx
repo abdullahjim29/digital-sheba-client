@@ -4,39 +4,33 @@ import Banner from "../components/Banner";
 import HowItWork from "../components/HowItWork";
 import WhoWeAre from "../components/WhoWeAre";
 import WhyChooseUs from "../components/WhyChooseUs";
+import Testimonial from "../components/Testimonial";
 
 const Home = () => {
   return (
-    <div className="relative">
-
+    <div>
       <Helmet>
         <title>Home</title>
       </Helmet>
 
-      <div>
         {/* banner */}
-      <Banner/>
-      </div>
+        <Banner />
 
-      <div>
         {/* How it work */}
-      <HowItWork/>
-      </div>
+        <HowItWork />
 
-      <div>
         {/* who we are */}
-      <WhoWeAre/>
-      </div>
+        <WhoWeAre />
 
-      <div>
-        {/* why choose us */}
-      <WhyChooseUs/>
-      </div>
+      {/* why choose us */}
+      <WhyChooseUs />
 
       {/* service cards */}
-      <div>
-      <ServiceCards />
-      </div>
+        <ServiceCards />
+
+      {/* Testimonial */}
+      <Testimonial/>
+      
     </div>
   );
 };

@@ -130,10 +130,10 @@ const Navbar = () => {
                 >
                   Dashboard {showDropDown ? <IoIosArrowUp/>  : <IoIosArrowDown />}
                   <ul
-                    className={`absolute right-60 -z-50 w-48 border border-[#3CA200] bg-[#F4F6F0] rounded-2xl px-5 py-10 space-y-2 transition-all duration-500 ease-in-out
+                    className={`absolute right-44 z-50 w-48 border border-[#3CA200] bg-[#F4F6F0] rounded-2xl px-5 py-10 space-y-2 transition-all duration-500 ease-in-out
               ${
                 showDropDown
-                  ? "top-14 opacity-100 pointer-events-auto"
+                  ? "top-[58px] opacity-100 pointer-events-auto"
                   : "-top-20 opacity-0 pointer-events-none"
               }`}
                   >

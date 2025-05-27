@@ -13,7 +13,7 @@ const ServiceCards = () => {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-y-10 gap-x-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-6">
         {servicesData.data.map((service) => (
           <ServiceCard key={service._id} service={service} />
         ))}
@@ -25,7 +25,7 @@ const ServiceCards = () => {
             Show All
           </div>
           <div className="absolute translate-y-[150%] transition duration-700  group-hover:translate-y-0">
-          Show All
+            Show All
           </div>
         </button>
       </Link>

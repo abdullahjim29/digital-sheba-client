@@ -14,7 +14,9 @@ const ServiceCard = ({ service }) => {
   } = service || {};
   return (
     <motion.div
-      whileHover={{scale: 0.95}}
+    data-aos="fade-up"
+    data-aos-duration="500"
+      whileHover={{ scale: 0.95 }}
       className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-[#F4F6F0] dark:text-gray-800"
     >
       <div className="flex items-center space-x-4">
