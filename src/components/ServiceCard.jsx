@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
+import { motion } from "motion/react";
 
 const ServiceCard = ({ service }) => {
   const {
@@ -12,7 +13,10 @@ const ServiceCard = ({ service }) => {
     _id,
   } = service || {};
   return (
-    <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-[#F4F6F0] dark:text-gray-800">
+    <motion.div
+      whileHover={{scale: 0.95}}
+      className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md bg-[#F4F6F0] dark:text-gray-800"
+    >
       <div className="flex items-center space-x-4">
         <img
           alt=""
@@ -55,13 +59,13 @@ const ServiceCard = ({ service }) => {
                 View Detail
               </div>
               <div className="bg-[#E8F5D3] p-2 rounded-full">
-              <IoIosArrowForward/>
-            </div>
+                <IoIosArrowForward />
+              </div>
             </button>
           </Link>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

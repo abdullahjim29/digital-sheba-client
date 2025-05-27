@@ -23,18 +23,18 @@ const Home = () => {
       <HowItWork/>
       </div>
 
-      <div className="">
+      <div>
         {/* who we are */}
       <WhoWeAre/>
       </div>
 
-      <div className="">
+      <div>
         {/* why choose us */}
       <WhyChooseUs/>
       </div>
 
       {/* service cards */}
-      <div className="">
+      <div>
       <ServiceCards />
       </div>
     </div>
