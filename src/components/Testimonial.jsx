@@ -50,9 +50,10 @@ const Testimonial = () => {
         itemClass="px-5"
         arrows={true}
         containerClass="carousel-container"
+        showDots={true}
       >
         {testimonials.map((testimonial, idx) => (
-          <div key={idx} className="bg-white px-8 md:px-20 py-14 rounded-4xl">
+          <div data-aos="zoom-in" data-aos-duration="1000"    key={idx} className="bg-white px-8 md:px-20 py-14 rounded-4xl mb-10">
             <img className="w-6 mb-8" src={qoute} alt="" />
             <p>{testimonial.feedback}</p>
             <div className="flex gap-5 items-center mt-6">

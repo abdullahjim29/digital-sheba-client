@@ -22,3 +22,8 @@ li .active {
 .drop:hover {
   color: #3ca200;
 }
+
+
+.grad {
+  background: linear-gradient(to bottom right,rgba(241, 219, 27, 1) 0%, rgba(241, 219, 27, 1) 25%, rgba(232, 245, 211, 1) 67%);
+}
