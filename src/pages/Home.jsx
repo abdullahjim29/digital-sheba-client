@@ -6,6 +6,7 @@ import WhoWeAre from "../components/WhoWeAre";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Testimonial from "../components/Testimonial";
 import TestimonialForm from "../components/TestimonialForm";
+import Accordion from "../components/Accordion";
 
 const Home = () => {
   return (
@@ -34,6 +35,9 @@ const Home = () => {
 
       {/* testimonial form */}
       <TestimonialForm/>
+
+      {/* accordion */}
+      <Accordion/>
       
     </div>
   );

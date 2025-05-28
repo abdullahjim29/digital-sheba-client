@@ -25,5 +25,6 @@ li .active {
 
 
 .grad {
-  background: linear-gradient(to bottom right,rgba(241, 219, 27, 1) 0%, rgba(241, 219, 27, 1) 25%, rgba(232, 245, 211, 1) 67%);
+  background: linear-gradient(110deg,rgba(241, 219, 27, 0.87) 10%, rgba(235, 237, 149, 1) 52%, rgba(232, 245, 211, 1) 81%);
+
 }
