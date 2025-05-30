@@ -2,8 +2,9 @@ import { Link, NavLink } from "react-router-dom";
 import UseAuth from "../hooks/useAuth";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { useRef, useState } from "react";
+import { FaSearch } from "react-icons/fa";
 
-const Navbar = () => {
+const Navbar = ({ onSearchClick }) => {
   const { user, logOutUser } = UseAuth();
   const [showDropDown, setShowDropDown] = useState(false);
   const timeOutRef = useRef(null);
@@ -52,7 +53,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="shadow-sm bg-[#FFFFFF] font-o font-medium">
+    <div className="bg-[#FFFFFF] font-o font-medium">
       <div className="navbar max-w-7xl mx-auto">
         <div className="navbar-start">
           {/* menu for small devices */}
@@ -95,7 +96,6 @@ const Navbar = () => {
               )}
               {navLinks}
               {user && (
-                
                 <ul className="menu menu-horizontal px-1 text-[1.1rem]">
                   <li>
                     <details>
@@ -105,20 +105,26 @@ const Navbar = () => {
                       </ul>
                     </details>
                   </li>
-                </ul>               
+                </ul>
               )}
-              
             </ul>
           </div>
-          <Link data-aos="zoom-in"
-          data-aos-duration="1000" to={"/"} className="text-3xl font-semibold">
+          <Link
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            to={"/"}
+            className="text-3xl font-semibold"
+          >
             DigitalSheba
           </Link>
         </div>
 
         {/* menu for large devices */}
-        <div data-aos="zoom-in"
-          data-aos-duration="1000" className="navbar-end space-x-4">
+        <div
+          data-aos="zoom-in"
+          data-aos-duration="1000"
+          className="navbar-end space-x-4"
+        >
           <div className="hidden lg:block">
             <ul className="flex gap-5">
               {navLinks}
@@ -128,7 +134,8 @@ const Navbar = () => {
                   onMouseEnter={dropNav}
                   onMouseLeave={hiddenDropDown}
                 >
-                  Dashboard {showDropDown ? <IoIosArrowUp/>  : <IoIosArrowDown />}
+                  Dashboard{" "}
+                  {showDropDown ? <IoIosArrowUp /> : <IoIosArrowDown />}
                   <ul
                     className={`absolute right-44 z-50 w-48 border border-[#3CA200] bg-[#F4F6F0] rounded-2xl px-5 py-10 space-y-2 transition-all duration-500 ease-in-out
               ${
@@ -143,6 +150,12 @@ const Navbar = () => {
               )}
             </ul>
           </div>
+          <button
+                onClick={onSearchClick}
+                className="text-xl text-gray-700 hover:text-lime-600 transition-colors cursor-pointer"
+              >
+                <FaSearch />
+              </button>
           {user ? (
             <>
               <div
@@ -158,6 +171,7 @@ const Navbar = () => {
                   />
                 </div>
               </div>
+              
               <Link onClick={handleLogOutUser} to={"/login"}>
                 <button className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-[#F2D701] px-8 font-medium text-black cursor-pointer">
                   <div className="translate-y-0 transition duration-700 group-hover:-translate-y-[150%]">

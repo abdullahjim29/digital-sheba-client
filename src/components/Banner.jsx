@@ -9,8 +9,7 @@ const Banner = () => {
 
   useEffect(() => {
     AOS.init({
-      // once: true,
-      // offset: 100,
+
     });
   }, [])
   return (

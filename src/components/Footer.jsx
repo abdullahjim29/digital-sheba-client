@@ -14,10 +14,10 @@ const Footer = () => {
       {/* Title + Subscribe (Top Row) */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-10">
         <div>
-          <h2 className="text-2xl lg:text-4xl font-medium w-full lg:w-9/12 font-p">
+          <h2 data-aos="zoom-in" data-aos-duration="1000" className="text-2xl lg:text-4xl font-medium w-full lg:w-9/12 font-p">
             Our Goal is to Empower You With Every Service
           </h2>
-          <button className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-full bg-[#F2D701] px-4 lg:px-8 font-medium text-black cursor-pointer mt-5 ">
+          <button data-aos="fade-up" data-aos-duration="1000" className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-full bg-[#F2D701] px-4 lg:px-8 font-medium text-black cursor-pointer mt-5 ">
             <div className="translate-y-0 transition duration-700 group-hover:-translate-y-[150%]">
               Get a Free Qoute
             </div>

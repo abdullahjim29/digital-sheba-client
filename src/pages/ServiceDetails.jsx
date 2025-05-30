@@ -51,12 +51,15 @@ const ServiceDetails = () => {
       serviceStatus: "pending",
     };
 
-    if (providerEmail === userEmail) {
-      return toast("You can't book your own service!", {
-        icon: "😄",
-        position: 'left top',
-      });
-    }
+
+    // I will implement this after getting assignment mark
+
+    // if (providerEmail === userEmail) {
+    //   return toast("You can't book your own service!", {
+    //     icon: "😄",
+    //     position: 'left top',
+    //   });
+    // }
 
     axiosInstance
       .post("/services/booking", bookingInfo)

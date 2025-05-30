@@ -1,0 +1,51 @@
+[
+    {
+      "icon": "FaRedo",
+      "title": "Extra Revisions",
+      "price": "৳300 extra",
+      "description": "Request up to 2 additional revisions beyond what's included."
+    },
+    {
+      "icon": "FaPhoneAlt",
+      "title": "Post-Delivery Support (7 Days)",
+      "price": "৳500 extra",
+      "description": "Get help and small updates for 7 days after project completion."
+    },
+    {
+      "icon": "FaRocket",
+      "title": "Fast Delivery (Within 24 Hours)",
+      "price": "৳800 extra",
+      "description": "Priority delivery for urgent tasks (subject to service type)."
+    },
+    {
+      "icon": "FaFileAlt",
+      "title": "Source File Delivery",
+      "price": "৳400 extra",
+      "description": "Receive original design/project source files (PSD, XD, Figma, etc.)."
+    },
+    {
+      "icon": "FaMagic",
+      "title": "Custom Features / Modules",
+      "price": "৳1000+ extra",
+      "description": "Need something beyond the standard offer? Add a custom feature or request."
+    },
+    {
+      "icon": "FaFileAlt",
+      "title": "Detailed Documentation / User Guide",
+      "price": "৳500 extra",
+      "description": "Receive clear instructions on how to manage or use your product/service."
+    },
+    {
+      "icon": "FaLanguage",
+      "title": "Multi-language Support",
+      "price": "৳700 extra",
+      "description": "Add translations for your site, app, or content (Bangla, English, etc.)."
+    },
+    {
+      "icon": "FaUsers",
+      "title": "1-on-1 Training (30 mins)",
+      "price": "৳600 extra",
+      "description": "Live screen-share session to help you manage your website, app, or tools."
+    }
+  ]
+  

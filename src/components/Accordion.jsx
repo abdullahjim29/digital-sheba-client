@@ -17,7 +17,7 @@ const Accordion = () => {
         {/* left */}
         <div className="font-p">
           <h4>FAQS</h4>
-          <h2 data-aos="fade-up" data-aos-duration="1000" className="text-2xl lg:text-4xl w-full md:w-8/12 font-medium mt-5">Frequently Asked Questions</h2>
+          <h2 data-aos="fade-up" data-aos-duration="5000" className="text-2xl lg:text-4xl w-full md:w-8/12 font-medium mt-5">Frequently Asked Questions</h2>
           <div className="bg-[#E8F5D3] px-6 py-10 w-auto lg:w-96 rounded-4xl space-y-10 mt-6">
             <h3 className="text-xl md:text-2xl w-full">Looking for the cleaning service in New York? Contact us now!</h3>
 
