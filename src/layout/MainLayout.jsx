@@ -4,6 +4,9 @@ import Footer from "../components/Footer";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { useState } from "react";
 import ServicesSearchPanel from "../components/ServicesSearchPanel";
+import { useEffect } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const MainLayout = () => {
   const { scrollYProgress } = useScroll();
@@ -14,6 +17,12 @@ const MainLayout = () => {
   });
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  useEffect(() => {
+    AOS.init({
+
+    });
+  }, [])
 
   return (
     <>

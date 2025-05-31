@@ -1,17 +1,10 @@
 import { Link } from "react-router-dom";
 import bannerBg from "../assets/images/serviceBg.jpg";
 import { FaCircleCheck } from "react-icons/fa6";
-import { useEffect } from "react";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 
 const Banner = () => {
 
-  useEffect(() => {
-    AOS.init({
-
-    });
-  }, [])
+  
   return (
     <div>
       <div
