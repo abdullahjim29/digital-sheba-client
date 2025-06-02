@@ -92,6 +92,9 @@ const Navbar = ({ onSearchClick }) => {
                       referrerPolicy="no-referrer"
                     />
                   </div>
+
+                  {/* login / logout button */}
+
                 </div>
               )}
               {navLinks}
@@ -165,9 +168,10 @@ const Navbar = ({ onSearchClick }) => {
               >
                 <div className="w-10 rounded-full">
                   <img
-                    alt=""
+                    alt={user?.displayName}
                     src={user.photoURL}
                     referrerPolicy="no-referrer"
+                    title={user?.email}
                   />
                 </div>
               </div>

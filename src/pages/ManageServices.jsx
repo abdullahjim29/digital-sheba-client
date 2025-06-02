@@ -40,8 +40,8 @@ const ManageServices = () => {
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "#3CA200",
+      cancelButtonColor: "#000000",
       confirmButtonText: "Yes, delete it!",
     })
       .then((result) => {
@@ -78,14 +78,15 @@ const ManageServices = () => {
   };
 
   return (
-    <div>
+    <div className="mb-32">
+      <div className="divider"></div>
       <Helmet>
         <title>Manage-Service</title>
       </Helmet>
-      <h1 className="text-2xl md:text-3xl font-bold mb-2 text-center mt-10">
+      <h1 className="text-2xl md:text-3xl font-medium mb-2 text-center mt-10 font-p">
         Manage Your Services
       </h1>
-      <p className="text-sm text-gray-500 mb-6 text-center">
+      <p className="text-sm text-gray-500 mb-6 text-center font-o font-[300]">
         Here you can edit or delete the services you’ve added.
       </p>
 
@@ -109,15 +110,15 @@ const ManageServices = () => {
       {/* Modal */}
       <dialog id="my_modal_1" className="modal" ref={modalRef}>
         {editingService && (
-          <div className="modal-box w-full max-w-4xl relative">
+          <div className="modal-box w-full max-w-4xl relative grad">
             <button
-              className="absolute right-4 top-4 text-red-500 hover:text-red-700"
+              className="absolute right-4 top-4 text-[#000000c7] hover:text-[#000000]"
               onClick={closeModal}
             >
               <ImCross className="cursor-pointer" size={20} />
             </button>
 
-            <h2 className="text-2xl text-center font-semibold mb-8">
+            <h2 className="text-2xl text-center font-medium mb-8 font-p">
               Update Your Service
             </h2>
 
@@ -126,57 +127,57 @@ const ManageServices = () => {
               className="grid grid-cols-1 md:grid-cols-2 gap-4"
             >
               <div className="md:col-span-2">
-                <label className="block mb-1 font-medium">Service Image URL</label>
+                <label className="block mb-1 font-medium font-p">Service Image URL</label>
                 <input
                   type="url"
                   defaultValue={editingService.image}
                   name="serviceImage"
-                  className="w-full border rounded px-3 py-2"
+                  className="w-full rounded px-3 py-2 bg-white"
                 />
               </div>
 
               <div>
-                <label className="block mb-1 font-medium">Service Name</label>
+                <label className="block mb-1 font-medium font-p">Service Name</label>
                 <input
                   type="text"
                   defaultValue={editingService.service}
                   name="serviceName"
-                  className="w-full border rounded px-3 py-2"
+                  className="w-full bg-white rounded px-3 py-2"
                 />
               </div>
 
               <div>
-                <label className="block mb-1 font-medium">Price</label>
+                <label className="block mb-1 font-medium font-p">Price</label>
                 <input
                   type="text"
                   defaultValue={editingService.price}
                   name="servicePrice"
-                  className="w-full border rounded px-3 py-2"
+                  className="w-full bg-white rounded px-3 py-2"
                 />
               </div>
 
               <div className="md:col-span-2">
-                <label className="block mb-1 font-medium">Service Area</label>
+                <label className="block mb-1 font-medium font-p">Service Area</label>
                 <input
                   type="text"
                   defaultValue={editingService.area}
                   name="serviceArea"
-                  className="w-full border rounded px-3 py-2"
+                  className="w-full bg-white rounded px-3 py-2"
                 />
               </div>
 
               <div className="md:col-span-2">
-                <label className="block mb-1 font-medium">Description</label>
+                <label className="block mb-1 font-medium font-p">Description</label>
                 <textarea
                   name="serviceDescription"
                   defaultValue={editingService.description}
                   rows="3"
-                  className="w-full border rounded px-3 py-2"
+                  className="w-full bg-white rounded px-3 py-2"
                 />
               </div>
 
               <div className="md:col-span-2 text-left">
-                <button className="bg-rose-500 text-white px-6 py-2 rounded hover:bg-rose-600 cursor-pointer">
+                <button className="bg-black text-white px-6 py-2 rounded hover:bg-[#000000d2] cursor-pointer font-p">
                   Update
                 </button>
               </div>

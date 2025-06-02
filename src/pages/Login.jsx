@@ -15,7 +15,7 @@ const Login = () => {
     loginWithGoogle()
       .then((res) => {
         toast.success("Login Succsessfull!");
-        navigate(`${location.state || '/'}`)
+        navigate(`${location.state || "/"}`);
       })
       .catch((err) => {
         toast.error(err.message);
@@ -33,7 +33,7 @@ const Login = () => {
     loginUser(email, password)
       .then((res) => {
         toast.success("Login Succsessfull!");
-        navigate(`${location.state || '/'}`)
+        navigate(`${location.state || "/"}`);
       })
       .catch((err) => {
         toast.error(err.message);
@@ -57,7 +57,7 @@ const Login = () => {
             Dont have account?
             <Link
               to={"/register"}
-              className="focus:underline hover:underline text-[#3A86FF]"
+              className="focus:underline hover:underline text-[#3CA200]"
             >
               Register here
             </Link>
@@ -67,7 +67,7 @@ const Login = () => {
               onClick={handleGoogleLogin}
               aria-label="Login with Google"
               type="button"
-              className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600 cursor-pointer"
+              className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:border-[#F2D701] cursor-pointer"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -114,8 +114,16 @@ const Login = () => {
                 />
               </div>
             </div>
-            <button className="w-full px-8 py-3 font-semibold rounded-md bg-[#FF6B6B] text-white hover:bg-[#E63946] cursor-pointer">
+            {/* <button className="w-full px-8 py-3 font-semibold rounded-md bg-[#FF6B6B] text-white hover:bg-[#E63946] cursor-pointer">
               Login
+            </button> */}
+            <button className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-[#F2D701] px-8 font-medium text-black cursor-pointer w-full">
+              <div className="translate-y-0 transition duration-700 group-hover:-translate-y-[150%]">
+              Login
+              </div>
+              <div className="absolute translate-y-[150%] transition duration-700  group-hover:translate-y-0">
+              Login
+              </div>
             </button>
           </form>
         </div>
