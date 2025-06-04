@@ -3,13 +3,13 @@ import { ImCross } from "react-icons/im";
 import UseAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
-import useProtectAxios from "../hooks/useProtectAxios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ServiceDetails = () => {
   const serviceData = useLoaderData();
   const { user } = UseAuth();
   const navigate = useNavigate();
-  const axiosInstance = useProtectAxios();
+  const axiosInstance = useAxiosSecure();
 
   const {
     service: serviceName,

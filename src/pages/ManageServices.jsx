@@ -7,14 +7,14 @@ import noDataLottie from "../assets/lottieFiles/noDataLottie.json";
 import Lottie from "lottie-react";
 import { ImCross } from "react-icons/im";
 import { Helmet } from "react-helmet-async";
-import useProtectAxios from "../hooks/useProtectAxios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ManageServices = () => {
   const { user } = UseAuth();
   const [services, setServices] = useState([]);
   const [editingService, setEditingService] = useState(null);
   const modalRef = useRef(null);
-  const axiosInstance = useProtectAxios();
+  const axiosInstance = useAxiosSecure()
 
   useEffect(() => {
     axiosInstance(`/services/?email=${user?.email}`)

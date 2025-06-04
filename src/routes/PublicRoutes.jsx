@@ -11,9 +11,9 @@ import BookedService from "../pages/BookedService";
 import ProtectedRoute from "./ProtectedRoute";
 import ServiceToDo from "../pages/ServiceToDo";
 import ErrorPage from "../pages/ErrorPage";
-import useProtectAxios from "../hooks/useProtectAxios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
-const axiosInstance = useProtectAxios();
+const axiosInstance = useAxiosSecure();
 
 const router = createBrowserRouter([
   {

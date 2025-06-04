@@ -3,7 +3,7 @@ import UseAuth from "../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { FaRegClock, FaTools, FaCheckCircle } from "react-icons/fa";
-import useProtectAxios from "../hooks/useProtectAxios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const statusOptions = [
   {
@@ -29,7 +29,7 @@ const statusOptions = [
 const ServiceToDo = () => {
   const { user } = UseAuth();
   const [bookedServices, setBookedServices] = useState([]);
-  const axiosInstance = useProtectAxios();
+  const axiosInstance = useAxiosSecure();
 
   useEffect(() => {
     axiosInstance(`/booked/services?provider=${user?.email}`)

@@ -11,13 +11,14 @@ import {
 } from "firebase/auth";
 import auth from "../firebase/firebase.config";
 import { Toaster } from "react-hot-toast";
-import useProtectAxios from "../hooks/useProtectAxios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const provider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const axiosInstance = useAxiosSecure();
 
   // google login
   const loginWithGoogle = () => {
@@ -53,7 +54,18 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      
+      if (currentUser?.email) {
+        const user = { email: currentUser?.email };
+        axiosInstance
+          .post("/jwt", user)
+          .then((res) => {
+            console.log(res.data);
+            setLoading(false);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     });
 
     return () => {

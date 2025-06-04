@@ -4,7 +4,7 @@ import noDataLottie from "../assets/lottieFiles/noDataLottie.json";
 import Lottie from "lottie-react";
 import { Helmet } from "react-helmet-async";
 import { FaRegClock, FaTools, FaCheckCircle } from "react-icons/fa";
-import useProtectAxios from "../hooks/useProtectAxios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const statusStyles = {
   pending: {
@@ -27,7 +27,7 @@ const statusStyles = {
 const BookedService = () => {
   const { user } = UseAuth();
   const [bookedServices, setBookedServices] = useState([]);
-  const axiosInstance = useProtectAxios();
+  const axiosInstance = useAxiosSecure()
 
   useEffect(() => {
     axiosInstance(`/booked/services?user=${user?.email}`)
