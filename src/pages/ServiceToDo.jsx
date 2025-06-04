@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import UseAuth from "../hooks/useAuth";
-import axiosInstance from "../hooks/AxiosInstance";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { FaRegClock, FaTools, FaCheckCircle } from "react-icons/fa";
+import useProtectAxios from "../hooks/useProtectAxios";
 
 const statusOptions = [
   {
@@ -29,6 +29,7 @@ const statusOptions = [
 const ServiceToDo = () => {
   const { user } = UseAuth();
   const [bookedServices, setBookedServices] = useState([]);
+  const axiosInstance = useProtectAxios();
 
   useEffect(() => {
     axiosInstance(`/booked/services?provider=${user?.email}`)
@@ -107,13 +108,10 @@ const ServiceToDo = () => {
                     </div>
 
                     <div className="mt-4">
-                      <label className="block mb-1 text-sm font-medium text-gray-700">
-                        Updated Status : {service.serviceStatus}
-                      </label>
                       <select
                         value={service.serviceStatus}
                         onChange={(e) => handleStatusChange(e, service._id)}
-                        className="w-full border border-[#3CA200] rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3CA200] bg-white text-sm"
+                        className={`${service.serviceStatus === 'completed' && 'hidden'} w-full border border-[#3CA200] rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3CA200] bg-white text-sm`}
                       >
                         {statusOptions.map((opt) => (
                           <option key={opt.value} value={opt.value}>

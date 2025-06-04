@@ -44,7 +44,7 @@ const ServiceCard = ({ service }) => {
           <IoLocationSharp /> {area}
         </p>
         <p className="text-sm dark:text-gray-600 font-o">
-          {`${description.slice(0, 100)}...`}
+          {`${description.length > 100 ? `${description.slice(0, 100)}...` : description}`}
         </p>
         <div className="flex space-x-2 text-sm dark:text-gray-600 mt-2">
           <p className="text-xl font-bold font-p">$ {price}</p>

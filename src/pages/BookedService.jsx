@@ -1,87 +1,10 @@
-// import React, { useEffect, useState } from "react";
-// import UseAuth from "../hooks/useAuth";
-// import axiosInstance from "../hooks/AxiosInstance";
-// import noDataLottie from "../assets/lottieFiles/noDataLottie.json";
-// import Lottie from "lottie-react";
-// import { Helmet } from "react-helmet-async";
-
-// const BookedService = () => {
-//   const { user } = UseAuth();
-//   const [bookedServices, setBookedServices] = useState([]);
-
-//   useEffect(() => {
-//     axiosInstance(`/booked/services?user=${user?.email}`)
-//     .then(res => {
-//         setBookedServices(res.data)
-//     })
-//     .catch(err => {
-//         console.log(err.message);
-//     })
-//   }, [user?.email]);
-
-
-//   const hasBookings = bookedServices.length > 0;
-
-//   return <>
-//     <div className="divider"></div>
-//     <div className="max-w-4xl mx-auto mb-20 mt-10 px-10">
-//       <Helmet>
-//         <title>Booked-Service</title>
-//       </Helmet>
-//       <h2 className="text-3xl font-medium text-center mb-8 font-p">Booked Services</h2>
-
-//       {hasBookings ? (
-//         <div className="space-y-6">
-//           {bookedServices.map((service) => (
-//             <div
-//               key={service._id}
-//               className="flex flex-col md:flex-row items-start md:items-center justify-between bg-white border-l-4 border-[#3CA200] border shadow-lg rounded-md p-5"
-//             >
-//               <div>
-//                 <h3 className="text-2xl font-semibold text-[#3CA200] font-p">
-//                   {service.service_Name}
-//                 </h3>
-//                 <p className="text-sm text-gray-600 mt-1 font-o">
-//                   <span className="font-medium">Provider:</span>{" "}
-//                   {service.providerName}
-//                 </p>
-//                 <p className="text-gray-700 mt-2 font-o">{service.instruction.slice(0, 30)}</p>
-//                 <p className="text-sm text-gray-500 font-o">
-//                   <span className="font-medium">Booked on:</span>{" "}
-//                   {service.date}
-//                 </p>
-//               </div>
-//               <div className="mt-4 md:mt-0 md:text-right font-o">
-//               <p className="text-sm text-gray-600 mt-1">
-//                   <button className={`px-3 py-1 rounded-full text-sm font-medium ${service.serviceStatus === 'pending' && 'bg-yellow-100 text-yellow-700'} ${service.serviceStatus === 'working' && 'bg-blue-100 text-blue-700'} ${service.serviceStatus === 'completed' && 'bg-green-100	text-green-700'}`}>{service.serviceStatus}</button>
-//                 </p>
-//                 {/*  */}
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       ) : (
-//         <div className="text-center text-gray-500 text-lg">
-//           No services booked yet. Book one to see it here!
-//           <div className="my-10 flex flex-col items-center">
-//           <Lottie className="w-2/4" animationData={noDataLottie}></Lottie>
-//         </div>
-//         </div>
-//       )}
-//     </div>
-//   </>
-// };
-
-// export default BookedService;
-
-
 import React, { useEffect, useState } from "react";
 import UseAuth from "../hooks/useAuth";
-import axiosInstance from "../hooks/AxiosInstance";
 import noDataLottie from "../assets/lottieFiles/noDataLottie.json";
 import Lottie from "lottie-react";
 import { Helmet } from "react-helmet-async";
 import { FaRegClock, FaTools, FaCheckCircle } from "react-icons/fa";
+import useProtectAxios from "../hooks/useProtectAxios";
 
 const statusStyles = {
   pending: {
@@ -104,6 +27,7 @@ const statusStyles = {
 const BookedService = () => {
   const { user } = UseAuth();
   const [bookedServices, setBookedServices] = useState([]);
+  const axiosInstance = useProtectAxios();
 
   useEffect(() => {
     axiosInstance(`/booked/services?user=${user?.email}`)
@@ -115,13 +39,15 @@ const BookedService = () => {
 
   return (
     <>
-    <div className="divider"></div>
+      <div className="divider"></div>
       <Helmet>
         <title>Booked Services</title>
       </Helmet>
 
       <div className="max-w-5xl mx-auto px-6 py-10 mb-20">
-        <h2 className="text-3xl font-medium text-center mb-10 font-p">📋 Booked Services</h2>
+        <h2 className="text-3xl font-medium text-center mb-10 font-p">
+          📋 My Booked Services
+        </h2>
 
         {hasBookings ? (
           <div className="grid gap-6 md:grid-cols-2">
@@ -150,7 +76,19 @@ const BookedService = () => {
                       <span className="font-medium">Provider:</span>{" "}
                       {service.providerName}
                     </p>
-                    <p>{service.instruction.slice(0, 50)}...</p>
+                    {/* <p>
+                      {service.instruction.length > 50
+                        ? `${service.instruction.slice(0, 50)}...`
+                        : service.instruction}
+                    </p> */}
+                    <p className="text-sm dark:text-gray-600 font-o">
+                      <span className="font-semibold">Instruction : </span>
+                      {`${
+                        service.instruction.length > 30
+                          ? `${service.instruction.slice(0, 40)}...`
+                          : service.instruction
+                      }`}
+                    </p>
                     <p>
                       <span className="font-medium">Booked on:</span>{" "}
                       {service.date}
@@ -162,8 +100,13 @@ const BookedService = () => {
           </div>
         ) : (
           <div className="text-center text-gray-600 mt-10">
-            <p className="text-lg mb-4">No services booked yet. Book one to see it here!</p>
-            <Lottie className="w-2/3 md:w-1/3 mx-auto" animationData={noDataLottie} />
+            <p className="text-lg mb-4">
+              No services booked yet. Book one to see it here!
+            </p>
+            <Lottie
+              className="w-2/3 md:w-1/3 mx-auto"
+              animationData={noDataLottie}
+            />
           </div>
         )}
       </div>

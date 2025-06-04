@@ -1,13 +1,15 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { ImCross } from "react-icons/im";
 import UseAuth from "../hooks/useAuth";
-import axiosInstance from "../hooks/AxiosInstance";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
+import useProtectAxios from "../hooks/useProtectAxios";
 
 const ServiceDetails = () => {
   const serviceData = useLoaderData();
   const { user } = UseAuth();
+  const navigate = useNavigate();
+  const axiosInstance = useProtectAxios();
 
   const {
     service: serviceName,
@@ -66,6 +68,7 @@ const ServiceDetails = () => {
         if (res.data.acknowledged) {
           toast.success("Booking succsessfully!");
         }
+        navigate('/booked/services')
       })
       .catch((err) => {
         toast.error(err.message);
@@ -119,11 +122,12 @@ const ServiceDetails = () => {
           <div class="bg-gradient-to-b from-[#E8F5D3] to-[#F5FBEB] py-20 px-6 rounded-lg shadow space-y-4 ">
             <img src={provider_img} class="w-24 h-24 rounded-full mx-auto" />
             {/* <h3 class="text-lg font-semibold text-center">Service Provider</h3> */}
-            <div class="text-center">
+            <div class="text-center font-o">
               <p class="font-bold">{provider_name}</p>
               <p class="text-sm text-gray-600">
                 <span className="font-bold">Area:</span> {area}
               </p>
+              <p className="text-sm font-o text-gray-600"><span className="font-semibold">Email:</span> {provider_email}</p>
             </div>
           </div>
         </div>
@@ -160,7 +164,7 @@ const ServiceDetails = () => {
                     name="service_id"
                     defaultValue={_id}
                     disabled={true}
-                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded px-3 py-2"
+                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded p-3 text-sm"
                   />
                 </div>
 
@@ -172,7 +176,7 @@ const ServiceDetails = () => {
                     defaultValue={serviceName}
                     name="serviceName"
                     disabled={true}
-                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded px-3 py-2"
+                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded p-3 text-sm"
                   />
                 </div>
 
@@ -188,64 +192,11 @@ const ServiceDetails = () => {
                     defaultValue={image}
                     name="serviceImage"
                     disabled={true}
-                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded px-3 py-2"
+                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded p-3 text-sm"
                   />
                 </div>
 
                 {/* Column 3 */}
-
-                {/* user name */}
-                <div>
-                  <label className="block mb-1 font-medium">User Name</label>
-                  <input
-                    type="text"
-                    defaultValue={user?.displayName}
-                    name="userName"
-                    disabled={true}
-                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded px-3 py-2"
-                  />
-                </div>
-
-                {/* user email */}
-                <div>
-                  <label className="block mb-1 font-medium">User Email</label>
-                  <input
-                    type="email"
-                    defaultValue={user?.email}
-                    name="userEmail"
-                    disabled={true}
-                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded px-3 py-2"
-                  />
-                </div>
-
-                {/* Column 4 */}
-
-                {/* date */}
-                <div>
-                  <label className="block mb-1 font-medium">
-                    Service Taking Date
-                  </label>
-                  <input
-                    type="date"
-                    name="date"
-                    required
-                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded px-3 py-2"
-                  />
-                </div>
-
-                {/* price */}
-                <div>
-                  <label className="block mb-1 font-medium">Price</label>
-                  <input
-                    type="text"
-                    defaultValue={price}
-                    name="servicePrice"
-                    disabled={true}
-                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded px-3 py-2"
-                  />
-                </div>
-
-                {/* Column 5 */}
 
                 {/* provider name */}
                 <div>
@@ -257,7 +208,7 @@ const ServiceDetails = () => {
                     defaultValue={provider_name}
                     name="providerName"
                     disabled={true}
-                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded px-3 py-2"
+                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded p-3 text-sm"
                   />
                 </div>
 
@@ -271,9 +222,64 @@ const ServiceDetails = () => {
                     defaultValue={provider_email}
                     name="providerEmail"
                     disabled={true}
-                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded px-3 py-2"
+                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded p-3 text-sm"
                   />
                 </div>
+
+                {/* Column 4 */}
+
+                {/* user name */}
+                <div>
+                  <label className="block mb-1 font-medium">User Name</label>
+                  <input
+                    type="text"
+                    defaultValue={user?.displayName}
+                    name="userName"
+                    disabled={true}
+                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded p-3 text-sm"
+                  />
+                </div>
+
+                {/* user email */}
+                <div>
+                  <label className="block mb-1 font-medium">User Email</label>
+                  <input
+                    type="email"
+                    defaultValue={user?.email}
+                    name="userEmail"
+                    disabled={true}
+                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded p-3 text-sm"
+                  />
+                </div>
+
+
+                {/* Column 5 */}
+
+                {/* date */}
+                <div>
+                  <label className="block mb-1 font-medium">
+                    Service Taking Date
+                  </label>
+                  <input
+                    type="date"
+                    name="date"
+                    required
+                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded p-3 text-sm"
+                  />
+                </div>
+
+                {/* price */}
+                <div>
+                  <label className="block mb-1 font-medium">Price</label>
+                  <input
+                    type="text"
+                    defaultValue={price}
+                    name="servicePrice"
+                    disabled={true}
+                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded p-3 text-sm"
+                  />
+                </div>
+
 
                 {/* Column 6 */}
 
@@ -283,7 +289,7 @@ const ServiceDetails = () => {
                     Special Instructions
                   </label>
                   <textarea
-                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded px-3 py-2"
+                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded p-3 text-sm"
                     rows="3"
                     name="instruction"
                     required

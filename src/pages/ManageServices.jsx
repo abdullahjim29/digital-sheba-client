@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import UseAuth from "../hooks/useAuth";
-import axiosInstance from "../hooks/AxiosInstance";
 import ManageServicesCard from "../components/ManageServicesCard";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
@@ -8,12 +7,14 @@ import noDataLottie from "../assets/lottieFiles/noDataLottie.json";
 import Lottie from "lottie-react";
 import { ImCross } from "react-icons/im";
 import { Helmet } from "react-helmet-async";
+import useProtectAxios from "../hooks/useProtectAxios";
 
 const ManageServices = () => {
   const { user } = UseAuth();
   const [services, setServices] = useState([]);
   const [editingService, setEditingService] = useState(null);
   const modalRef = useRef(null);
+  const axiosInstance = useProtectAxios();
 
   useEffect(() => {
     axiosInstance(`/services/?email=${user?.email}`)
@@ -66,11 +67,14 @@ const ManageServices = () => {
 
     const updatedService = { image, service, price, area, description };
 
-    axiosInstance.patch(`/service/${id}`, updatedService)
+    axiosInstance
+      .patch(`/service/${id}`, updatedService)
       .then(() => {
         toast.success("Service updated!");
         setServices((prev) =>
-          prev.map((service) => (service._id === id ? { ...service, ...updatedService } : service))
+          prev.map((service) =>
+            service._id === id ? { ...service, ...updatedService } : service
+          )
         );
         closeModal();
       })
@@ -127,7 +131,9 @@ const ManageServices = () => {
               className="grid grid-cols-1 md:grid-cols-2 gap-4"
             >
               <div className="md:col-span-2">
-                <label className="block mb-1 font-medium font-p">Service Image URL</label>
+                <label className="block mb-1 font-medium font-p">
+                  Service Image URL
+                </label>
                 <input
                   type="url"
                   defaultValue={editingService.image}
@@ -137,7 +143,9 @@ const ManageServices = () => {
               </div>
 
               <div>
-                <label className="block mb-1 font-medium font-p">Service Name</label>
+                <label className="block mb-1 font-medium font-p">
+                  Service Name
+                </label>
                 <input
                   type="text"
                   defaultValue={editingService.service}
@@ -157,7 +165,9 @@ const ManageServices = () => {
               </div>
 
               <div className="md:col-span-2">
-                <label className="block mb-1 font-medium font-p">Service Area</label>
+                <label className="block mb-1 font-medium font-p">
+                  Service Area
+                </label>
                 <input
                   type="text"
                   defaultValue={editingService.area}
@@ -167,7 +177,9 @@ const ManageServices = () => {
               </div>
 
               <div className="md:col-span-2">
-                <label className="block mb-1 font-medium font-p">Description</label>
+                <label className="block mb-1 font-medium font-p">
+                  Description
+                </label>
                 <textarea
                   name="serviceDescription"
                   defaultValue={editingService.description}

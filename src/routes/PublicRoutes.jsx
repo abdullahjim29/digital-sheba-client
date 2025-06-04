@@ -4,19 +4,22 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Home from "../pages/Home";
 import AddService from "../pages/AddService";
-import axiosInstance from "../hooks/AxiosInstance";
 import Services from "../pages/Services";
 import ServiceDetails from "../pages/ServiceDetails";
 import ManageServices from "../pages/ManageServices";
 import BookedService from "../pages/BookedService";
 import ProtectedRoute from "./ProtectedRoute";
 import ServiceToDo from "../pages/ServiceToDo";
+import ErrorPage from "../pages/ErrorPage";
+import useProtectAxios from "../hooks/useProtectAxios";
+
+const axiosInstance = useProtectAxios();
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    errorElement: <h2>404</h2>,
+    errorElement: <ErrorPage/>,
     children: [
       {
         path: "/",

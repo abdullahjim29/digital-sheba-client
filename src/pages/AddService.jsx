@@ -1,12 +1,13 @@
 import toast from "react-hot-toast";
 import UseAuth from "../hooks/useAuth";
-import axiosInstance from "../hooks/AxiosInstance";
 import { Helmet } from "react-helmet-async";
 import { FaCircleCheck } from "react-icons/fa6";
-import serviceImg from "../assets/images/addService.jpg";
+import useProtectAxios from "../hooks/useProtectAxios";
+
 
 const AddService = () => {
   const { user } = UseAuth();
+  const axiosInstance = useProtectAxios();
 
   // add service form
   const handleAddService = (e) => {
@@ -37,6 +38,7 @@ const AddService = () => {
         if (res.data.acknowledged) {
           toast.success("Service added succsessfully!");
         }
+        form.reset()
       })
       .catch((err) => toast.error(err.message));
   };

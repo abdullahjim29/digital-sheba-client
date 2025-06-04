@@ -15,30 +15,29 @@ const Home = () => {
         <title>Home</title>
       </Helmet>
 
-        {/* banner */}
-        <Banner />
+      {/* banner */}
+      <Banner />
 
-        {/* How it work */}
-        <HowItWork />
+      {/* How it work */}
+      <HowItWork />
 
-        {/* who we are */}
-        <WhoWeAre />
+      {/* who we are */}
+      <WhoWeAre />
 
       {/* why choose us */}
       <WhyChooseUs />
 
       {/* service cards */}
-        <ServiceCards />
+      <ServiceCards />
 
       {/* Testimonial */}
-      <Testimonial/>
+      <Testimonial />
 
       {/* testimonial form */}
-      <TestimonialForm/>
+      <TestimonialForm />
 
       {/* accordion */}
-      <Accordion/>
-      
+      <Accordion />
     </div>
   );
 };

@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
 
 const Login = () => {
-  const { loginWithGoogle, loginUser } = UseAuth();
+  const { loginWithGoogle, loginUser, user } = UseAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -114,15 +114,12 @@ const Login = () => {
                 />
               </div>
             </div>
-            {/* <button className="w-full px-8 py-3 font-semibold rounded-md bg-[#FF6B6B] text-white hover:bg-[#E63946] cursor-pointer">
-              Login
-            </button> */}
             <button className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-[#F2D701] px-8 font-medium text-black cursor-pointer w-full">
               <div className="translate-y-0 transition duration-700 group-hover:-translate-y-[150%]">
-              Login
+                Login
               </div>
               <div className="absolute translate-y-[150%] transition duration-700  group-hover:translate-y-0">
-              Login
+                Login
               </div>
             </button>
           </form>

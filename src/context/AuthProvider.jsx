@@ -11,6 +11,7 @@ import {
 } from "firebase/auth";
 import auth from "../firebase/firebase.config";
 import { Toaster } from "react-hot-toast";
+import useProtectAxios from "../hooks/useProtectAxios";
 
 const provider = new GoogleAuthProvider();
 
@@ -52,7 +53,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
+      
     });
 
     return () => {
