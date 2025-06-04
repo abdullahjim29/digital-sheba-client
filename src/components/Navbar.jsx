@@ -1,11 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
+import UseAuth from "../hooks/useAuth";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { useRef, useState } from "react";
-import { FaSearch } from "react-icons/fa";
 
-const Navbar = ({ onSearchClick }) => {
-  const { user, logOutUser } = useAuth();
+const Navbar = () => {
+  const { user, logOutUser } = UseAuth();
   const [showDropDown, setShowDropDown] = useState(false);
   const timeOutRef = useRef(null);
 
@@ -153,12 +152,6 @@ const Navbar = ({ onSearchClick }) => {
               )}
             </ul>
           </div>
-          <button
-                onClick={onSearchClick}
-                className="text-xl text-gray-700 hover:text-lime-600 transition-colors cursor-pointer"
-              >
-                <FaSearch />
-              </button>
           {user ? (
             <>
               <div

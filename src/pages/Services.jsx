@@ -7,6 +7,7 @@ import "aos/dist/aos.css";
 import Lottie from "lottie-react";
 import loader from "../assets/lottieFiles/loaderLottie.json"
 import AddonServices from "../components/AddonServices";
+import ServiceSearchBar from "../components/ServiceSearchBar";
 
 
 const Services = () => {
@@ -29,6 +30,9 @@ const Services = () => {
         <title>Services</title>
       </Helmet>
 
+      {/* searchbar */}
+      <ServiceSearchBar/>
+
       <h4 className="font-p text-center font-[300] text-sm">SERVICES</h4>
       <h2 className="text-2xl md:text-5xl font-normal text-center mb-20 mt-3 font-p">
         Services We Provide
@@ -46,7 +50,6 @@ const Services = () => {
 
       {/* addons */}
       <AddonServices/>
-
     </div>
   );
 };

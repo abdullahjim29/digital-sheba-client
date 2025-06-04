@@ -68,7 +68,7 @@ const ServiceDetails = () => {
         if (res.data.acknowledged) {
           toast.success("Booking succsessfully!");
         }
-        navigate('/booked/services')
+        navigate("/booked/services");
       })
       .catch((err) => {
         toast.error(err.message);
@@ -77,7 +77,7 @@ const ServiceDetails = () => {
 
   return (
     <>
-    <div className="divider"></div>
+      <div className="divider"></div>
       <div>
         <Helmet>
           <title>Details-of {serviceName}</title>
@@ -121,13 +121,14 @@ const ServiceDetails = () => {
           {/* <!-- Right Side: Service Provider Info --> */}
           <div class="bg-gradient-to-b from-[#E8F5D3] to-[#F5FBEB] py-20 px-6 rounded-lg shadow space-y-4 ">
             <img src={provider_img} class="w-24 h-24 rounded-full mx-auto" />
-            {/* <h3 class="text-lg font-semibold text-center">Service Provider</h3> */}
             <div class="text-center font-o">
-              <p class="font-bold">{provider_name}</p>
+              <p className="text-center font-medium font-p mb-2">Service Provider</p>
+              <p class="text-sm text-gray-600">
+                <span className="font-bold">Name:</span> {provider_name}
+              </p>
               <p class="text-sm text-gray-600">
                 <span className="font-bold">Area:</span> {area}
               </p>
-              <p className="text-sm font-o text-gray-600"><span className="font-semibold">Email:</span> {provider_email}</p>
             </div>
           </div>
         </div>
@@ -252,7 +253,6 @@ const ServiceDetails = () => {
                   />
                 </div>
 
-
                 {/* Column 5 */}
 
                 {/* date */}
@@ -279,7 +279,6 @@ const ServiceDetails = () => {
                     className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded p-3 text-sm"
                   />
                 </div>
-
 
                 {/* Column 6 */}
 
