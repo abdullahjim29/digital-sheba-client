@@ -11,14 +11,13 @@ import {
 } from "firebase/auth";
 import auth from "../firebase/firebase.config";
 import { Toaster } from "react-hot-toast";
-import useAxiosSecure from "../hooks/useAxiosSecure";
+import axiosInstance from "../hooks/axiosInstance";
 
 const provider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const axiosInstance = useAxiosSecure();
 
   // google login
   const loginWithGoogle = () => {
@@ -65,6 +64,13 @@ const AuthProvider = ({ children }) => {
           .catch((err) => {
             console.log(err);
           });
+      } else {
+        axiosInstance
+          .post("/remove-token", {})
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((err) => console.log(err));
       }
     });
 

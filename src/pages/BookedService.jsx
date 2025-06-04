@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import UseAuth from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import noDataLottie from "../assets/lottieFiles/noDataLottie.json";
 import Lottie from "lottie-react";
 import { Helmet } from "react-helmet-async";
@@ -25,7 +25,7 @@ const statusStyles = {
 };
 
 const BookedService = () => {
-  const { user } = UseAuth();
+  const { user } = useAuth();
   const [bookedServices, setBookedServices] = useState([]);
   const axiosInstance = useAxiosSecure()
 

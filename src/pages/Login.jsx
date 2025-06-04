@@ -1,12 +1,12 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginLottie from "../assets/lottieFiles/loginLottie.json";
 import Lottie from "lottie-react";
-import UseAuth from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
 
 const Login = () => {
-  const { loginWithGoogle, loginUser, user } = UseAuth();
+  const { loginWithGoogle, loginUser, user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 

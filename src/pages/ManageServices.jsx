@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import UseAuth from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import ManageServicesCard from "../components/ManageServicesCard";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
@@ -10,14 +10,14 @@ import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ManageServices = () => {
-  const { user } = UseAuth();
+  const { user } = useAuth();
   const [services, setServices] = useState([]);
   const [editingService, setEditingService] = useState(null);
   const modalRef = useRef(null);
-  const axiosInstance = useAxiosSecure()
+  const axiosInstance = useAxiosSecure();
 
   useEffect(() => {
-    axiosInstance(`/services/?email=${user?.email}`)
+    axiosInstance(`/manage-services/?email=${user?.email}`)
       .then((res) => setServices(res.data))
       .catch((err) => console.log(err));
   }, [user?.email]);

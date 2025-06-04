@@ -1,10 +1,10 @@
 import { Navigate, useLocation } from "react-router-dom";
-import UseAuth from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import loader from "../assets/lottieFiles/loaderLottie.json";
 import Lottie from "lottie-react";
 
 const ProtectedRoute = ({ children }) => {
-  const { loading, user } = UseAuth();
+  const { loading, user } = useAuth();
   const location = useLocation();
 
   if (loading) {

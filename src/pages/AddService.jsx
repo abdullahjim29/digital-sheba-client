@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import UseAuth from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import { FaCircleCheck } from "react-icons/fa6";
 import useAxiosSecure from "../hooks/useAxiosSecure";
@@ -7,7 +7,7 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 
 
 const AddService = () => {
-  const { user } = UseAuth();
+  const { user } = useAuth();
   const axiosInstance = useAxiosSecure()
 
   // add service form

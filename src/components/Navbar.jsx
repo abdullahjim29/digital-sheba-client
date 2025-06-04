@@ -1,11 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
-import UseAuth from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { useRef, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 
 const Navbar = ({ onSearchClick }) => {
-  const { user, logOutUser } = UseAuth();
+  const { user, logOutUser } = useAuth();
   const [showDropDown, setShowDropDown] = useState(false);
   const timeOutRef = useRef(null);
 

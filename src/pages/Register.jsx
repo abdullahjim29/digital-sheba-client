@@ -1,11 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import loginLottie from "../assets/lottieFiles/loginLottie.json";
 import Lottie from "lottie-react";
-import UseAuth from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
 const Register = () => {
-  const { createNewUser, loginWithGoogle, updateUser } = UseAuth();
+  const { createNewUser, loginWithGoogle, updateUser } = useAuth();
   const navigate = useNavigate();
 
   // create a new user with email and password

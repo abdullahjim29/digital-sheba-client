@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import UseAuth from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { FaRegClock, FaTools, FaCheckCircle } from "react-icons/fa";
@@ -27,7 +27,7 @@ const statusOptions = [
 ];
 
 const ServiceToDo = () => {
-  const { user } = UseAuth();
+  const { user } = useAuth();
   const [bookedServices, setBookedServices] = useState([]);
   const axiosInstance = useAxiosSecure();
 

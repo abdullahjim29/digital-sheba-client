@@ -1,13 +1,13 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { ImCross } from "react-icons/im";
-import UseAuth from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ServiceDetails = () => {
   const serviceData = useLoaderData();
-  const { user } = UseAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
   const axiosInstance = useAxiosSecure();
 
