@@ -3,10 +3,12 @@ import useAuth from "../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import { FaCircleCheck } from "react-icons/fa6";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import useTheme from "../hooks/useTheme";
 
 const AddService = () => {
   const { user } = useAuth();
   const axiosInstance = useAxiosSecure();
+  const theme = useTheme();
 
   // add service form
   const handleAddService = (e) => {
@@ -45,14 +47,14 @@ const AddService = () => {
   return (
     <>
       <div className="divider h-[1px] bg-gray-50"></div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-30 mt-10 w-11/12 mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-30 mt-18 w-11/12 mx-auto">
         <Helmet>
           <title>Add-Service</title>
         </Helmet>
 
         {/* left */}
         <div
-          className="p-10 grad"
+          className={`p-10 ${theme === 'light' ? 'grad text-black' : 'grad2'}`}
           style={{
             clipPath:
               "polygon(32.2492676px 0, calc(100% - 29.883191px) 14.1670774px, calc(100% - 29.883191px) 14.1670774px, calc(100% - 24.96109729px) 14.87537046px, calc(100% - 20.31945472px) 16.29591632px, calc(100% - 16.01424199px) 18.36886116px, calc(100% - 12.1014378px) 21.03435113px, calc(100% - 8.63702087px) 24.23253242px, calc(100% - 5.67696992px) 27.9035512px, calc(100% - 3.27726365px) 31.98755362px, calc(100% - 1.49388076px) 36.42468587px, calc(100% - 0.38279998px) 41.1550941px, calc(100% - 5.68434189E-14px) 46.1189245px, calc(100% - 0px) calc(100% - 32.02092px), calc(100% - 0px) calc(100% - 32.02092px), calc(100% - 0.41860061px) calc(100% - 26.8269604px), calc(100% - 1.63050344px) calc(100% - 21.89983258px), calc(100% - 3.56985995px) calc(100% - 17.30546357px), calc(100% - 6.1708216px) calc(100% - 13.10978045px), calc(100% - 9.36753988px) calc(100% - 9.37871025px), calc(100% - 13.09416624px) calc(100% - 6.17818003px), calc(100% - 17.28485217px) calc(100% - 3.57411685px), calc(100% - 21.87374912px) calc(100% - 1.63244774px), calc(100% - 26.79500858px) calc(100% - 0.41909978px), calc(100% - 31.982782px) calc(100% - 5.68434189E-14px), 31.9827822px calc(100% - 0px), 31.9827822px calc(100% - 0px), 26.79500879px calc(100% - 0.41909978px), 21.87374934px calc(100% - 1.63244774px), 17.28485237px calc(100% - 3.57411685px), 13.09416641px calc(100% - 6.17818003px), 9.36754001px calc(100% - 9.37871025px), 6.1708217px calc(100% - 13.10978045px), 3.56986001px calc(100% - 17.30546357px), 1.63050347px calc(100% - 21.89983258px), .41860062px calc(100% - 26.8269604px), 5.29492535E-31px calc(100% - 32.02092px), 0 32.0209204px, 0 32.0209204px, .41860062px 26.82696079px, 1.63050347px 21.89983293px, 3.56986001px 17.30546389px, 6.1708217px 13.10978071px, 9.36754001px 9.37871045px, 13.09416641px 6.17818017px, 17.28485237px 3.57411693px, 21.87374934px 1.63244779px, 26.79500879px .41909979px, 31.9827822px 5.30123935E-31px, 31.9827822px 0, 32.11152455px 0, 32.2175794px 0, 32.30094672px 0, 32.36162654px 0, 32.39961884px 0, 32.41492362px 0, 32.40754089px 0, 32.37747064px 0, 32.32471288px 0, 32.2492676px 0)",
@@ -78,7 +80,7 @@ const AddService = () => {
                 name="serviceName"
                 required
                 placeholder="Service Name"
-                className="w-full rounded p-2 bg-white outline-[#3CA200] border border-white hover:border hover:border-[#3CA200] placeholder:font-[200]"
+                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
               />
             </div>
 
@@ -90,7 +92,7 @@ const AddService = () => {
                 name="imageUrl"
                 required
                 placeholder="Image URL"
-                className="w-full rounded p-2 bg-white outline-[#3CA200] border border-white hover:border hover:border-[#3CA200] placeholder:font-[200]"
+                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
               />
             </div>
 
@@ -102,7 +104,7 @@ const AddService = () => {
                 name="price"
                 required
                 placeholder="Price"
-                className="w-full rounded p-2 bg-white outline-[#3CA200] border border-white hover:border hover:border-[#3CA200] placeholder:font-[200]"
+                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
               />
             </div>
 
@@ -114,7 +116,7 @@ const AddService = () => {
                 name="serviceArea"
                 required
                 placeholder="Service Area"
-                className="w-full rounded p-2 bg-white outline-[#3CA200] border border-white hover:border hover:border-[#3CA200] placeholder:font-[200]"
+                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
               />
             </div>
 
@@ -126,7 +128,7 @@ const AddService = () => {
                 id=""
                 cols="30"
                 rows="5"
-                className="w-full rounded p-2 bg-white outline-[#3CA200] border border-white hover:border hover:border-[#3CA200] placeholder:font-[200]"
+                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
               ></textarea>
             </div>
 
@@ -145,21 +147,21 @@ const AddService = () => {
 
         {/* right */}
         <div>
-          <div className="flex flex-col justify-center items-start px-10 py-12 bg-[#F4F6F0] rounded-r-4xl shadow-lg">
+          <div className={`flex flex-col justify-center items-start px-10 py-12 rounded-r-4xl shadow-lg ${theme === 'light' ? 'bg-[#F4F6F0]' : 'bg-[#26313D]'}`}>
             <h2
               data-aos="fade-up"
-              className="text-3xl md:text-4xl font-medium text-gray-800 mb-4 leading-tight font-p"
+              className={`text-3xl md:text-4xl font-medium mb-4 leading-tight font-p ${theme === 'light' ? 'text-gray-800' : 'text-gray-300'}`}
             >
               Share Your Talent <br /> with the Digital World
             </h2>
 
-            <p className="text-gray-700 text-base mb-6 max-w-md font-o font-light">
+            <p className={`text-base mb-6 max-w-md font-o font-light ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>
               Whether you're a designer, marketer, writer, developer, or
               consultant — DigitalSheba is your gateway to reach new clients and
               earn on your own terms. Let your service speak for itself.
             </p>
 
-            <ul className="space-y-3 text-gray-600 text-sm">
+            <ul className={`space-y-3 text-sm ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>
               <li className="flex gap-2 items-center">
                 <FaCircleCheck className="text-[#3CA200]" />
                 <span>Get discovered by customers near you</span>
@@ -175,17 +177,13 @@ const AddService = () => {
             </ul>
           </div>
 
-          <div className="mt-10 colorful h-60 rounded-4xl">
-            {/* <img
-              src={serviceImg}
-              alt="Service Illustration"
-              className="w-full h-auto md:h-60 object-cover rounded-r-3xl"
-            /> */}
+          <div className={`mt-10 h-60 rounded-4xl ${theme === 'light' ? 'colorful' : 'grad2'}`}>
+
           </div>
         </div>
       </div>
       {/* another section */}
-      <section className="w-11/12 mx-auto bg-[#3CA200] py-32 px-6 md:px-20 text-center mb-40 rounded-4xl">
+      <section className={`w-11/12 mx-auto py-32 px-6 md:px-20 text-center mb-40 rounded-4xl ${theme === 'light' ? 'bg-[#3CA200]' : 'border border-[#2d3c4d] text-black bg-[#1d252e]'}`}>
         <div className="max-w-5xl mx-auto">
           <h2
             data-aos="fade-up"
@@ -209,32 +207,32 @@ const AddService = () => {
                 clipPath:
                   "polygon(32.2492676px 0, calc(100% - 29.883191px) 14.1670774px, calc(100% - 29.883191px) 14.1670774px, calc(100% - 24.96109729px) 14.87537046px, calc(100% - 20.31945472px) 16.29591632px, calc(100% - 16.01424199px) 18.36886116px, calc(100% - 12.1014378px) 21.03435113px, calc(100% - 8.63702087px) 24.23253242px, calc(100% - 5.67696992px) 27.9035512px, calc(100% - 3.27726365px) 31.98755362px, calc(100% - 1.49388076px) 36.42468587px, calc(100% - 0.38279998px) 41.1550941px, calc(100% - 5.68434189E-14px) 46.1189245px, calc(100% - 0px) calc(100% - 32.02092px), calc(100% - 0px) calc(100% - 32.02092px), calc(100% - 0.41860061px) calc(100% - 26.8269604px), calc(100% - 1.63050344px) calc(100% - 21.89983258px), calc(100% - 3.56985995px) calc(100% - 17.30546357px), calc(100% - 6.1708216px) calc(100% - 13.10978045px), calc(100% - 9.36753988px) calc(100% - 9.37871025px), calc(100% - 13.09416624px) calc(100% - 6.17818003px), calc(100% - 17.28485217px) calc(100% - 3.57411685px), calc(100% - 21.87374912px) calc(100% - 1.63244774px), calc(100% - 26.79500858px) calc(100% - 0.41909978px), calc(100% - 31.982782px) calc(100% - 5.68434189E-14px), 31.9827822px calc(100% - 0px), 31.9827822px calc(100% - 0px), 26.79500879px calc(100% - 0.41909978px), 21.87374934px calc(100% - 1.63244774px), 17.28485237px calc(100% - 3.57411685px), 13.09416641px calc(100% - 6.17818003px), 9.36754001px calc(100% - 9.37871025px), 6.1708217px calc(100% - 13.10978045px), 3.56986001px calc(100% - 17.30546357px), 1.63050347px calc(100% - 21.89983258px), .41860062px calc(100% - 26.8269604px), 5.29492535E-31px calc(100% - 32.02092px), 0 32.0209204px, 0 32.0209204px, .41860062px 26.82696079px, 1.63050347px 21.89983293px, 3.56986001px 17.30546389px, 6.1708217px 13.10978071px, 9.36754001px 9.37871045px, 13.09416641px 6.17818017px, 17.28485237px 3.57411693px, 21.87374934px 1.63244779px, 26.79500879px .41909979px, 31.9827822px 5.30123935E-31px, 31.9827822px 0, 32.11152455px 0, 32.2175794px 0, 32.30094672px 0, 32.36162654px 0, 32.39961884px 0, 32.41492362px 0, 32.40754089px 0, 32.37747064px 0, 32.32471288px 0, 32.2492676px 0)",
               }}
-              className="bg-[#E8F5D3] shadow-md rounded-xl px-6 py-18 hover:shadow-lg transition"
+              className={`shadow-md rounded-xl px-6 py-18 hover:shadow-lg transition ${theme === 'light' ? 'bg-[#E8F5D3]' : 'text-white bg-[#26313d]'}`}
             >
-              <h3 className="text-xl md:text-2xl font-medium font-p mb-2 text-black">
+              <h3 className="text-xl md:text-2xl font-medium font-p mb-2">
                 🚀 Grow Fast
               </h3>
-              <p className="text-gray-600 font-[300] font-o">
+              <p className={`font-[300] font-o ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>
                 List your services and connect with clients instantly. No
                 complex setup or upfront cost.
               </p>
             </div>
 
-            <div className="bg-[#E8F5D3] shadow-md rounded-xl px-6 py-18 hover:shadow-lg transition">
-              <h3 className="text-xl md:text-2xl font-medium font-p mb-2 text-black">
+            <div className={`shadow-md rounded-xl px-6 py-18 hover:shadow-lg transition ${theme === 'light' ? 'bg-[#E8F5D3]' : 'text-white bg-[#26313d]'}`}>
+              <h3 className="text-xl md:text-2xl font-medium font-p mb-2">
                 🌐 Build Presence
               </h3>
-              <p className="text-gray-600 font-[300] font-o">
+              <p className={`font-[300] font-o ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>
                 Create a professional listing and let your services shine online
                 24/7.
               </p>
             </div>
 
-            <div className="bg-[#E8F5D3] shadow-md rounded-xl px-6 py-18 hover:shadow-lg transition add-service-path">
-              <h3 className="text-xl md:text-2xl font-medium mb-2 text-black font-p">
+            <div className={`shadow-md rounded-xl px-6 py-18 hover:shadow-lg transition add-service-path ${theme === 'light' ? 'bg-[#E8F5D3]' : 'text-white bg-[#26313d]'}`}>
+              <h3 className="text-xl md:text-2xl font-medium mb-2 font-p">
                 💬 Real Support
               </h3>
-              <p className="text-gray-600 font-o font-[300]">
+              <p className={`font-[300] font-o ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>
                 Our team helps you succeed with tools, support, and visibility
                 on the platform.
               </p>

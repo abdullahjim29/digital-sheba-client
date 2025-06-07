@@ -4,11 +4,14 @@ import Lottie from "lottie-react";
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
+import useTheme from "../hooks/useTheme";
 
 const Login = () => {
-  const { loginWithGoogle, loginUser, user } = useAuth();
+  const { loginWithGoogle, loginUser} = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const theme = useTheme();
+
 
   // login with google
   const handleGoogleLogin = () => {
@@ -45,19 +48,19 @@ const Login = () => {
       <Helmet>
         <title>Login</title>
       </Helmet>
-      <div className="flex flex-col lg:flex-row items-center gap-10">
+      <div className="flex flex-col lg:flex-row items-center gap-10 pt-10">
         <div className="w-full md:w-1/2 flex flex-col items-center md:items-end">
           <Lottie animationData={loginLottie} className="w-4/6"></Lottie>
         </div>
-        <div className="w-full max-w-md p-4 rounded-md sm:p-8 bg-base-100  dark:text-gray-800 border border-[#E0E0E0] shadow-md">
-          <h2 className="mb-3 text-3xl font-bold text-center text-[#2E2E2E]">
+        <div className={`w-full max-w-md p-4 rounded-md sm:p-8  shadow-md ${theme === 'light' ? 'bg-base-100 text-gray-800 border border-[#E0E0E0]' : 'bg-[#26313d] text-white'}`}>
+          <h2 className={`mb-3 text-3xl font-bold text-center ${theme === 'light' ? 'text-[#2E2E2E]' : ''}`}>
             Login to your account
           </h2>
-          <p className="text-sm text-center text-[#757575]">
-            Dont have account?
+          <p className={`text-sm text-center ${theme === 'light' ? 'text-[#757575]' : ''}`}>
+            Dont have account?&nbsp; 
             <Link
               to={"/register"}
-              className="focus:underline hover:underline text-[#3CA200]"
+              className={`focus:underline hover:underline ${theme === 'light' ? 'text-[#3CA200]' : 'text-gray-300'}`}
             >
               Register here
             </Link>
@@ -94,14 +97,14 @@ const Login = () => {
                   name="email"
                   id="email"
                   placeholder="demo@gmail.com"
-                  className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:text-gray-800 focus:dark:border-violet-600"
+                  className={`w-full px-3 py-2 border rounded-md focus:dark:border-violet-600 ${theme === 'light' ? 'dark:border-gray-300 dark:text-gray-800' : ''}`}
                 />
               </div>
               <div className="space-y-2">
                 {/* password */}
                 <div className="flex justify-between">
                   <label className="text-sm">Password</label>
-                  <Link className="text-xs hover:underline dark:text-gray-600">
+                  <Link className={`text-xs hover:underline ${theme === 'light' ? 'dark:text-gray-600' : ''}`}>
                     Forgot password?
                   </Link>
                 </div>
@@ -110,7 +113,7 @@ const Login = () => {
                   name="password"
                   id="password"
                   placeholder="*****"
-                  className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:text-gray-800 focus:dark:border-violet-600"
+                  className={`w-full px-3 py-2 border rounded-md focus:dark:border-violet-600 ${theme === 'light' ? 'dark:border-gray-300 dark:text-gray-800' : ''}`}
                 />
               </div>
             </div>

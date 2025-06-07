@@ -67,10 +67,12 @@ const AuthProvider = ({ children }) => {
       } else {
         axiosInstance
           .post("/remove-token", {})
-          .then((res) => {
-            console.log(res.data);
+          .then(() => {
+            setLoading(false)
           })
-          .catch((err) => console.log(err));
+          .catch(() => {
+            setLoading(false)
+          });
       }
     });
 

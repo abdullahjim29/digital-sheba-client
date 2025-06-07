@@ -2,9 +2,10 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { motion, useScroll, useSpring } from "framer-motion";
-import { useEffect } from "react";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import { useEffect, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import ThemeContext from "../context/ThemeContext";
 
 const MainLayout = () => {
   const { scrollYProgress } = useScroll();
@@ -14,12 +15,18 @@ const MainLayout = () => {
     restDelta: 0.001,
   });
 
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "light"
+  );
 
   useEffect(() => {
-    AOS.init({
+    AOS.init({});
+  }, []);
 
-    });
-  }, [])
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    document.querySelector("html").setAttribute("data-theme", theme);
+  }, [theme]);
 
   return (
     <>
@@ -33,15 +40,21 @@ const MainLayout = () => {
       />
 
       {/* Layout */}
-      <div className="min-h-screen flex flex-col">
-        <Navbar  onSearchClick={() => setIsSearchOpen(true)}/>
-        <div className="flex-grow">
-          <main>
-            <Outlet />
-          </main>
+      <ThemeContext.Provider value={theme}>
+        <div
+          className={`min-h-screen flex flex-col transition-colors duration-500 ${
+            theme === "dark" ? "bg-[#1D232A] text-white" : "bg-white text-black"
+          }`}
+        >
+          <Navbar theme={theme} setTheme={setTheme} />
+          <div className="flex-grow">
+            <main>
+              <Outlet />
+            </main>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
+      </ThemeContext.Provider>
     </>
   );
 };

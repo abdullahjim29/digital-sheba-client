@@ -2,10 +2,12 @@ import consultationIcon from "../assets/images/consultation.png";
 import toolIcon from "../assets/images/tool.png";
 import checkmarkIcon from "../assets/images/mark.png";
 import expertIcon from "../assets/images/expert.png";
+import useTheme from "../hooks/useTheme";
 
 const WhyChooseUs = () => {
+  const theme = useTheme();
   return (
-    <div className="w-[95%] mx-auto bg-[#3CA200] my-40 px-10 py-20 rounded-4xl">
+    <div className={`w-[95%] mx-auto my-40 px-10 py-20 rounded-4xl ${theme === 'light' ? 'bg-[#3CA200]' : 'border border-[#2d3c4d] text-black bg-[#1d252e]'}`}>
       <div className="text-center font-p space-y-5 mb-14">
         <h4 className="font-thin text-white">WHY CHOOSE US</h4>
         <h2
@@ -24,7 +26,7 @@ const WhyChooseUs = () => {
         className="cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-center"
       >
         <div
-          className="bg-[#E8F5D3] px-5 py-12 space-y-3 first-path"
+          className={`${theme === 'light' ? 'bg-[#E8F5D3]' : 'text-white bg-[#26313d]'} px-5 py-12 space-y-3 first-path`}
         >
           <div className="bg-white p-4 rounded-3xl w-[25%]">
             <img className="max-w-full" src={consultationIcon} alt="" />
@@ -32,14 +34,14 @@ const WhyChooseUs = () => {
           <h3 className="text-xl md:text-2xl font-medium">
             Free Consultation & Transparent Pricing
           </h3>
-          <p className="text-gray-900 font-[200] font-o">
+          <p className={`${theme === 'light'? 'text-gray-900' : 'text-gray-200'} font-[200] font-o`}>
             Get a clear estimate fast – no hidden fees, just simple and honest
             pricing.
           </p>
         </div>
 
         <div
-          className="bg-[#E8F5D3] px-5 py-10 space-y-3 second-path"
+          className={`${theme === 'light' ? 'bg-[#E8F5D3]' : 'text-white bg-[#26313d]'} px-5 py-12 space-y-3 second-path`}
         >
           <div className="bg-white p-4 rounded-3xl w-[25%]">
             <img className="max-w-full" src={toolIcon} alt="" />
@@ -47,14 +49,14 @@ const WhyChooseUs = () => {
           <h3 className="text-xl md:text-2xl font-medium">
             Tools & Tech Provided
           </h3>
-          <p className="text-gray-900 font-[200] font-o">
+          <p className={`${theme === 'light'? 'text-gray-900' : 'text-gray-200'} font-[200] font-o`}>
             We bring the right tools, software, and expertise to handle your
             digital needs.
           </p>
         </div>
 
         <div
-          className="bg-[#E8F5D3] px-5 py-10 space-y-3 third-path"
+          className={`${theme === 'light' ? 'bg-[#E8F5D3]' : 'text-white bg-[#26313d]'} px-5 py-12 space-y-3 third-path`}
         >
           <div className="bg-white p-4 rounded-3xl w-[25%]">
             <img className="max-w-full" src={checkmarkIcon} alt="" />
@@ -62,14 +64,14 @@ const WhyChooseUs = () => {
           <h3 className="text-xl md:text-2xl font-medium">
             100% Client Satisfaction
           </h3>
-          <p className="text-gray-900 font-[200] font-o">
+          <p className={`${theme === 'light'? 'text-gray-900' : 'text-gray-200'} font-[200] font-o`}>
             Not satisfied? We’ll revise or improve until you’re happy –
             guaranteed.
           </p>
         </div>
 
         <div
-          className="bg-[#E8F5D3] px-5 py-10 space-y-3 fourth-path"
+          className={`${theme === 'light' ? 'bg-[#E8F5D3]' : 'text-white bg-[#26313d]'} px-5 py-12 space-y-3 fourth-path`}
         >
           <div className="bg-white p-4 rounded-3xl w-[25%]">
             <img className="max-w-full" src={expertIcon} alt="" />
@@ -78,7 +80,7 @@ const WhyChooseUs = () => {
             {" "}
             Vetted & Verified Experts
           </h3>
-          <p className="text-gray-900 font-[200] font-o">
+          <p className={`${theme === 'light'? 'text-gray-900' : 'text-gray-200'} font-[200] font-o`}>
             We carefully verify each provider to ensure you receive safe,
             quality service.
           </p>

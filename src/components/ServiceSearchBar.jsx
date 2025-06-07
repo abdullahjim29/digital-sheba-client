@@ -1,6 +1,8 @@
 import { FaSearch } from "react-icons/fa";
+import useTheme from "../hooks/useTheme";
 
 const ServiceSearchBar = ({setSearchVaue}) => {
+  const theme = useTheme();
   return (
     <div
       data-aos="fade-down"
@@ -12,7 +14,8 @@ const ServiceSearchBar = ({setSearchVaue}) => {
         onChange={(e) => setSearchVaue(e.target.value)}
           type="text"
           placeholder="Search for services with title (e.g. Web Design, SEO)..."
-          className="w-full bg-white border border-gray-300 rounded-full py-3 pl-12 pr-4 shadow-md focus:outline-none focus:ring-2 focus-within:ring-2 focus-within:ring-blue-400 transition duration-300 text-gray-700 placeholder-gray-400 font-o font-[400]"
+          className={`w-full border border-gray-300 rounded-full py-3 pl-12 pr-4 shadow-md focus:outline-none focus:ring-2 focus-within:ring-2 focus-within:ring-blue-400 transition duration-300 text-gray-700 placeholder-gray-400 font-o font-[400] ${theme === 'light' ? 'bg-white' : 'bg-[#1D232A] focus:text-gray-200'}`}
+
         />
         <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg" />
       </div>

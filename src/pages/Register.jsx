@@ -4,9 +4,11 @@ import Lottie from "lottie-react";
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
+import useTheme from "../hooks/useTheme";
 const Register = () => {
   const { createNewUser, loginWithGoogle, updateUser } = useAuth();
   const navigate = useNavigate();
+  const theme = useTheme();
 
   // create a new user with email and password
   const handleCreateUser = (e) => {
@@ -56,16 +58,16 @@ const Register = () => {
       <Helmet>
         <title>Register</title>
       </Helmet>
-      <div className="flex flex-col lg:flex-row items-center gap-10">
+      <div className="flex flex-col lg:flex-row items-center gap-10 pt-10">
         <div className="w-full md:w-1/2 flex flex-col items-center md:items-end">
           <Lottie animationData={loginLottie} className="w-5/6"></Lottie>
         </div>
-        <div className="w-full max-w-md p-4 rounded-md shadow-md sm:p-8 bg-base-100  dark:text-gray-800 border border-[#E0E0E0]">
-          <h2 className="mb-3 text-3xl font-bold text-center text-[#2E2E2E]">
+        <div className={`w-full max-w-md p-4 rounded-md sm:p-8  shadow-md ${theme === 'light' ? 'bg-base-100 text-gray-800 border border-[#E0E0E0]' : 'bg-[#26313d] text-white'}`}>
+          <h2 className={`mb-3 text-3xl font-bold text-center ${theme === 'light' ? 'text-[#2E2E2E]' : ''}`}>
             Create your account
           </h2>
-          <p className="text-sm text-center dark:text-gray-600">
-            Already have an account?
+          <p className={`text-sm text-center ${theme === 'light' ? 'text-[#757575]' : ''}`}>
+            Already have an account?&nbsp;
             <Link
               to={"/login"}
               className="focus:underline hover:underline text-[#3A86FF]"
@@ -79,7 +81,7 @@ const Register = () => {
             <button
               onClick={handleGoogleLogin}
               aria-label="Login with Google"
-              className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-gray-400 cursor-pointer hover:bg-gray-50"
+              className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-gray-400 cursor-pointer"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +107,7 @@ const Register = () => {
                   name="name"
                   id="name"
                   placeholder="Your Name"
-                  className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:text-gray-800 focus:dark:border-gray-400"
+                  className={`w-full px-3 py-2 border rounded-md focus:dark:border-violet-600 ${theme === 'light' ? 'dark:border-gray-300 dark:text-gray-800' : ''}`}
                 />
               </div>
 
@@ -117,7 +119,7 @@ const Register = () => {
                   name="email"
                   id="email"
                   placeholder="demo@gmail.com"
-                  className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:text-gray-800 focus:dark:border-gray-400"
+                  className={`w-full px-3 py-2 border rounded-md focus:dark:border-violet-600 ${theme === 'light' ? 'dark:border-gray-300 dark:text-gray-800' : ''}`}
                 />
               </div>
 
@@ -131,7 +133,7 @@ const Register = () => {
                   name="password"
                   id="password"
                   placeholder="*****"
-                  className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:text-gray-800 focus:dark:border-gray-400"
+                  className={`w-full px-3 py-2 border rounded-md focus:dark:border-violet-600 ${theme === 'light' ? 'dark:border-gray-300 dark:text-gray-800' : ''}`}
                 />
               </div>
 
@@ -145,7 +147,7 @@ const Register = () => {
                   name="photo"
                   id="photo"
                   placeholder="*****"
-                  className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:text-gray-800 focus:dark:border-gray-400"
+                  className={`w-full px-3 py-2 border rounded-md focus:dark:border-violet-600 ${theme === 'light' ? 'dark:border-gray-300 dark:text-gray-800' : ''}`}
                 />
               </div>
             </div>

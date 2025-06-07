@@ -9,4 +9,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  daisyui: {
+    themes: ["light", "dark"], // make sure both are enabled
+  },
 })

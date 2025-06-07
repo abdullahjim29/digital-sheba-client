@@ -9,6 +9,7 @@ import {
   FaLanguage,
   FaUsers,
 } from "react-icons/fa";
+import useTheme from "../hooks/useTheme";
 
 
 const iconMap = {
@@ -22,6 +23,7 @@ const iconMap = {
 };
 
 const AddonServices = () => {
+  const theme = useTheme();
 
     const [addonsData, setAddonsData] = useState([]);
     useEffect(() => {
@@ -33,7 +35,7 @@ const AddonServices = () => {
       <h2 data-aos="fade-up" data-aos-duration="1000" className="text-xl md:text-2xl lg:text-4xl font-medium text-center font-p mb-4 w-full md:w-8/12 lg:w-6/12 mx-auto leading-auto lg:leading-12">
         Add-on Services for Enhanced Digital Support
       </h2>
-      <p className="text-center text-gray-600 font-o font-[300] mb-10 w-full md:w-10/12 lg:w-6/12 mx-auto">
+      <p className={`text-center font-o font-[300] mb-10 w-full md:w-10/12 lg:w-6/12 mx-auto ${theme === 'light' ? 'text-gray-600 ' : 'text-gray-300'}`}>
         Boost your service with extra features and extended support. These
         optional add-ons help you get the most value from your booking.
       </p>
@@ -41,12 +43,12 @@ const AddonServices = () => {
         {addonsData.map((addon, idx) => (
           <div
             key={idx}
-            className="bg-[#F4F6F0] shadow-md rounded-2xl p-6 hover:shadow-lg transition duration-300"
+            className={`shadow-md rounded-2xl p-6 hover:shadow-lg transition duration-300 ${theme === 'light' ? 'bg-[#F4F6F0]' : 'bg-[#26313D]'}`}
           >
             <div className="mb-4">{iconMap[addon.icon]}</div>
             <h3 className="text-lg font-semibold font-p mb-1">{addon.title}</h3>
-            <p className="text-sm text-[#3CA200] font-o mb-2">{addon.price}</p>
-            <p className="text-gray-600 text-sm font-o">{addon.description}</p>
+            <p className={`text-sm font-o mb-2 ${theme === 'light' ? 'text-[#3CA200]' : 'text-[#4787cc]'}`}>{addon.price}</p>
+            <p className={`text-sm font-o ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>{addon.description}</p>
           </div>
         ))}
       </div>

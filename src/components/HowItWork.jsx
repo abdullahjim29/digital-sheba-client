@@ -1,8 +1,10 @@
 import service from "../assets/images/service.png"
 import provider from "../assets/images/provider.png"
 import relax from "../assets/images/relax.png"
+import useTheme from "../hooks/useTheme";
 
 const HowItWork = () => {
+    const theme = useTheme();
     return (
         <div className="my-20 w-11/12 mx-auto space-y-10 font-p">
 
@@ -17,9 +19,9 @@ const HowItWork = () => {
 
                 {/* service */}
                 <div className="flex flex-col items-center space-y-3 text-center">
-                    <div className="border border-[#3CA200] bg-[#E8F5D3] rounded-full w-2/6 p-6 md:w-4/6 md:p-6 lg:p-8 "><img src={service} alt="" /></div>
+                    <div className={`border rounded-full w-2/6 p-6 md:w-4/6 md:p-6 lg:p-8 ${theme === 'light' ? 'border-[#3CA200] bg-[#E8F5D3]' : 'border border-gray-400'}`}><img src={service} alt="" /></div>
                     <h3 className="text-lg lg:text-2xl">Request a Service</h3>
-                    <p className="text-gray-900 font-o font-[200]">Pick a service and share your needs – it’s quick and simple.</p>
+                    <p className={`font-o font-[200] ${theme === 'light' ? 'text-gray-900' : 'text-gray-300'}`}>Pick a service and share your needs – it’s quick and simple.</p>
                 </div>
 
                 {/* arrow 1*/}
@@ -29,9 +31,9 @@ const HowItWork = () => {
 
                 {/* provider */}
                 <div className="flex flex-col items-center space-y-3 text-center">
-                    <div className="border border-[#3CA200] bg-[#E8F5D3] rounded-full w-2/6 p-6 md:w-4/6 md:p-6 lg:p-8 "><img src={provider} alt="" /></div>
+                    <div className={`border rounded-full w-2/6 p-6 md:w-4/6 md:p-6 lg:p-8 ${theme === 'light' ? 'border-[#3CA200] bg-[#E8F5D3]' : 'border border-gray-400'}`}><img src={provider} alt="" /></div>
                     <h3 className="text-lg lg:text-2xl">Matched To Expert</h3>
-                    <p className="text-gray-900 font-o font-[200]">We’ll match you with someone perfect for your chosen service.</p>
+                    <p className={`font-o font-[200] ${theme === 'light' ? 'text-gray-900' : 'text-gray-300'}`}>We’ll match you with someone perfect for your chosen service.</p>
                 </div>
 
                 {/* arrow 2*/}
@@ -41,9 +43,9 @@ const HowItWork = () => {
 
                 {/* relax */}
                 <div className="flex flex-col items-center space-y-3 text-center">
-                    <div className="border border-[#3CA200] bg-[#E8F5D3] rounded-full w-2/6 p-6 md:w-4/6 md:p-6 lg:p-8 "><img src={relax} alt="" /></div>
+                    <div className={`border rounded-full w-2/6 p-6 md:w-4/6 md:p-6 lg:p-8 ${theme === 'light' ? 'border-[#3CA200] bg-[#E8F5D3]' : 'border border-gray-400'}`}><img src={relax} alt="" /></div>
                     <h3 className="text-lg lg:text-2xl">Hassle Free Service</h3>
-                    <p className="text-gray-900 font-o font-[200]">Sit back and relax while our team handles it all for you.</p>
+                    <p className={`font-o font-[200] ${theme === 'light' ? 'text-gray-900' : 'text-gray-300'}`}>Sit back and relax while our team handles it all for you.</p>
                 </div>
             </div>
         </div>

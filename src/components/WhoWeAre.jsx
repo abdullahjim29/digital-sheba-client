@@ -1,9 +1,11 @@
 import workingPeople3 from "../assets/images/working3.jpg";
 import { FaCircleCheck } from "react-icons/fa6";
+import useTheme from "../hooks/useTheme";
 
 const WhoWeAre = () => {
+  const theme = useTheme();
   return (
-    <div className="max-w-11/12 mx-auto mt-40 bg-[#F4F6F0] rounded-3xl flex justify-between flex-col lg:flex-row p-10">
+    <div className={`max-w-11/12 mx-auto mt-40 rounded-3xl flex justify-between flex-col lg:flex-row p-10 ${theme === 'light' ? 'bg-[#F4F6F0] text-black' : 'border border-[#2d3c4d] bg-[#1d252e]'}`}>
       {/* left side */}
       <div className="w-full lg:w-3/6 font-p space-y-6">
         <h4 className="font-light">WHO WE ARE</h4>
@@ -17,7 +19,7 @@ const WhoWeAre = () => {
         <p
           data-aos="zoom-in"
           data-aos-duration="2000"
-          className="text-gray-900 font-o font-[200] w-full lg:w-10/12"
+          className="font-o font-[200] w-full lg:w-10/12"
         >
           At Digital Sheba, our goal is to connect you with expert professionals
           in web development, graphic design, digital marketing, and more —

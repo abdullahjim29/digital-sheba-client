@@ -9,7 +9,7 @@ import TestimonialForm from "../components/TestimonialForm";
 import Accordion from "../components/Accordion";
 
 const Home = () => {
-  return (
+  return <>
     <div>
       <Helmet>
         <title>Home</title>
@@ -38,8 +38,8 @@ const Home = () => {
 
       {/* accordion */}
       <Accordion />
-    </div>
-  );
+    </div> 
+    </>
 };
 
 export default Home;

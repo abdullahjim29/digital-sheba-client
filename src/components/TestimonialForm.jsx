@@ -1,15 +1,15 @@
 import { FaCircleCheck } from "react-icons/fa6";
 import happyCustomer1 from "../assets/images/happyCustomer1.jpg";
+import useTheme from "../hooks/useTheme";
 
 const TestimonialForm = () => {
+  const theme = useTheme();
   return (
     <div className="my-28 w-11/12 mx-auto">
       {/* form container */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         {/* left */}
-        <div
-          className="p-10 grad testimonial-path"
-        >
+        <div className={`p-10 testimonial-path ${theme === 'light' ? 'grad text-black' : 'grad2'}`}>
           <h2
             data-aos="fade-up"
             data-aos-duration="1000"
@@ -32,7 +32,7 @@ const TestimonialForm = () => {
               <input
                 type="text"
                 name="firstName"
-                className="w-full rounded p-2 bg-white outline-[#3CA200] border border-white hover:border hover:border-[#3CA200] placeholder:font-[200]"
+                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
                 placeholder="John"
               />
             </div>
@@ -42,7 +42,7 @@ const TestimonialForm = () => {
               <input
                 type="text"
                 name="lastName"
-                className="w-full rounded p-2 bg-white outline-[#3CA200] border border-white hover:border hover:border-[#3CA200] placeholder:font-[200]"
+                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
                 placeholder="Smith"
               />
             </div>
@@ -54,7 +54,7 @@ const TestimonialForm = () => {
               <input
                 type="email"
                 name="email"
-                className="w-full rounded p-2 bg-white outline-[#3CA200] border border-white hover:border hover:border-[#3CA200] placeholder:font-[200]"
+                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
                 placeholder="e.g.john@youremail.com"
               />
             </div>
@@ -66,7 +66,7 @@ const TestimonialForm = () => {
               <input
                 type="text"
                 name="phone"
-                className="w-full rounded p-2 bg-white outline-[#3CA200] border border-white hover:border hover:border-[#3CA200] placeholder:font-[200]"
+                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
                 placeholder="e.g.+8801234567890"
               />
             </div>
@@ -77,7 +77,7 @@ const TestimonialForm = () => {
               </label>
               <select
                 defaultValue={"Choose Your Service"}
-                className="rounded-md p-2 bg-white w-full outline-[#3CA200] border border-white hover:border hover:border-[#3CA200] placeholder:font-[200]"
+                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
               >
                 <option disabled>Choose Your Service</option>
                 <option>Web Development</option>
@@ -96,7 +96,7 @@ const TestimonialForm = () => {
               <textarea
                 name="comment"
                 rows="3"
-                className="w-full rounded p-2 bg-white outline-[#3CA200] border border-white hover:border hover:border-[#3CA200] placeholder:font-[200]"
+                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
                 placeholder="Leave Your Comment"
               />
             </div>
@@ -126,12 +126,18 @@ const TestimonialForm = () => {
           </div>
 
           {/* text */}
-          <div className="bg-[#F4F6F0] p-10 rounded-3xl space-y-5">
+          <div
+            className={`p-10 rounded-3xl space-y-5 ${
+              theme === "light"
+                ? "bg-[#F4F6F0] text-black"
+                : "bg-[#26313d] text-white"
+            }`}
+          >
             <div className="flex items-center gap-3">
               <FaCircleCheck className="text-xl md:text-2xl text-[#3CA200]" />
               <h3 className="text-2xl font-p">100% Customer Satisfaction</h3>
             </div>
-            <p className="w-full md:w-8/12 font-o ml-8 font-[200] text-gray-900">
+            <p className="w-full md:w-8/12 font-o ml-8 font-[200]">
               At Digital Sheba, your satisfaction is our top priority. We
               proudly offer a 100% Service Guarantee on all bookings. Your
               feedback helps us grow and serve you better!

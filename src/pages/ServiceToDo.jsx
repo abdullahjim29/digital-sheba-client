@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { FaRegClock, FaTools, FaCheckCircle } from "react-icons/fa";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import useTheme from "../hooks/useTheme";
 
 const statusOptions = [
   {
@@ -30,6 +31,7 @@ const ServiceToDo = () => {
   const { user } = useAuth();
   const [bookedServices, setBookedServices] = useState([]);
   const axiosInstance = useAxiosSecure();
+  const theme = useTheme();
 
   useEffect(() => {
     axiosInstance(`/booked/services?provider=${user?.email}`)
@@ -57,7 +59,7 @@ const ServiceToDo = () => {
   return (
     <>
       <div className="divider"></div>
-      <div className="min-h-screen py-10 px-4">
+      <div className="min-h-screen py-14 px-4">
         <Helmet>
           <title>Service To Do</title>
         </Helmet>
@@ -82,10 +84,10 @@ const ServiceToDo = () => {
                 return (
                   <div
                     key={service._id}
-                    className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition border border-gray-100"
+                    className={`p-6 rounded-xl shadow hover:shadow-lg transition border border-gray-100 ${theme === 'light' ? 'bg-white' : 'text-white bg-[#26313d] border-none'}`}
                   >
                     <div className="flex justify-between items-start">
-                      <h2 className="text-lg font-medium text-[#3CA200] font-p">
+                      <h2 className={`text-lg font-medium font-p ${theme === 'light' ? 'text-blue-950' : ''}`}>
                         {service.service_Name}
                       </h2>
                       <span
@@ -96,7 +98,7 @@ const ServiceToDo = () => {
                       </span>
                     </div>
 
-                    <div className="mt-4 space-y-2 text-sm text-gray-700 font-o">
+                    <div className={`text-sm font-o mt-4 ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>
                       <p>
                         <span className="font-medium">Client:</span>{" "}
                         {service.userEmail}
@@ -111,7 +113,7 @@ const ServiceToDo = () => {
                       <select
                         value={service.serviceStatus}
                         onChange={(e) => handleStatusChange(e, service._id)}
-                        className={`${service.serviceStatus === 'completed' && 'hidden'} w-full border border-[#3CA200] rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3CA200] bg-white text-sm`}
+                        className={`${service.serviceStatus === 'completed' && 'hidden'} w-full rounded-md px-3 py-2 text-sm ${theme === 'light' ? 'focus:outline-none focus:ring-2 focus:ring-[#3CA200] bg-white border border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
                       >
                         {statusOptions.map((opt) => (
                           <option key={opt.value} value={opt.value}>

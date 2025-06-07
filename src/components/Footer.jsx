@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { MdLocalPhone } from "react-icons/md";
+import useTheme from "../hooks/useTheme";
 
 const Footer = () => {
+  const theme = useTheme();
   return (
     <footer
-      className="bg-gradient-to-b from-[#E8F5D3] to-[#F5FBEB] text-gray-800 pt-32 pb-10 px-6 md:px-16 w-[98%] mx-auto footer-path"
+      className={`pt-32 pb-10 px-6 md:px-16 w-[98%] mx-auto footer-path ${theme === 'light' ? 'bg-gradient-to-b from-[#E8F5D3] to-[#F5FBEB] text-gray-800' : 'grad2 text-white'}`}
     >
       {/* Title + Subscribe (Top Row) */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-10">
@@ -30,7 +32,7 @@ const Footer = () => {
             <input
               type="email"
               placeholder="Enter your email"
-              className="px-4 py-2 rounded-full border border-gray-300 focus:outline-none w-auto lg:w-68 bg-white"
+              className={`px-4 py-2 rounded-full border focus:outline-none w-auto lg:w-68 ${theme === 'light' ? 'bg-white border-gray-300' : 'bg-[#1D232A] border border-gray-500'}`}
             />
             <button className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-full bg-[#3CA200] px-4 lg:px-10 font-medium text-white cursor-pointer">
               <div className="translate-y-0 transition duration-700 group-hover:-translate-y-[150%]">
@@ -48,15 +50,15 @@ const Footer = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 text-sm mb-10">
         {/* Services */}
         <div>
-          <h3 className="uppercase font-normal mb-4 font-p">Services</h3>
+          <h3 className="uppercase font-medium mb-4 font-p">Services</h3>
           <div className="grid grid-cols-2 gap-x-4">
-            <ul className="space-y-2 text-gray-600 font-[300] font-o">
+            <ul className={`space-y-2 font-[300] font-o ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>
               <li>Graphic Design</li>
               <li>Web Development</li>
               <li>Digital Marketing</li>
               <li>SEO Optimization</li>
             </ul>
-            <ul className="space-y-2 text-gray-600 font-[300] font-o">
+            <ul className={`space-y-2 font-[300] font-o ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>
               <li>App Development</li>
               <li>Content Writing</li>
               <li>IT Support</li>
@@ -67,9 +69,9 @@ const Footer = () => {
 
         {/* Contact Info */}
         <div>
-          <h3 className="uppercase font-normal mb-4 font-p">Contact Info</h3>
-          <p className="text-gray-600 font-[300] font-o">Digital Sheba HQ</p>
-          <p className="text-gray-600 font-[300] font-o">Plot 12, Sector 3, Uttara, Dhaka 1230</p>
+          <h3 className="uppercase font-medium mb-4 font-p">Contact Info</h3>
+          <p className={`space-y-2 font-[300] font-o ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>Digital Sheba HQ</p>
+          <p className={`space-y-2 font-[300] font-o ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>Plot 12, Sector 3, Uttara, Dhaka 1230</p>
           <button className="group relative inline-flex h-12 items-center justify-between overflow-hidden rounded-full px-4 lg:px-6 font-medium text-black cursor-pointer bg-[#FFFFFF] my-4 gap-3">
               <div className="translate-y-0 transition duration-700 group-hover:-translate-y-[150%]">
                 + 88 (017) 36-242911
@@ -81,13 +83,13 @@ const Footer = () => {
                 <MdLocalPhone/>
               </div>
             </button>
-          <p className="text-green-700 underline">contact@digitalsheba.com</p>
+          <p className={`font-[300] font-o underline ${theme === 'light' ? 'text-gray-800' : 'text-gray-300'}`}>contact@digitalsheba.com</p>
         </div>
 
         {/* Working Hours */}
         <div>
-          <h3 className="uppercase font-normal font-p mb-4">Support</h3>
-          <ul className="space-y-1 text-sm text-gray-600 font-[300] font-o">
+          <h3 className="uppercase font-medium font-p mb-4">Support</h3>
+          <ul className={`space-y-1 font-[300] font-o ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>
             <li>FAQs</li>
             <li>Help Center</li>
             <li>Live Chat (24/7)</li>
@@ -100,16 +102,16 @@ const Footer = () => {
       <div className="border-t border-gray-200 pt-6 text-sm flex flex-col md:flex-row justify-between items-center">
         <p className="font-o font-light">© 2025 Digital Sheba. All Rights Reserved.</p>
         <div className="flex space-x-4 mt-4 md:mt-0">
-          <Link to="/" className="hover:bg-[#3CA200] p-2 rounded-full text-[#3CA200] hover:text-white text-xl">
+          <Link to="/" className={`p-2 rounded-full text-xl ${theme === 'light' ? 'text-[#3CA200] hover:text-white hover:bg-[#3CA200]' : 'hover:bg-[#304255]'}`}>
             <FaFacebook />
           </Link>
-          <Link to="/" className="hover:bg-[#3CA200] p-2 rounded-full text-[#3CA200] hover:text-white text-xl">
+          <Link to="/" className={`p-2 rounded-full text-xl ${theme === 'light' ? 'text-[#3CA200] hover:text-white hover:bg-[#3CA200]' : 'hover:bg-[#304255]'}`}>
             <FaInstagram />
           </Link>
-          <Link to="/" className="hover:bg-[#3CA200] p-2 rounded-full text-[#3CA200] hover:text-white text-xl">
+          <Link to="/" className={`p-2 rounded-full text-xl ${theme === 'light' ? 'text-[#3CA200] hover:text-white hover:bg-[#3CA200]' : 'hover:bg-[#304255]'}`}>
             <FaLinkedin />
           </Link>
-          <Link to="/" className="hover:bg-[#3CA200] p-2 rounded-full text-[#3CA200] hover:text-white text-xl">
+          <Link to="/" className={`p-2 rounded-full text-xl ${theme === 'light' ? 'text-[#3CA200] hover:text-white hover:bg-[#3CA200]' : 'hover:bg-[#304255]'}`}>
             <FaTwitter />
           </Link>
         </div>

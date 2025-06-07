@@ -9,11 +9,13 @@ import loader from "../assets/lottieFiles/loaderLottie.json";
 import AddonServices from "../components/AddonServices";
 import ServiceSearchBar from "../components/ServiceSearchBar";
 import axios from "axios";
+import useTheme from "../hooks/useTheme";
 
 const Services = () => {
   const servicesData = useLoaderData();
   const [services, setServices] = useState([]);
   const [searchValue, setSearchVaue] = useState("");
+  const theme = useTheme();
 
   useEffect(() => {
     axios(`http://localhost:5000/services/?searchParams=${searchValue}`)
@@ -33,8 +35,9 @@ const Services = () => {
     AOS.init({ duration: 600 });
   }, []);
 
-  return (
-    <div className="py-20 px-6 w-[97%] mx-auto services rounded-4xl">
+  return <>
+  <div className="divider"></div>
+  <div className={`py-20 px-6 w-[97%] mx-auto rounded-4xl ${theme === 'light' ? 'services' : ''}`}>
       <Helmet>
         <title>Services</title>
       </Helmet>
@@ -61,7 +64,7 @@ const Services = () => {
       {/* addons */}
       <AddonServices />
     </div>
-  );
+  </>
 };
 
 export default Services;

@@ -5,6 +5,7 @@ import Lottie from "lottie-react";
 import { Helmet } from "react-helmet-async";
 import { FaRegClock, FaTools, FaCheckCircle } from "react-icons/fa";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import useTheme from "../hooks/useTheme";
 
 const statusStyles = {
   pending: {
@@ -28,6 +29,7 @@ const BookedService = () => {
   const { user } = useAuth();
   const [bookedServices, setBookedServices] = useState([]);
   const axiosInstance = useAxiosSecure()
+  const theme = useTheme();
 
   useEffect(() => {
     axiosInstance(`/booked/services?user=${user?.email}`)
@@ -44,7 +46,7 @@ const BookedService = () => {
         <title>Booked Services</title>
       </Helmet>
 
-      <div className="max-w-5xl mx-auto px-6 py-10 mb-20">
+      <div className="max-w-5xl mx-auto px-6 py-14 mb-20">
         <h2 className="text-3xl font-medium text-center mb-10 font-p">
           📋 My Booked Services
         </h2>
@@ -57,10 +59,10 @@ const BookedService = () => {
               return (
                 <div
                   key={service._id}
-                  className="bg-white border border-[#3CA200] rounded-xl p-6 shadow hover:shadow-md transition duration-300"
+                  className={`rounded-xl p-6 shadow hover:shadow-md transition duration-300 ${theme === 'light' ? 'bg-white border border-[#3CA200]' : 'text-white bg-[#26313d] border border-blue-200'}`}
                 >
                   <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-medium font-p text-[#3CA200]">
+                    <h3 className={`text-xl font-medium font-p ${theme === 'light' ? 'text-blue-950' : ''}`}>
                       {service.service_Name}
                     </h3>
                     <span
@@ -71,17 +73,12 @@ const BookedService = () => {
                     </span>
                   </div>
 
-                  <div className="text-gray-700 text-sm space-y-1 font-o">
+                  <div className={`text-sm space-y-1 font-o ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>
                     <p>
                       <span className="font-medium">Provider:</span>{" "}
                       {service.providerName}
                     </p>
-                    {/* <p>
-                      {service.instruction.length > 50
-                        ? `${service.instruction.slice(0, 50)}...`
-                        : service.instruction}
-                    </p> */}
-                    <p className="text-sm dark:text-gray-600 font-o">
+                    <p className={`text-sm space-y-1 font-o ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>
                       <span className="font-semibold">Instruction : </span>
                       {`${
                         service.instruction.length > 30

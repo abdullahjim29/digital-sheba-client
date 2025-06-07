@@ -8,6 +8,7 @@ import Lottie from "lottie-react";
 import { ImCross } from "react-icons/im";
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import useTheme from "../hooks/useTheme";
 
 const ManageServices = () => {
   const { user } = useAuth();
@@ -15,6 +16,7 @@ const ManageServices = () => {
   const [editingService, setEditingService] = useState(null);
   const modalRef = useRef(null);
   const axiosInstance = useAxiosSecure();
+  const theme = useTheme();
 
   useEffect(() => {
     axiosInstance(`/manage-services/?email=${user?.email}`)
@@ -82,7 +84,7 @@ const ManageServices = () => {
   };
 
   return (
-    <div className="mb-32">
+    <div className="mb-32 mt-10">
       <div className="divider"></div>
       <Helmet>
         <title>Manage-Service</title>
@@ -114,9 +116,9 @@ const ManageServices = () => {
       {/* Modal */}
       <dialog id="my_modal_1" className="modal" ref={modalRef}>
         {editingService && (
-          <div className="modal-box w-full max-w-4xl relative grad">
+          <div className={`modal-box w-full max-w-4xl relative ${theme === 'light' ? 'grad text-black' : 'grad2'}`}>
             <button
-              className="absolute right-4 top-4 text-[#000000c7] hover:text-[#000000]"
+              className={`absolute right-4 top-4 ${theme === 'light' ? 'text-[#000000c7] hover:text-[#000000]' : 'text-white hover:text-[#ffffffaf]'}`}
               onClick={closeModal}
             >
               <ImCross className="cursor-pointer" size={20} />
@@ -138,7 +140,7 @@ const ManageServices = () => {
                   type="url"
                   defaultValue={editingService.image}
                   name="serviceImage"
-                  className="w-full rounded px-3 py-2 bg-white"
+                  className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
                 />
               </div>
 
@@ -150,7 +152,7 @@ const ManageServices = () => {
                   type="text"
                   defaultValue={editingService.service}
                   name="serviceName"
-                  className="w-full bg-white rounded px-3 py-2"
+                  className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
                 />
               </div>
 
@@ -160,7 +162,7 @@ const ManageServices = () => {
                   type="text"
                   defaultValue={editingService.price}
                   name="servicePrice"
-                  className="w-full bg-white rounded px-3 py-2"
+                  className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
                 />
               </div>
 
@@ -172,7 +174,7 @@ const ManageServices = () => {
                   type="text"
                   defaultValue={editingService.area}
                   name="serviceArea"
-                  className="w-full bg-white rounded px-3 py-2"
+                  className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
                 />
               </div>
 
@@ -184,7 +186,7 @@ const ManageServices = () => {
                   name="serviceDescription"
                   defaultValue={editingService.description}
                   rows="3"
-                  className="w-full bg-white rounded px-3 py-2"
+                  className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
                 />
               </div>
 

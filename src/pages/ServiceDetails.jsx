@@ -4,12 +4,14 @@ import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import useTheme from "../hooks/useTheme";
 
 const ServiceDetails = () => {
   const serviceData = useLoaderData();
   const { user } = useAuth();
   const navigate = useNavigate();
   const axiosInstance = useAxiosSecure();
+  const theme = useTheme();
 
   const {
     service: serviceName,
@@ -84,14 +86,14 @@ const ServiceDetails = () => {
         </Helmet>
         <div class="max-w-5xl mx-auto p-6 grid md:grid-cols-3 gap-6 mt-10 mb-20">
           {/* <!-- Left Side: Service Details --> */}
-          <div class="md:col-span-2 space-y-4 bg-[#F4F6F0] p-8 rounded-lg shadow-md">
+          <div class={`md:col-span-2 space-y-4 p-8 rounded-lg shadow-md ${theme === 'light' ? 'bg-[#F4F6F0]' : 'text-white bg-[#26313d] border-none'}`}>
             <img
               src={image}
               alt="Service"
               class="w-full object-cover rounded-lg shadow"
             />
-            <h2 class="text-2xl font-bold text-gray-800">{serviceName}</h2>
-            <p class="text-sm text-gray-600">{description}</p>
+            <h2 class={`text-2xl font-bold ${theme === 'light' ? 'text-blue-950' : ''}`}>{serviceName}</h2>
+            <p className={`text-sm font-o mt-4 ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>{description}</p>
             <div class="flex items-center gap-4 pt-4">
               <img
                 src={provider_img}
@@ -119,14 +121,14 @@ const ServiceDetails = () => {
           </div>
 
           {/* <!-- Right Side: Service Provider Info --> */}
-          <div class="bg-gradient-to-b from-[#E8F5D3] to-[#F5FBEB] py-20 px-6 rounded-lg shadow space-y-4 ">
+          <div class={`py-20 px-6 rounded-lg shadow space-y-4 ${theme === 'light' ? 'bg-gradient-to-b from-[#E8F5D3] to-[#F5FBEB]' : 'grad2'}`}>
             <img src={provider_img} class="w-24 h-24 rounded-full mx-auto" />
             <div class="text-center font-o">
               <p className="text-center font-medium font-p mb-2">Service Provider</p>
-              <p class="text-sm text-gray-600">
+              <p className={`text-sm space-y-1 font-o ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>
                 <span className="font-bold">Name:</span> {provider_name}
               </p>
-              <p class="text-sm text-gray-600">
+              <p className={`text-sm space-y-1 font-o ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>
                 <span className="font-bold">Area:</span> {area}
               </p>
             </div>
@@ -135,11 +137,11 @@ const ServiceDetails = () => {
 
         {/* modal */}
         <dialog id="my_modal_1" className="modal">
-          <div className="modal-box w-full max-w-4xl relative grad">
+          <div className={`modal-box w-full max-w-4xl relative ${theme === 'light' ? 'text-[#000000c7] hover:text-[#000000] grad' : 'text-white grad2'}`}>
             {/* action */}
             <div className="modal-action absolute right-6 -top-5">
               <form method="dialog">
-                <button className="rounded-full text-black border p-2 cursor-pointer hover:text-[#000000bb]">
+                <button className={`absolute right-4 top-4 ${theme === 'light' ? 'text-[#000000c7] hover:text-[#000000]' : 'text-white hover:text-[#ffffffaf]'}`}>
                   <ImCross />
                 </button>
               </form>
@@ -165,7 +167,7 @@ const ServiceDetails = () => {
                     name="service_id"
                     defaultValue={_id}
                     disabled={true}
-                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded p-3 text-sm"
+                    className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
                   />
                 </div>
 
@@ -177,7 +179,7 @@ const ServiceDetails = () => {
                     defaultValue={serviceName}
                     name="serviceName"
                     disabled={true}
-                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded p-3 text-sm"
+                    className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
                   />
                 </div>
 
@@ -193,7 +195,7 @@ const ServiceDetails = () => {
                     defaultValue={image}
                     name="serviceImage"
                     disabled={true}
-                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded p-3 text-sm"
+                    className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
                   />
                 </div>
 
@@ -209,7 +211,7 @@ const ServiceDetails = () => {
                     defaultValue={provider_name}
                     name="providerName"
                     disabled={true}
-                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded p-3 text-sm"
+                    className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
                   />
                 </div>
 
@@ -223,7 +225,7 @@ const ServiceDetails = () => {
                     defaultValue={provider_email}
                     name="providerEmail"
                     disabled={true}
-                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded p-3 text-sm"
+                    className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
                   />
                 </div>
 
@@ -237,7 +239,7 @@ const ServiceDetails = () => {
                     defaultValue={user?.displayName}
                     name="userName"
                     disabled={true}
-                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded p-3 text-sm"
+                    className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
                   />
                 </div>
 
@@ -249,7 +251,7 @@ const ServiceDetails = () => {
                     defaultValue={user?.email}
                     name="userEmail"
                     disabled={true}
-                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded p-3 text-sm"
+                    className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
                   />
                 </div>
 
@@ -264,7 +266,7 @@ const ServiceDetails = () => {
                     type="date"
                     name="date"
                     required
-                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded p-3 text-sm"
+                    className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
                   />
                 </div>
 
@@ -276,7 +278,7 @@ const ServiceDetails = () => {
                     defaultValue={price}
                     name="servicePrice"
                     disabled={true}
-                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded p-3 text-sm"
+                    className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
                   />
                 </div>
 
@@ -288,7 +290,7 @@ const ServiceDetails = () => {
                     Special Instructions
                   </label>
                   <textarea
-                    className="w-full bg-white border border-white hover:border hover:border-[#3CA200] rounded p-3 text-sm"
+                    className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
                     rows="3"
                     name="instruction"
                     required
