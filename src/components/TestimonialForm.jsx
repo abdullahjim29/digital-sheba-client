@@ -1,15 +1,68 @@
 import { FaCircleCheck } from "react-icons/fa6";
 import happyCustomer1 from "../assets/images/happyCustomer1.jpg";
 import useTheme from "../hooks/useTheme";
+import axiosInstance from "../hooks/axiosInstance";
+import toast from "react-hot-toast";
+import { useEffect, useState } from "react";
 
 const TestimonialForm = () => {
   const theme = useTheme();
+  const [feedbackError , setFeedbackError] = useState(false);
+  const [countFeedback, setCountFeedback] = useState(0);
+
+  useEffect(() => {
+    if(countFeedback.length >= 115){
+      return setFeedbackError(true);
+     }
+     setFeedbackError(false)
+  }, [countFeedback])
+
+  // testimonial Form
+  const testimonialForm = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const firstName = form.firstName.value;
+    const lastName = form.lastName.value;
+    const service = form.service.value;
+    const photo = form.photoUrl.value;
+    const feedback = form.feedback.value;
+
+    const testimonial = {
+      name: `${firstName} ${lastName}`,
+      service,
+      photo,
+      feedback,
+      role: "Customer",
+    };
+
+    if(feedbackError){
+      return;
+    }
+
+    axiosInstance
+      .post("/add-testimonial", testimonial)
+      .then((res) => {
+        if (res.data.acknowledged) {
+          toast.success("Thanks for your feedback!");
+          form.reset();
+          setCountFeedback(0)
+        }
+      })
+      .catch((err) => {
+        toast.error(err);
+      });
+  };
+
   return (
     <div className="my-28 w-11/12 mx-auto">
       {/* form container */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         {/* left */}
-        <div className={`p-10 testimonial-path ${theme === 'light' ? 'grad text-black' : 'grad2'}`}>
+        <div
+          className={`p-10 testimonial-path ${
+            theme === "light" ? "grad text-black" : "grad2"
+          }`}
+        >
           <h2
             data-aos="fade-up"
             data-aos-duration="1000"
@@ -19,6 +72,7 @@ const TestimonialForm = () => {
           </h2>
 
           <form
+            onSubmit={testimonialForm}
             data-aos="fade-zoom-in"
             data-aos-duration="700"
             data-aos-easing="ease-in-back"
@@ -32,7 +86,11 @@ const TestimonialForm = () => {
               <input
                 type="text"
                 name="firstName"
-                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
+                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${
+                  theme === "light"
+                    ? "bg-white text-black border border-white hover:border hover:border-[#3CA200]"
+                    : "bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]"
+                }`}
                 placeholder="John"
               />
             </div>
@@ -42,7 +100,11 @@ const TestimonialForm = () => {
               <input
                 type="text"
                 name="lastName"
-                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
+                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${
+                  theme === "light"
+                    ? "bg-white text-black border border-white hover:border hover:border-[#3CA200]"
+                    : "bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]"
+                }`}
                 placeholder="Smith"
               />
             </div>
@@ -54,7 +116,11 @@ const TestimonialForm = () => {
               <input
                 type="email"
                 name="email"
-                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
+                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${
+                  theme === "light"
+                    ? "bg-white text-black border border-white hover:border hover:border-[#3CA200]"
+                    : "bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]"
+                }`}
                 placeholder="e.g.john@youremail.com"
               />
             </div>
@@ -66,7 +132,11 @@ const TestimonialForm = () => {
               <input
                 type="text"
                 name="phone"
-                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
+                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${
+                  theme === "light"
+                    ? "bg-white text-black border border-white hover:border hover:border-[#3CA200]"
+                    : "bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]"
+                }`}
                 placeholder="e.g.+8801234567890"
               />
             </div>
@@ -76,8 +146,13 @@ const TestimonialForm = () => {
                 Service Used
               </label>
               <select
+                name="service"
                 defaultValue={"Choose Your Service"}
-                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
+                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${
+                  theme === "light"
+                    ? "bg-white text-black border border-white hover:border hover:border-[#3CA200]"
+                    : "bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]"
+                }`}
               >
                 <option disabled>Choose Your Service</option>
                 <option>Web Development</option>
@@ -85,19 +160,40 @@ const TestimonialForm = () => {
                 <option>Graphic Design</option>
                 <option>Video Editing</option>
                 <option>Content Writing</option>
-                <option></option>
               </select>
             </div>
 
             <div className="md:col-span-2">
-              <label className="block mb-1 font-[300] text-sm">
-                Your Comment
+              <label className="block mb-1 font-[300] text-sm">Photo URL</label>
+              <input
+                type="url"
+                name="photoUrl"
+                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${
+                  theme === "light"
+                    ? "bg-white text-black border border-white hover:border hover:border-[#3CA200]"
+                    : "bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]"
+                }`}
+                paceholder="https://image.jpg"
+              />
+            </div>
+
+            <div className="md:col-span-2">
+              <label className={`block mb-1 font-[300] text-sm`}>
+                Your Feedback ({countFeedback.length > 0 ? countFeedback.length : ''}) {feedbackError && <span className="text-red-600">Write between 115 charecters</span>}
               </label>
               <textarea
-                name="comment"
+              onChange={(e) => {
+                const value = e.target.value;
+                setCountFeedback(value);
+              }}
+                name="feedback"
                 rows="3"
-                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${theme === 'light' ? 'bg-white text-black border border-white hover:border hover:border-[#3CA200]' : 'bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]'}`}
-                placeholder="Leave Your Comment"
+                className={`w-full rounded p-2 outline-[#3CA200] placeholder:font-[200] ${
+                  theme === "light"
+                    ? "bg-white text-black border border-white hover:border hover:border-[#3CA200]"
+                    : "bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]"
+                } ${feedbackError && 'outline-red-600'}`}
+                placeholder="Leave Your feedback in 115 characters"
               />
             </div>
 
@@ -127,7 +223,7 @@ const TestimonialForm = () => {
 
           {/* text */}
           <div
-            className={`p-10 rounded-3xl space-y-5 ${
+            className={`p-14 rounded-3xl space-y-5 ${
               theme === "light"
                 ? "bg-[#F4F6F0] text-black"
                 : "bg-[#26313d] text-white"

@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import qoute from "../assets/images/quotes.png";
 import customer from "../assets/images/customer.png";
 import useTheme from "../hooks/useTheme";
+import axiosInstance from "../hooks/axiosInstance";
 
 const Testimonial = () => {
   const [testimonials, setTestimonials] = useState([]);
   const theme = useTheme();
 
   useEffect(() => {
-    axios("/testimonial.json").then((res) => {
+    axiosInstance("/testimonials").then((res) => {
       setTestimonials(res.data);
     });
   }, []);
@@ -55,7 +55,7 @@ const Testimonial = () => {
         showDots={true}
       >
         {testimonials.map((testimonial, idx) => (
-          <div data-aos="zoom-in" data-aos-duration="1000"    key={idx} className={`px-8 md:px-20 py-14 rounded-4xl mb-10 ${theme === 'light' ? 'bg-white text-black' : 'bg-[#26313d] text-white'}`}>
+          <div data-aos="zoom-in" data-aos-duration="1000"    key={idx} className={`px-8 md:px-20 py-14 rounded-4xl mb-10 h-[312px] ${theme === 'light' ? 'bg-white text-black' : 'bg-[#26313d] text-white'}`}>
             <img className="w-6 mb-8" src={qoute} alt="" />
             <p>{testimonial.feedback}</p>
             <div className="flex gap-5 items-center mt-6">
