@@ -36,7 +36,7 @@ const ServiceToDo = () => {
   useEffect(() => {
     axiosInstance(`/booked/services?provider=${user?.email}`)
       .then((res) => setBookedServices(res.data))
-      .catch((err) => console.log(err));
+      .catch(() => {});
   }, [user?.email]);
 
   const handleStatusChange = (e, id) => {
@@ -100,7 +100,11 @@ const ServiceToDo = () => {
 
                     <div className={`text-sm font-o mt-4 ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>
                       <p>
-                        <span className="font-medium">Client:</span>{" "}
+                        <span className="font-medium">Client Name:</span>{" "}
+                        {service?.userName}
+                      </p>
+                      <p>
+                        <span className="font-medium">Client Email:</span>{" "}
                         {service.userEmail}
                       </p>
                       <p>

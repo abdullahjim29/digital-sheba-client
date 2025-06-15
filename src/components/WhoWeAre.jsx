@@ -29,12 +29,12 @@ const WhoWeAre = () => {
 
         <div className="w-full lg:w-10/12 space-y-3 font-medium">
           <div className="flex gap-2 items-center">
-            <FaCircleCheck className="text-xl text-[#3CA200]" />
-            <p>We deliver reliable service tailored to your unique goals</p>
+            <FaCircleCheck className="text-base text-[#3CA200]" />
+            <p className="text-sm">We deliver reliable service tailored to your unique goals</p>
           </div>
           <div className="flex gap-2 items-center">
-            <FaCircleCheck className="text-xl text-[#3CA200]" />
-            <p>Top professionals who treat your projects like their own</p>
+            <FaCircleCheck className="text-base text-[#3CA200]" />
+            <p className="text-sm">Top professionals who treat your projects like their own</p>
           </div>
         </div>
 

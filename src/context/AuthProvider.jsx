@@ -57,13 +57,10 @@ const AuthProvider = ({ children }) => {
         const user = { email: currentUser?.email };
         axiosInstance
           .post("/jwt", user)
-          .then((res) => {
-            console.log(res.data);
+          .then(() => {
             setLoading(false);
           })
-          .catch((err) => {
-            console.log(err);
-          });
+          .catch(() => {});
       } else {
         axiosInstance
           .post("/remove-token", {})
@@ -81,7 +78,7 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  console.log(user);
+  // console.log(user);
 
   const authInfo = {
     loginWithGoogle,

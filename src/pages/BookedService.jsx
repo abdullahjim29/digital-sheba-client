@@ -34,7 +34,7 @@ const BookedService = () => {
   useEffect(() => {
     axiosInstance(`/booked/services?user=${user?.email}`)
       .then((res) => setBookedServices(res.data))
-      .catch((err) => console.log(err.message));
+      .catch(() => {});
   }, [user?.email]);
 
   const hasBookings = bookedServices.length > 0;
@@ -61,12 +61,12 @@ const BookedService = () => {
                   key={service._id}
                   className={`rounded-xl p-6 shadow hover:shadow-md transition duration-300 ${theme === 'light' ? 'bg-white border border-[#3CA200]' : 'text-white bg-[#26313d] border border-blue-200'}`}
                 >
-                  <div className="flex justify-between items-start mb-4">
+                  <div className="flex flex-col-reverse md:flex-row justify-between items-start mb-4">
                     <h3 className={`text-xl font-medium font-p ${theme === 'light' ? 'text-blue-950' : ''}`}>
                       {service.service_Name}
                     </h3>
                     <span
-                      className={`text-sm font-medium px-3 py-1 rounded-full font-o ${status.class}`}
+                      className={`text-sm font-medium px-3 py-2 rounded-full font-o ${status.class} flex items-center mb-4 md:mb-0`}
                     >
                       {status.icon}
                       {status.label}

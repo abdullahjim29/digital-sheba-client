@@ -208,7 +208,7 @@ const Navbar = ({ theme, setTheme }) => {
                   <li>
                     <details>
                       <summary>Dashboard</summary>
-                      <ul className="bg-[#f1fae1] rounded-t-none p-2 w-48">
+                      <ul className={`rounded-t-none p-2 w-50 -right-24 -bottom-32 ${theme === 'light' ? 'bg-[#f1fae1]' : 'bg-[#1D252E]'}`}>
                         {navlinks2}
                       </ul>
                     </details>
@@ -237,7 +237,7 @@ const Navbar = ({ theme, setTheme }) => {
             data-aos="zoom-in"
             data-aos-duration="1000"
             to={"/"}
-            className="text-3xl font-semibold mx-5"
+            className="text-xl md:text-3xl font-semibold mx-5"
           >
             DigitalSheba
           </Link>
@@ -292,7 +292,7 @@ const Navbar = ({ theme, setTheme }) => {
               </div>
 
               <Link onClick={handleLogOutUser} to={"/login"}>
-                <button className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-[#F2D701] px-8 font-medium text-black cursor-pointer">
+                <button className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-[#F2D701] px-4 md:px-8 font-medium text-black cursor-pointer">
                   <div className="translate-y-0 transition duration-700 group-hover:-translate-y-[150%]">
                     Log Out
                   </div>
@@ -304,7 +304,7 @@ const Navbar = ({ theme, setTheme }) => {
             </>
           ) : (
             <Link to={"/login"}>
-              <button className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-[#F2D701] px-8 font-medium text-black cursor-pointer">
+              <button className="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-[#F2D701] px-4 md:px-8 font-medium text-black cursor-pointer">
                 <div className="translate-y-0 transition duration-700 group-hover:-translate-y-[150%]">
                   Log In
                 </div>

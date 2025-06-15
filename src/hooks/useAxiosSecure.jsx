@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://digital-sheba-gamma.vercel.app",
   withCredentials: true,
 });
 
@@ -17,14 +17,14 @@ const useAxiosSecure = () => {
         return response;
       },
       (error) => {
-        if (error.status === 401 || error.status === 403) {
+        if (error.response?.status === 401 || error.response?.status === 403) {
           logOutUser()
             .then((res) => {
               navigate("/login");
             })
-            .then((err) => console.log(err));
+            .then(() => {});
         }
-        console.log(error);
+
         return Promise.reject(error);
       }
     );

@@ -7,7 +7,7 @@ const Footer = () => {
   const theme = useTheme();
   return (
     <footer
-      className={`pt-32 pb-10 px-6 md:px-16 w-[98%] mx-auto footer-path ${theme === 'light' ? 'bg-gradient-to-b from-[#E8F5D3] to-[#F5FBEB] text-gray-800' : 'grad2 text-white'}`}
+      className={`pt-32 pb-10 px-6 md:px-16 w-[95%] md:w-[98%] mx-auto footer-path ${theme === 'light' ? 'bg-gradient-to-b from-[#E8F5D3] to-[#F5FBEB] text-gray-800' : 'grad2 text-white'}`}
     >
       {/* Title + Subscribe (Top Row) */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-10">
@@ -28,7 +28,7 @@ const Footer = () => {
           <h3 className="text-sm uppercase font-medium mb-2 font-p">
             Subscribe to our Newsletter
           </h3>
-          <div className="flex gap-3">
+          <div className="flex flex-col md:flex-row gap-3">
             <input
               type="email"
               placeholder="Enter your email"

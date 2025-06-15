@@ -21,7 +21,7 @@ const ManageServices = () => {
   useEffect(() => {
     axiosInstance(`/manage-services/?email=${user?.email}`)
       .then((res) => setServices(res.data))
-      .catch((err) => console.log(err));
+      .catch(() => {});
   }, [user?.email]);
 
   useEffect(() => {

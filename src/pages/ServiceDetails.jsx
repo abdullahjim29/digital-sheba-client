@@ -141,7 +141,7 @@ const ServiceDetails = () => {
             {/* action */}
             <div className="modal-action absolute right-6 -top-5">
               <form method="dialog">
-                <button className={`absolute right-4 top-4 ${theme === 'light' ? 'text-[#000000c7] hover:text-[#000000]' : 'text-white hover:text-[#ffffffaf]'}`}>
+                <button className={`absolute -right-4 top-1 ${theme === 'light' ? 'text-[#000000c7] hover:text-[#000000]' : 'text-white hover:text-[#ffffffaf]'}`}>
                   <ImCross />
                 </button>
               </form>

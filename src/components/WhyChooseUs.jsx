@@ -7,7 +7,7 @@ import useTheme from "../hooks/useTheme";
 const WhyChooseUs = () => {
   const theme = useTheme();
   return (
-    <div className={`w-[95%] mx-auto my-40 px-10 py-20 rounded-4xl ${theme === 'light' ? 'bg-[#3CA200]' : 'border border-[#2d3c4d] text-black bg-[#1d252e]'}`}>
+    <div className={`w-[95%] mx-auto my-40 px-5 md:px-10 py-20 rounded-4xl ${theme === 'light' ? 'bg-[#3CA200]' : 'border border-[#2d3c4d] text-black bg-[#1d252e]'}`}>
       <div className="text-center font-p space-y-5 mb-14">
         <h4 className="font-thin text-white">WHY CHOOSE US</h4>
         <h2

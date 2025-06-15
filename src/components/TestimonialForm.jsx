@@ -92,6 +92,7 @@ const TestimonialForm = () => {
                     : "bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]"
                 }`}
                 placeholder="John"
+                required
               />
             </div>
 
@@ -153,6 +154,7 @@ const TestimonialForm = () => {
                     ? "bg-white text-black border border-white hover:border hover:border-[#3CA200]"
                     : "bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]"
                 }`}
+                required
               >
                 <option disabled>Choose Your Service</option>
                 <option>Web Development</option>
@@ -194,6 +196,7 @@ const TestimonialForm = () => {
                     : "bg-[#1D232A] border border-[#26313D] hover:border hover:border-[#1D232A]"
                 } ${feedbackError && 'outline-red-600'}`}
                 placeholder="Leave Your feedback in 115 characters"
+                required
               />
             </div>
 
@@ -223,17 +226,17 @@ const TestimonialForm = () => {
 
           {/* text */}
           <div
-            className={`p-14 rounded-3xl space-y-5 ${
+            className={`p-6 md:p-14 rounded-3xl space-y-5 ${
               theme === "light"
                 ? "bg-[#F4F6F0] text-black"
                 : "bg-[#26313d] text-white"
             }`}
           >
             <div className="flex items-center gap-3">
-              <FaCircleCheck className="text-xl md:text-2xl text-[#3CA200]" />
-              <h3 className="text-2xl font-p">100% Customer Satisfaction</h3>
+              <FaCircleCheck className="text-2xl text-[#3CA200]" />
+              <h3 className="text-[15px] md:text-2xl font-p">100% Customer Satisfaction</h3>
             </div>
-            <p className="w-full md:w-8/12 font-o ml-8 font-[200]">
+            <p className="w-full md:w-8/12 font-o ml-0 md:ml-8 font-[200] text-sm md:text-base">
               At Digital Sheba, your satisfaction is our top priority. We
               proudly offer a 100% Service Guarantee on all bookings. Your
               feedback helps us grow and serve you better!

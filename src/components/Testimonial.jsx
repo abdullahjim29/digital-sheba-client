@@ -37,7 +37,7 @@ const Testimonial = () => {
 
   return (
     <div className={`w-11/12 mx-auto px-0 lg:px-10 pb-16 lg:pb-32 pt-6 rounded-4xl my-20 font-p ${theme === 'light' ? 'bg-[#F4F6F0]' : 'bg-[#1d252e] border border-[#2d3c4d]'}`}>
-      <div className="text-center my-10 space-y-5">
+      <div className="text-center my-10 space-y-5 px-2">
         <h4>TESTIMONIALS</h4>
         <h2 data-aos="fade-up" data-aos-duration="1000" className="text-2xl lg:text-4xl w-full lg:w-6/12 mx-auto font-medium">
           Empowering Thousands of Users and Enterprises
@@ -55,7 +55,7 @@ const Testimonial = () => {
         showDots={true}
       >
         {testimonials.map((testimonial, idx) => (
-          <div data-aos="zoom-in" data-aos-duration="1000"    key={idx} className={`px-8 md:px-20 py-14 rounded-4xl mb-10 h-[312px] ${theme === 'light' ? 'bg-white text-black' : 'bg-[#26313d] text-white'}`}>
+          <div data-aos="zoom-in" data-aos-duration="1000" key={idx} className={`px-8 md:px-20 py-14 rounded-4xl mb-10 h-[350px] ${theme === 'light' ? 'bg-white text-black' : 'bg-[#26313d] text-white'}`}>
             <img className="w-6 mb-8" src={qoute} alt="" />
             <p>{testimonial.feedback}</p>
             <div className="flex gap-5 items-center mt-6">

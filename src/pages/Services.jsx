@@ -8,8 +8,8 @@ import Lottie from "lottie-react";
 import loader from "../assets/lottieFiles/loaderLottie.json";
 import AddonServices from "../components/AddonServices";
 import ServiceSearchBar from "../components/ServiceSearchBar";
-import axios from "axios";
 import useTheme from "../hooks/useTheme";
+import axiosInstance from "../hooks/axiosInstance";
 
 const Services = () => {
   const servicesData = useLoaderData();
@@ -18,12 +18,12 @@ const Services = () => {
   const theme = useTheme();
 
   useEffect(() => {
-    axios(`http://localhost:5000/services/?searchParams=${searchValue}`)
+    axiosInstance(`/services/?searchParams=${searchValue}`)
       .then((res) => setServices(res.data))
-      .catch((err) => console.log(err));
+      .catch(() => {});
   }, [searchValue]);
 
-  console.log(searchValue);
+  // console.log(searchValue);
 
   useEffect(() => {
     if (servicesData?.data) {
